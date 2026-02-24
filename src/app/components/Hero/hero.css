@@ -1,1 +1,59 @@
-.hero{background:linear-gradient(120deg,#ff6b81,#ff4757);color:white;padding:100px 0;text-align:center;border-radius:12px;margin-bottom:40px;} .hero h1{font-size:2.5rem;margin-bottom:10px;} .hero p{font-size:1.2rem;margin-bottom:20px;}
+.hero {
+  background: linear-gradient(135deg, #ff6b81, #ff4757);
+  color: white;
+  padding: 100px 20px;
+  text-align: center;
+  border-radius: 12px;
+  margin-bottom: 40px;
+  animation: fadeIn 1s ease forwards;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+  animation: slideDown 1s ease forwards;
+}
+
+.hero-sub {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  animation: slideUp 1s ease forwards;
+}
+
+.hero-btn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 8px;
+  background: #fff;
+  color: #ff4757;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.hero-btn:hover {
+  transform: scale(1.05);
+  background: #ffe6e6;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+@keyframes slideDown {
+  from {transform: translateY(-20px); opacity:0;}
+  to {transform: translateY(0); opacity:1;}
+}
+
+@keyframes slideUp {
+  from {transform: translateY(20px); opacity:0;}
+  to {transform: translateY(0); opacity:1;}
+}
+
+@media(max-width:768px) {
+  .hero-title { font-size: 2rem; }
+  .hero-sub { font-size: 1rem; }
+}
