@@ -1,0 +1,1 @@
+export default function Navbar(){return(<header className='navbar'><div className='container nav-flex'><h2 className='logo'>🍔 Foodie</h2><nav><ul className='nav-links'><li>Home</li><li>Menu</li><li>Categories</li><li>Contact</li></ul></nav></div></header>);}

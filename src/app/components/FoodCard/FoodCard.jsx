@@ -1,0 +1,1 @@
+import Image from 'next/image'; export default function FoodCard({title,price,image}){return(<div className='card'><Image src={image} alt={title} width={300} height={200}/><div className='card-body'><h3>{title}</h3><p className='price'>₹{price}</p><button className='btn'>Order Now</button></div></div>);}

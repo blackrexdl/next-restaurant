@@ -1,0 +1,1 @@
+.navbar{position:sticky;top:0;background:white;padding:16px 0;border-bottom:1px solid #eee;z-index:1000;} .nav-flex{display:flex;justify-content:space-between;align-items:center;} .logo{color:#ff6b81;font-weight:bold;} .nav-links{list-style:none;display:flex;gap:20px;font-weight:600;} @media(max-width:768px){.nav-links{display:none;}}
