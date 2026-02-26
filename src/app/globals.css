@@ -40,3 +40,47 @@ a {
     color-scheme: dark;
   }
 }
+
+
+/* ===== Layout Helpers ===== */
+.container {
+  width: 92%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.section {
+  padding: 60px 0;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Food Grid (Professional Layout) ===== */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards desktop */
+  gap: 24px;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .food-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .food-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
