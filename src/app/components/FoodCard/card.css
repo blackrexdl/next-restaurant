@@ -24,7 +24,7 @@
 
   box-shadow:
     0 12px 30px rgba(0, 0, 0, 0.08),
-    0 4px 12px rgba(0, 0, 0, 0.04);
+    0 4px 12px rgba(0, 0, 0, 0.04);  
 
   transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
