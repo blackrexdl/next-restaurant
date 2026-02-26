@@ -44,9 +44,16 @@ a {
 
 /* ===== Layout Helpers ===== */
 .container {
+<<<<<<< HEAD
   width: 92%;
   max-width: 1300px;
   margin: 0 auto;
+=======
+  width: 90%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+>>>>>>> c4d0d34 (update mainly all css)
 }
 
 .section {
@@ -63,8 +70,19 @@ a {
 /* ===== Food Grid (Professional Layout) ===== */
 .food-grid {
   display: grid;
+<<<<<<< HEAD
   grid-template-columns: repeat(4, 1fr); /* 4 cards desktop */
   gap: 24px;
+=======
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* Ensure cards behave like grid items */
+.food-grid > * {
+  width: 100%;
+>>>>>>> c4d0d34 (update mainly all css)
 }
 
 /* Tablet */
