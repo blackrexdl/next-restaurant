@@ -1,18 +1,7 @@
-<<<<<<< HEAD
 /* ===== Card Wrapper ===== */
-.card {
-  width: 100%;
-=======
-/* Force card to behave properly in grid */
 .card {
   width: 100%;
   max-width: 100%;
-}
-
-/* ===== Card Wrapper ===== */
-.card {
-  width: 100%;
->>>>>>> c4d0d34 (update mainly all css)
   border-radius: 22px;
   overflow: hidden;
   display: flex;
