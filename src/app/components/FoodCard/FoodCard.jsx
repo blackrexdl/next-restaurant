@@ -21,8 +21,8 @@ export default function FoodCard({
   const finalImage = image || foodImages[title] || foodImages.Default;
 
   return (
-    <div className="card">
-      {/* Image */}
+    <div className="card premium-card">
+      {/* Image Wrapper */}
       <div className="card-image">
         <img
           src={finalImage}
@@ -30,6 +30,12 @@ export default function FoodCard({
           className="card-img"
           loading="lazy"
         />
+
+        {/* Gradient Overlay */}
+        <div className="image-overlay"></div>
+
+        {/* Floating badge */}
+        <span className="badge">Popular</span>
       </div>
 
       {/* Content */}
@@ -39,7 +45,9 @@ export default function FoodCard({
 
         <div className="card-footer">
           <span className="price">₹{price}</span>
-          <button className="btn order-btn">Order Now</button>
+          <button className="btn order-btn">
+            Order Now
+          </button>
         </div>
       </div>
     </div>
