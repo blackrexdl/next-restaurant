@@ -2,8 +2,6 @@ import Hero from "./components/Hero/Hero";
 import FoodCard from "./components/FoodCard/FoodCard";
 
 export default function Home() {
-
-  // Scalable menu (easy future updates or DB integration)
   const menuItems = [
     { id: 1, title: "Pizza", price: 199, image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800" },
     { id: 2, title: "Burger", price: 149, image: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=800" },
@@ -18,18 +16,11 @@ export default function Home() {
   return (
     <main>
       <Hero />
-
       <section className="section container">
         <h2 className="section-title">Popular Foods</h2>
-
         <div className="food-grid">
           {menuItems.map((item) => (
-            <FoodCard
-              key={item.id}
-              title={item.title}
-              price={item.price}
-              image={item.image}
-            />
+            <FoodCard key={item.id} {...item} />
           ))}
         </div>
       </section>
