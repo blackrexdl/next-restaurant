@@ -1,38 +1,72 @@
-/* Wrapper for grid alignment */
+/* ===== Grid wrapper alignment ===== */
 .card-item {
   width: 100%;
   display: flex;
 }
 
-/* Card container */
+/* ===== Professional box card ===== */
 .card {
   width: 100%;
-  background: #ffffff;
-  border-radius: 18px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
   display: flex;
   flex-direction: column;
+  position: relative;
+
+  /* soft glass box look */
+  background: linear-gradient(145deg, #ffffff, #f7f7f7);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+
+  /* premium shadow */
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border 0.3s ease;
 }
 
-/* Hover animation */
+/* ===== Hover animation ===== */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
 .card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px) scale(1.01);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.12),
+    0 6px 16px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* Image container for next/image fill */
+.card:hover::after {
+  opacity: 1;
+}
+
+/* ===== Image container (fully responsive) ===== */
 .card-image {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4 / 3; /* keeps layout stable */
   overflow: hidden;
 }
 
-/* Body section */
+/* subtle zoom animation for any image */
+.card-image img {
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card-image img {
+  transform: scale(1.08);
+}
+
+/* ===== Body ===== */
 .card-body {
-  padding: 18px;
+  padding: 18px 18px 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -41,33 +75,43 @@
 .card-title {
   font-size: 1.2rem;
   font-weight: 600;
+  letter-spacing: 0.2px;
 }
 
 .price {
   color: #ff6b81;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1rem;
 }
 
+/* ===== Button ===== */
 .order-btn {
   margin-top: auto;
   padding: 10px 14px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 600;
-  transition: 0.3s ease;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(135deg, #ff6b81, #ff8fa3);
+  color: white;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .order-btn:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 14px rgba(255, 107, 129, 0.35);
 }
 
-/* Responsive adjustments */
+/* ===== Tablet ===== */
 @media (max-width: 1024px) {
   .card-title {
     font-size: 1.1rem;
   }
 }
 
+/* ===== Mobile ===== */
 @media (max-width: 768px) {
   .card-body {
     padding: 14px;
@@ -82,9 +126,10 @@
   }
 }
 
+/* ===== Small phones ===== */
 @media (max-width: 480px) {
   .card {
-    border-radius: 14px;
+    border-radius: 16px;
   }
 
   .card-body {
