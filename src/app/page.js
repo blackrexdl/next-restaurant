@@ -1,1 +1,17 @@
-import Hero from './components/Hero/Hero'; import FoodCard from './components/FoodCard/FoodCard'; export default function Home() { return (<main><Hero /><section className='section container'><h2>Popular Foods</h2><div className='grid grid-3'><FoodCard title='Pizza' price={199} image='/images/pizza.jpg' /><FoodCard title='Burger' price={149} image='/images/burger.jpg' /><FoodCard title='Momos' price={99} image='/images/momos.jpg' /></div></section></main>);}
+import Hero from "./components/Hero/Hero";
+import FoodCard from "./components/FoodCard/FoodCard";
+export default function Home() {
+  return (
+    <main>
+      <Hero />
+      <section className="section container">
+        <h2>Popular Foods</h2>
+        <div className="grid grid-3">
+          <FoodCard title="Pizza" price={199} image="/images/pizza.jpg" />
+          <FoodCard title="Burger" price={149} image="/images/burger.jpg" />
+          <FoodCard title="Momos" price={99} image="/images/momos.jpg" />
+        </div>
+      </section>
+    </main>
+  );
+}
