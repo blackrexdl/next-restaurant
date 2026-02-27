@@ -1,8 +1,6 @@
 "use client";
 import "./card.css";
 import { useState } from "react";
-import { useCart } from "@/context/CartContext";
-
 
 export default function FoodCard({
   title = "Khana Kha Liya?",
@@ -20,9 +18,6 @@ export default function FoodCard({
 
   const fallbackImage =
     "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800";
-
-  const { addToCart } = useCart();
-
 
   return (
     <div className="card premium-card">
@@ -62,18 +57,8 @@ export default function FoodCard({
 
         <div className="card-footer">
           <span className="price">₹{price}</span>
-          <button
-            className="btn order-btn"
-            onClick={() =>
-              addToCart({
-                title,
-                price,
-                image: imgSrc,
-                category,
-              })
-            }
-          >
-            Add to Cart
+          <button className="btn order-btn">
+            Order Now
           </button>
         </div>
       </div>
