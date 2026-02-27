@@ -1,4 +1,4 @@
-"use client"; // ⚡ Add this at the very top
+"use client";
 
 import { useState } from "react";
 import { useCart } from "../../../context/CartContext";
@@ -7,7 +7,6 @@ import "./navbar.css";
 export default function Navbar() {
   const { cart } = useCart();
 
-  // total items count (fix for qty support)
   const totalItems = cart?.reduce((sum, item) => sum + (item.qty || 1), 0);
 
   const [dark, setDark] = useState(false);
@@ -32,8 +31,10 @@ export default function Navbar() {
         </nav>
 
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          {/* Cart Icon */}
-          <div style={{ position: "relative", fontSize: "20px", cursor: "pointer" }}>
+          <div
+            style={{ position: "relative", fontSize: "20px", cursor: "pointer" }}
+            title="Cart"
+          >
             🛒
             {totalItems > 0 && (
               <span
@@ -55,7 +56,6 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Dark Mode Toggle */}
           <button className="btn toggle-dark" onClick={toggleDarkMode}>
             {dark ? "Light" : "Dark"}
           </button>
