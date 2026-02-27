@@ -1,5 +1,6 @@
 "use client";
 import "./card.css";
+import { useState } from "react";
 
 export default function FoodCard({
   title = "Khana Kha Liya?",
@@ -7,28 +8,24 @@ export default function FoodCard({
   image,
   description = "Fresh & delicious food made with love ❤️",
 }) {
-  const foodImages = {
-    "Khana Kha Liya?": "https://picsum.photos/seed/khana/600/400",
-    "Tu Kha Liya?": "https://picsum.photos/seed/tukha/600/400",
-    Pizza: "https://picsum.photos/seed/pizza/600/400",
-    Burger: "https://picsum.photos/seed/burger/600/400",
-    Momos: "https://picsum.photos/seed/momos/600/400",
-    Pasta: "https://picsum.photos/seed/pasta/600/400",
-    Fries: "https://picsum.photos/seed/fries/600/400",
-    Default: "https://picsum.photos/seed/food/600/400",
-  };
 
-  const finalImage = image || foodImages[title] || foodImages.Default;
+  const [imgSrc, setImgSrc] = useState(
+    image || `https://source.unsplash.com/600x400/?punjabi food,${encodeURIComponent(title)}`
+  );
+
+  const fallbackImage =
+    "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800";
 
   return (
     <div className="card premium-card">
       {/* Image Wrapper */}
       <div className="card-image">
         <img
-          src={finalImage}
+          src={imgSrc}
           alt={title}
           className="card-img"
           loading="lazy"
+          onError={() => setImgSrc(fallbackImage)}
         />
 
         {/* Gradient Overlay */}
