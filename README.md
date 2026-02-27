@@ -1,7 +1,7 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
-
+<!-- in which added some line of code that fetch the traffic from this repo and showcase on my github prorfile to check the user progress  -->
 First, run the development server:
 
 ```bash
