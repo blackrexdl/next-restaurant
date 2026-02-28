@@ -20,8 +20,10 @@ jobs:
       - name: Install node-fetch
         run: npm install node-fetch
 
-      - name: Run update-traffic-readme.js
-        run: node update-traffic-readme.js
+      - name: Update Traffic README
+        run: node ./update-traffic-readme.js
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Commit and push changes
         run: |
