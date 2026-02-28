@@ -20,7 +20,7 @@ jobs:
         run: npm install node-fetch@2
 
       - name: Run traffic updater
-        run: node update-traffic.js
+        run: node update-traffic-readme.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
