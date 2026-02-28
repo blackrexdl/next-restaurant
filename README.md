@@ -1,7 +1,11 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
-<!-- in which added some line of code that fetch the traffic from this repo and showcase on my github prorfile to check the user progress  -->
+
+This project includes a traffic tracking feature that fetches daily traffic data from this repository and showcases it on your GitHub profile. This helps you monitor user progress and engagement over time with an auto-updating chart.
+
+![Traffic Badge](https://img.shields.io/badge/traffic-auto--updated-green)
+
 First, run the development server:
 
 ```bash
@@ -19,6 +23,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Daily Views
+
+An auto-updating chart displays the daily views of this repository, providing a visual representation of traffic trends directly on your GitHub profile. This feature helps you stay informed about the popularity and user engagement of your project in real-time.
 
 ## Learn More
 
