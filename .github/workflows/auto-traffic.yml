@@ -33,7 +33,7 @@ jobs:
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/blackrexdl/next-restaurant.git
+          git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/blackrexdl/next-restaurant.git
           git add views-data.json README.md
           git commit -m "Auto-update traffic data [skip ci]" || echo "No changes to commit"
           git push origin HEAD:main
