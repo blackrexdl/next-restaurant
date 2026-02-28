@@ -23,11 +23,12 @@ jobs:
         run: node update-traffic-readme.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
 
       - name: Commit changes
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add views-data.json
-          git commit -m "Update daily traffic"
+          git add views-data.json README.md
+          git commit -m "Update daily traffic and README"
           git push
