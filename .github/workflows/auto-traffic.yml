@@ -1,5 +1,8 @@
 name: Auto Traffic Update
 
+permissions:
+  contents: write
+
 on:
   schedule:
     - cron: "0 0 * * *" # daily at midnight UTC
@@ -28,8 +31,9 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/blackrexdl/next-restaurant.git
           git add views-data.json README.md
           git commit -m "Auto-update traffic data [skip ci]" || echo "No changes to commit"
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/blackrexdl/next-restaurant.git HEAD:main
+          git push origin HEAD:main
