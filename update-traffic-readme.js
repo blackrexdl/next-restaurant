@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 const repo = 'blackrexdl/next-restaurant';
 const token = process.env.GITHUB_TOKEN;
 
-async function updateTraffic() {
+async function updateTraffic() {  
   const today = new Date().toISOString().split('T')[0];
 
   // Fetch repo traffic
