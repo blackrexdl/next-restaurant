@@ -1,5 +1,5 @@
 const fs = require("fs");
-const fetch = require("node-fetch");
+const fetch = (...args) => import('node-fetch').then(mod => mod.default(...args));
 
 const repo = "blackrexdl/next-restaurant";
 const token = process.env.GITHUB_TOKEN;
