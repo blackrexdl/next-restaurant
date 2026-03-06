@@ -1,6 +1,7 @@
 "use client";
 import "./card.css";
 import { useState } from "react";
+import { useCart } from "../../../context/CartContext";
 
 export default function FoodCard({
   title = "Khana Kha Liya?",
@@ -15,6 +16,14 @@ export default function FoodCard({
   );
 
   const [loaded, setLoaded] = useState(false);
+
+  const { cart, addToCart, increaseQty, decreaseQty } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart({ title, price, image: imgSrc, category });
+  };
+
+  const cartItem = cart.find((item) => item.title === title);
 
   const fallbackImage =
     "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800";
@@ -57,9 +66,17 @@ export default function FoodCard({
 
         <div className="card-footer">
           <span className="price">₹{price}</span>
-          <button className="btn order-btn">
-            Order Now
-          </button>
+          {cartItem ? (
+            <div className="qty-controls">
+              <button className="qty-btn" onClick={() => decreaseQty(title)}>-</button>
+              <span className="qty-count">{cartItem.qty || 1}</span>
+              <button className="qty-btn" onClick={() => increaseQty(title)}>+</button>
+            </div>
+          ) : (
+            <button className="btn order-btn" onClick={handleAddToCart}>
+              Add to Cart
+            </button>
+          )}
         </div>
       </div>
     </div>

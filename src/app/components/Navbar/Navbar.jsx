@@ -1,34 +1,30 @@
 "use client"; // ⚡ Add this at the very top
+import { useCart } from "../../../context/CartContext";
+import "../CartSidebar/cartsidebar.css";
 
-import { useState } from "react";
-import "./navbar.css";
+export default function CartSidebar({ isOpen, setIsOpen }) {
+  const { cart, removeFromCart } = useCart();
 
-export default function Navbar() {
-  const [dark, setDark] = useState(false);
-
-  const toggleDarkMode = () => {
-    setDark(!dark);
-    document.documentElement.classList.toggle("dark-mode");
-  };
+  if (!isOpen) return null;
 
   return (
-    <header className="navbar">
-      <div className="container nav-flex">
-        <h2 className="logo">🍔 Foodie</h2>
-
-        <nav>
-          <ul className="nav-links">
-            <li>Home</li>
-            <li>Menu</li>
-            <li>Categories</li>
-            <li>Contact</li>
-          </ul>
-        </nav>
-
-        <button className="btn toggle-dark" onClick={toggleDarkMode}>
-          {dark ? "Light" : "Dark"}
-        </button>
-      </div>
-    </header>
+    <aside className="cart-sidebar">
+      <button className="close-btn" onClick={() => setIsOpen(false)}>
+        Close
+      </button>
+      <h3>Your Cart</h3>
+      {cart.length === 0 ? (
+        <p>Your cart is empty.</p>
+      ) : (
+        <ul>
+          {cart.map((item) => (
+            <li key={item.id}>
+              {item.name} - ${item.price}
+              <button onClick={() => removeFromCart(item.id)}>Remove</button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </aside>
   );
 }

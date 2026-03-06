@@ -1,5 +1,3 @@
-
-
 "use client";
 import { createContext, useContext, useState } from "react";
 
@@ -22,6 +20,25 @@ export function CartProvider({ children }) {
     });
   };
 
+  const increaseQty = (title) => {
+    setCart((prev) =>
+      prev.map((item) =>
+        item.title === title ? { ...item, qty: (item.qty || 1) + 1 } : item
+      )
+    );
+  };
+
+  const decreaseQty = (title) => {
+    setCart((prev) =>
+      prev
+        .map((item) =>
+          item.title === title
+            ? { ...item, qty: Math.max((item.qty || 1) - 1, 1) }
+            : item
+        )
+    );
+  };
+
   const removeFromCart = (title) => {
     setCart((prev) => prev.filter((i) => i.title !== title));
   };
@@ -30,7 +47,7 @@ export function CartProvider({ children }) {
 
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, clearCart }}
+      value={{ cart, addToCart, removeFromCart, clearCart, increaseQty, decreaseQty }}
     >
       {children}
     </CartContext.Provider>
