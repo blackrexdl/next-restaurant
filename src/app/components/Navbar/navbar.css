@@ -70,3 +70,33 @@
     display: none;
   }
 }
+
+.cart-btn {
+  background: #ff6b81;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.cart-btn:hover {
+  background: #ff4757;
+  transform: scale(1.05);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cart-btn{
+  background:black;
+  color:white;
+  border:none;
+  padding:10px 16px;
+  border-radius:8px;
+  cursor:pointer;
+}

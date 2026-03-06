@@ -1,18 +1,18 @@
 "use client";
-import "../styles/globals.css";
 
-import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
+import "../styles/globals.css";
 import { CartProvider } from "../context/CartContext";
+import Navbar from "./components/Navbar/Navbar";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
         <CartProvider>
-          <Navbar />
-          {children}
-          <Footer />
+          <>
+            <Navbar />
+            {children}
+          </>
         </CartProvider>
       </body>
     </html>

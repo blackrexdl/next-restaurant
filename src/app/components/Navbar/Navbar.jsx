@@ -1,30 +1,34 @@
-"use client"; // ⚡ Add this at the very top
+"use client";
+
+import { useState } from "react";
 import { useCart } from "../../../context/CartContext";
-import "../CartSidebar/cartsidebar.css";
+import CartSidebar from "../CartSidebar/CartSidebar";
+import "./navbar.css";
 
-export default function CartSidebar({ isOpen, setIsOpen }) {
-  const { cart, removeFromCart } = useCart();
+export default function Navbar() {
 
-  if (!isOpen) return null;
+  const { cart } = useCart();
+  const [openCart, setOpenCart] = useState(false);
 
   return (
-    <aside className="cart-sidebar">
-      <button className="close-btn" onClick={() => setIsOpen(false)}>
-        Close
-      </button>
-      <h3>Your Cart</h3>
-      {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <ul>
-          {cart.map((item) => (
-            <li key={item.id}>
-              {item.name} - ${item.price}
-              <button onClick={() => removeFromCart(item.id)}>Remove</button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </aside>
+    <>
+      <nav className="navbar">
+
+        <h1 className="logo">Next Restaurant</h1>
+
+        <button
+          className="cart-btn"
+          onClick={() => setOpenCart(true)}
+        >
+          🛒 Cart ({cart.length})
+        </button>
+
+      </nav>
+
+      <CartSidebar
+        isOpen={openCart}
+        setIsOpen={setOpenCart}
+      />
+    </>
   );
 }
