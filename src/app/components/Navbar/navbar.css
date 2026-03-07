@@ -83,7 +83,7 @@
 }
 
 .cart-btn:hover {
-  background: #ff4757;
+  background: #C3110C;
   transform: scale(1.05);
 }
 
@@ -93,7 +93,7 @@
   gap: 12px;
 }
 .cart-btn{
-  background:black;
+  background:#f04e5c;
   color:white;
   border:none;
   padding:10px 16px;
