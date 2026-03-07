@@ -15,8 +15,26 @@ export function CartProvider({ children }) {
     setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
+  const increaseQty = (id) => {
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, qty: (item.qty || 1) + 1 } : item
+      )
+    );
+  };
+
+  const decreaseQty = (id) => {
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === id
+          ? { ...item, qty: Math.max((item.qty || 1) - 1, 1) }
+          : item
+      )
+    );
+  };
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, increaseQty, decreaseQty }}>
       {children}
     </CartContext.Provider>
   );

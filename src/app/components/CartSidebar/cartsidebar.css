@@ -77,3 +77,20 @@
   margin-top: 20px;
   opacity: 0.7;
 }
+.cart-footer{
+  margin-top:20px;
+  padding-top:15px;
+  border-top:1px solid rgba(255,255,255,0.2);
+}
+
+.checkout-btn{
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  background:#ff6b6b;
+  border:none;
+  color:white;
+  font-weight:bold;
+  border-radius:6px;
+  cursor:pointer;
+}
