@@ -4,7 +4,6 @@ import { useCart } from "../../../context/CartContext";
 import "./cartsidebar.css";
 
 export default function CartSidebar({ isOpen, setIsOpen }) {
-
   const { cart, removeFromCart, increaseQty, decreaseQty } = useCart();
 
   const totalPrice = cart.reduce((total, item) => {
@@ -18,16 +17,8 @@ export default function CartSidebar({ isOpen, setIsOpen }) {
       className={`cart-overlay ${isOpen ? "show" : ""}`}
       onClick={() => setIsOpen(false)}
     >
-
-      <div
-        className="cart-sidebar"
-        onClick={(e) => e.stopPropagation()}
-      >
-
-        <button
-          className="close-btn"
-          onClick={() => setIsOpen(false)}
-        >
+      <div className="cart-sidebar" onClick={(e) => e.stopPropagation()}>
+        <button className="close-btn" onClick={() => setIsOpen(false)}>
           ✕
         </button>
 
@@ -40,29 +31,42 @@ export default function CartSidebar({ isOpen, setIsOpen }) {
             <ul className="cart-items">
               {cart.map((item, index) => (
                 <li key={item.id ?? index}>
+                  <div className="cart-item-row">
 
-                  <div className="item-info">
-                    <p>{item.name}</p>
-                    <span>${item.price} × {item.qty ?? 1}</span>
+                    <img
+                      className="cart-thumb"
+                      src={item.image}
+                      alt={item.name}
+                    />
+
+                    <div className="item-info">
+                      <p className="product-name">{item.name}</p>
+
+                      <span className="price-line">
+                        ${item.price} × {item.qty ?? 1}
+                      </span>
+
+                      <div className="qty-controls">
+                        <button onClick={() => decreaseQty(item.id)}>-</button>
+                        <span>{item.qty ?? 1}</span>
+                        <button onClick={() => increaseQty(item.id)}>+</button>
+                      </div>
+                    </div>
+
+                    <div className="item-right">
+                      <div className="item-total">
+                        ${Number(item.price) * (item.qty ?? 1)}
+                      </div>
+
+                      <button
+                        className="remove-btn"
+                        onClick={() => removeFromCart(item.id)}
+                      >
+                        ✕
+                      </button>
+                    </div>
+
                   </div>
-
-                  <div className="qty-controls">
-                    <button onClick={() => decreaseQty(item.id)}>-</button>
-                    <span>{item.qty ?? 1}</span>
-                    <button onClick={() => increaseQty(item.id)}>+</button>
-                  </div>
-
-                  <div className="item-total">
-                    ${Number(item.price) * (item.qty ?? 1)}
-                  </div>
-
-                  <button
-                    className="remove-btn"
-                    onClick={() => removeFromCart(item.id)}
-                  >
-                    Remove
-                  </button>
-
                 </li>
               ))}
             </ul>
@@ -70,16 +74,12 @@ export default function CartSidebar({ isOpen, setIsOpen }) {
             {cart.length > 0 && (
               <div className="cart-footer">
                 <h3>Total: ${totalPrice}</h3>
-                <button className="checkout-btn">
-                  Checkout
-                </button>
+                <button className="checkout-btn">Checkout</button>
               </div>
             )}
           </>
         )}
-
       </div>
-
     </div>
   );
 }
