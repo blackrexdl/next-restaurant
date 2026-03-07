@@ -5,10 +5,12 @@ import "./cartsidebar.css";
 
 export default function CartSidebar({ isOpen, setIsOpen }) {
 
-  const { cart, removeFromCart } = useCart();
+  const { cart, removeFromCart, increaseQty, decreaseQty } = useCart();
 
 const totalPrice = cart.reduce((total, item) => {
-  return total + item.price;
+  const qty = item.qty ?? 1;
+  const price = Number(item.price) || 0;
+  return total + price * qty;
 }, 0);
 
   return (
@@ -35,7 +37,17 @@ const totalPrice = cart.reduce((total, item) => {
 
                 <div className="item-info">
                   <p>{item.name}</p>
-                  <span>${item.price}</span>
+                  <span>${item.price} × {item.qty ?? 1}</span>
+                </div>
+
+                <div className="qty-controls">
+                  <button onClick={() => decreaseQty(item.id)}>-</button>
+                  <span>{item.qty ?? 1}</span>
+                  <button onClick={() => increaseQty(item.id)}>+</button>
+                </div>
+
+                <div className="item-total">
+                  ${Number(item.price) * (item.qty ?? 1)}
                 </div>
 
                 <button

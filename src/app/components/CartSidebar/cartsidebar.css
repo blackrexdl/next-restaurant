@@ -94,3 +94,31 @@
   border-radius:6px;
   cursor:pointer;
 }
+.qty-controls{
+  display:flex;
+  gap:8px;
+  margin-top:6px;
+  align-items:center;
+}
+
+.qty-controls button{
+  width:24px;
+  height:24px;
+  border:none;
+  border-radius:4px;
+  cursor:pointer;
+}
+.qty-controls{
+display:flex;
+gap:8px;
+align-items:center;
+margin:6px 0;
+}
+
+.qty-controls button{
+width:26px;
+height:26px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
