@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "../../../context/CartContext";
 import CartSidebar from "../CartSidebar/CartSidebar";
 import "./navbar.css";
@@ -12,6 +12,12 @@ export default function Navbar() {
   return total + (item.qty ?? 1);
 }, 0);
   const [openCart, setOpenCart] = useState(false);
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <>
@@ -25,7 +31,7 @@ export default function Navbar() {
         >
           <span className="cart-icon">🛒</span>
 
-          {cartCount > 0 && (
+          {mounted && cartCount > 0 && (
             <span className="cart-badge">
               {cartCount}
             </span>
