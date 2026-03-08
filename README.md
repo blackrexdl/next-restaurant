@@ -42,3 +42,190 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+# 🍽️ Next Restaurant
+
+A modern restaurant UI built with **Next.js**, featuring a smooth food ordering interface, cart system, animated sidebar cart, and responsive layout.
+
+This project is designed as a **learning-friendly frontend project** for developers who want to understand how a real food ordering UI works using the Next.js App Router.
+
+---
+
+# 🚀 Project Overview
+
+Next Restaurant demonstrates how modern food ordering interfaces work with features like:
+
+- Dynamic food listing
+- Add‑to‑cart functionality
+- Cart quantity management
+- Sliding cart sidebar
+- Persistent cart using localStorage
+- Responsive UI
+
+The project structure is beginner‑friendly and ideal for learning **Next.js fundamentals and UI architecture**.
+
+---
+
+# 📦 Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/blackrexdl/next-restaurant.git
+```
+
+Navigate to the project folder:
+
+```bash
+cd next-restaurant
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+---
+
+# ▶️ Run the Project
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open your browser and visit:
+
+```
+http://localhost:3000
+```
+
+Your project will automatically reload whenever you edit files.
+
+---
+
+# 🧰 Development Setup
+
+Below is a simple setup guide for different operating systems.
+
+| Step | Windows | macOS |
+|-----|--------|------|
+| Install Node.js | Download from nodejs.org | Install via nodejs.org or brew |
+| Install Git | Download from git-scm.com | `brew install git` |
+| Clone Repo | `git clone repo-url` | `git clone repo-url` |
+| Install Packages | `npm install` | `npm install` |
+| Start Dev Server | `npm run dev` | `npm run dev` |
+
+---
+
+# 📁 Project Structure
+
+```
+next-restaurant
+
+app/
+ ├── components/
+ │   ├── Navbar/
+ │   ├── CartSidebar/
+ │   └── ProductCard/
+
+context/
+ └── CartContext.jsx
+
+public/
+ └── food-images
+
+styles/
+```
+
+Main areas:
+
+- **Components** → UI building blocks
+- **Context** → Global cart state
+- **App Router** → Page routing
+
+---
+
+# 🎮 Core Features
+
+| Feature | Description |
+|------|-------------|
+| Add to Cart | Add food items to cart |
+| Quantity Controls | Increase or decrease items |
+| Cart Sidebar | Smooth slide‑in cart panel |
+| Cart Badge | Shows item count in navbar |
+| Persistent Cart | Cart saved with localStorage |
+| Responsive UI | Works on mobile and desktop |
+
+---
+
+# 🧑‍💻 Beginner Guide
+
+If you're new to Next.js, follow this simple workflow:
+
+1. Clone the project
+2. Install dependencies
+3. Run the development server
+4. Open the project in VS Code
+5. Start editing components inside `app/components`
+
+Example file to modify:
+
+```
+app/page.js
+```
+
+When you save changes, the browser updates automatically.
+
+---
+
+# 📊 Learning Goals
+
+This project helps you practice:
+
+- Next.js App Router
+- React state management
+- Context API
+- Component based architecture
+- UI layout design
+
+---
+
+# 🌐 Deployment
+
+You can deploy this project easily using **Vercel**.
+
+Steps:
+
+1. Push your project to GitHub
+2. Go to https://vercel.com
+3. Import your repository
+4. Deploy
+
+Vercel automatically detects the Next.js configuration.
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome.
+
+If you want to improve the UI, animations, or add new features:
+
+1. Fork the repository
+2. Create a new branch
+3. Submit a pull request
+
+---
+
+# ⭐ Support
+
+If you like this project, consider giving it a **star on GitHub**. It helps others discover the repository and encourages further improvements.
+
+---
+
+# 📜 License
+
+This project is open source and available under the MIT License.
