@@ -1,6 +1,6 @@
 "use client";
 import "./card.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCart } from "../../../context/CartContext";
 
 export default function FoodCard({
@@ -17,6 +17,12 @@ export default function FoodCard({
 
   const [loaded, setLoaded] = useState(false);
 
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const { cart, addToCart, increaseQty, decreaseQty } = useCart();
 
   const handleAddToCart = () => {
@@ -27,6 +33,8 @@ export default function FoodCard({
 
   const fallbackImage =
     "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800";
+
+  if (!mounted) return null;
 
   return (
     <div className="card premium-card">

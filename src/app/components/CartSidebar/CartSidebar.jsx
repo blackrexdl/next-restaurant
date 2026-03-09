@@ -1,10 +1,21 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useCart } from "../../../context/CartContext";
+import { useEffect, useState } from "react";
 import "./cartsidebar.css";
 
 export default function CartSidebar({ isOpen, setIsOpen }) {
   const { cart, removeFromCart, increaseQty, decreaseQty } = useCart();
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
 
   const totalPrice = cart.reduce((total, item) => {
     const qty = item.qty ?? 1;
