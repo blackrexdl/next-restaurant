@@ -21,6 +21,7 @@ export default function FoodCard({
   const [openModal, setOpenModal] = useState(false);
 
   const [mounted, setMounted] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -31,6 +32,11 @@ export default function FoodCard({
 
   const handleAddToCart = () => {
     addToCart({ title, price, image: imgSrc, category });
+
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 2000);
   };
 
   const cartItem = cart.find((item) => item.title === title);
@@ -170,6 +176,26 @@ export default function FoodCard({
               </button>
             )}
           </div>
+        </div>
+      )}
+      {showToast && (
+        <div
+          style={{
+            position: "fixed",
+            bottom: "25px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            background: "#16a34a",
+            color: "#fff",
+            padding: "10px 18px",
+            borderRadius: "10px",
+            fontSize: "14px",
+            boxShadow: "0 10px 25px rgba(0,0,0,0.25)",
+            zIndex: 3000,
+            animation: "fadeIn 0.3s ease"
+          }}
+        >
+          {title} added to cart 🛒
         </div>
       )}
     </>
