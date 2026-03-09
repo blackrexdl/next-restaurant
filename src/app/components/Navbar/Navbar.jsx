@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useCart } from "../../../context/CartContext";
 import CartSidebar from "../CartSidebar/CartSidebar";
+
 import "./navbar.css";
 
 export default function Navbar() {
@@ -16,6 +17,7 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
