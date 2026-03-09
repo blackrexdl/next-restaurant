@@ -76,6 +76,11 @@ export default function FoodCard({
         {/* Content */}
         <div className="card-body">
           <h3 className="card-title">{title}</h3>
+          {/* Rating Start */}
+          {/* <div className="rating">
+            <span className="star">★★★★★</span>
+            <span className="rating-count">(4.5)</span>
+          </div> */}
           <p className="card-desc">{description}</p>
 
           <div className="card-footer">
@@ -122,19 +127,48 @@ export default function FoodCard({
             <img src={imgSrc} alt={title} />
 
             <h2>{title}</h2>
+              {/* Rating Start */}
+            {/* <div className="rating">
+              <span className="star">★★★★★</span>
+              <span className="rating-count">(4.5)</span>
+            </div> */}
             <p>{description}</p>
             <p>Price: ₹{price}</p>
             <p>Category: {category}</p>
 
-            <button
-              className="btn order-btn"
-              onClick={(e) => {
-                e.stopPropagation();
-                handleAddToCart();
-              }}
-            >
-              Add to Cart
-            </button>
+            {cartItem ? (
+              <div className="qty-controls">
+                <button
+                  className="qty-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    decreaseQty(title);
+                  }}
+                >
+                  -
+                </button>
+                <span className="qty-count">{cartItem.qty || 1}</span>
+                <button
+                  className="qty-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    increaseQty(title);
+                  }}
+                >
+                  +
+                </button>
+              </div>
+            ) : (
+              <button
+                className="btn order-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleAddToCart();
+                }}
+              >
+                Add to Cart
+              </button>
+            )}
           </div>
         </div>
       )}
