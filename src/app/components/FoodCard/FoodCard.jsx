@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import "./card.css";
 import { useState, useEffect } from "react";
@@ -20,6 +21,7 @@ export default function FoodCard({
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
@@ -45,9 +47,7 @@ export default function FoodCard({
           alt={title}
           className={`card-img ${loaded ? "loaded" : ""}`}
           loading="lazy"
-          onLoad={() => {
-            requestAnimationFrame(() => setLoaded(true));
-          }}
+          onLoad={() => requestAnimationFrame(() => setLoaded(true))}
           onError={() => {
             setImgSrc(fallbackImage);
             setLoaded(false);
