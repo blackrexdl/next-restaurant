@@ -27,6 +27,9 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 ## Daily Views
 
 An auto-updating chart displays the daily views of this repository, providing a visual representation of traffic trends directly on your GitHub profile. This feature helps you stay informed about the popularity and user engagement of your project in real-time.
+[![wakatime](https://wakatime.com/badge/user/9c0320f2-0352-4014-98ef-20fc9efc7017/project/11346cbf-2297-4d84-a434-bd1841ad7923.svg)](https://wakatime.com/badge/user/9c0320f2-0352-4014-98ef-20fc9efc7017/project/11346cbf-2297-4d84-a434-bd1841ad7923)
+
+
 
 ## Learn More
 
