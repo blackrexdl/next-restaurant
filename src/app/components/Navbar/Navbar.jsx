@@ -21,6 +21,25 @@ export default function Navbar() {
     setMounted(true);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const navbar = document.querySelector(".navbar");
+      if (!navbar) return;
+
+      if (window.scrollY > 40) {
+        navbar.classList.add("shrink");
+      } else {
+        navbar.classList.remove("shrink");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       <nav className="navbar">
