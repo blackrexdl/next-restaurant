@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Hero from "./components/Hero/Hero";
 import FoodCard from "./components/FoodCard/FoodCard";
 
@@ -14,13 +17,27 @@ const menuItems = [
 ];
 
 export default function Home() {
+  const [category, setCategory] = useState("All");
+
+  const filteredItems =
+    category === "All"
+      ? menuItems
+      : menuItems.filter((item) => item.category === category);
+
   return (
     <main>
       <Hero />
       <section className="section container">
         <h2 className="section-title">Popular Foods</h2>
+
+        <div className="category-filter">
+          <button onClick={() => setCategory("All")}>All</button>
+          <button onClick={() => setCategory("Veg")}>Veg</button>
+          <button onClick={() => setCategory("Non-Veg")}>Non-Veg</button>
+        </div>
+
         <div className="food-grid">
-          {menuItems.map((item) => (
+          {filteredItems.map((item) => (
             <FoodCard key={item.id} {...item} />
           ))}
         </div>
