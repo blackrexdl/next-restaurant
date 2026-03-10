@@ -459,3 +459,7 @@
     box-shadow .25s cubic-bezier(.22,1,.36,1),
     background .25s ease;
 }
+.popular-badge {
+  background: #ff9800;
+  color: white;
+}

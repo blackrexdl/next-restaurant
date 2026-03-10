@@ -6,8 +6,8 @@ import FoodCard from "./components/FoodCard/FoodCard";
 
 // Menu Data (easy to extend later)
 const menuItems = [
-  { id: 1, title: "Pizza", price: 199, category: "Veg", image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800" },
-  { id: 2, title: "Burger", price: 149, category: "Veg", image: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=800" },
+  { id: 1, title: "Pizza", price: 199, category: "Popular", image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800" },
+  { id: 2, title: "Burger", price: 149, category: "Popular", image: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=800" },
   { id: 3, title: "Momos", price: 99, category: "Veg", image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=800" },
   { id: 4, title: "Khana Kha Liya?", price: 249, category: "Veg", image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800" },
   { id: 5, title: "Tu Kha Liya?", price: 299, category: "Veg", image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800" },
@@ -32,6 +32,7 @@ export default function Home() {
 
         <div className="category-filter">
           <button onClick={() => setCategory("All")}>All</button>
+          <button onClick={() => setCategory("Popular")}>Popular</button>
           <button onClick={() => setCategory("Veg")}>Veg</button>
           <button onClick={() => setCategory("Non-Veg")}>Non-Veg</button>
         </div>

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import "./card.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useCart } from "../../../context/CartContext";
 
 export default function FoodCard({
@@ -22,6 +22,28 @@ export default function FoodCard({
 
   const [mounted, setMounted] = useState(false);
   const [showToast, setShowToast] = useState(false);
+
+  const cardRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    const card = cardRef.current;
+    if (!card) return;
+
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const rotateX = ((y / rect.height) - 0.5) * -10;
+    const rotateY = ((x / rect.width) - 0.5) * 10;
+
+    card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
+  };
+
+  const resetTilt = () => {
+    const card = cardRef.current;
+    if (!card) return;
+    card.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)";
+  };
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -49,8 +71,12 @@ export default function FoodCard({
   return (
     <>
       <div
+        ref={cardRef}
         className="card premium-card"
+        data-category={category}
         onClick={() => setOpenModal(true)}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={resetTilt}
       >
         {/* Image Wrapper */}
         <div className="card-image">
@@ -70,13 +96,17 @@ export default function FoodCard({
           <div className="image-overlay"></div>
 
           {/* Floating badge */}
-          <span
-            className={`badge ${
-              category === "Veg" ? "veg-badge" : "nonveg-badge"
-            }`}
-          >
-            {category === "Veg" ? "Veg" : "Non-Veg"}
-          </span>
+         <span
+  className={`badge ${
+    category === "Veg"
+      ? "veg-badge"
+      : category === "Non-Veg"
+      ? "nonveg-badge"
+      : "popular-badge"
+  }`}
+>
+  {category}
+</span>
         </div>
 
         {/* Content */}
