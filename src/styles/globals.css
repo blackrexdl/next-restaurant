@@ -48,10 +48,21 @@ body.dark-mode .footer {
   }
 }
 .category-filter{
-display:flex;
-gap:10px;
-margin:20px 0;
-flex-wrap:wrap;
+  position: sticky;
+  top: 80px; /* adjust depending on navbar height */
+  z-index: 20;
+
+  display: flex;
+  gap: 10px;
+
+  padding: 10px 0;
+  margin: 20px 0;
+
+  background: white;
+  backdrop-filter: blur(8px);
+}
+.category-filter{
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .category-filter button{
