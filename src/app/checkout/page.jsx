@@ -115,7 +115,30 @@ const total = subtotal + deliveryFee + tax;
     />
 
   </div>
+<div className="payment-method">
 
+  <h2>Payment Method</h2>
+
+  <div className="payment-options">
+
+    <label className="payment-option">
+      <input type="radio" name="payment" defaultChecked />
+      <span>Cash on Delivery</span>
+    </label>
+
+    <label className="payment-option">
+      <input type="radio" name="payment" />
+      <span>UPI</span>
+    </label>
+
+    <label className="payment-option">
+      <input type="radio" name="payment" />
+      <span>Card Payment</span>
+    </label>
+
+  </div>
+
+</div>
 </div>
 
           <button className="place-order-btn">

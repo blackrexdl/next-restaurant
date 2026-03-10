@@ -233,3 +233,38 @@ color:white;
   min-height:80px;
   resize:none;
 }
+/* Payment Method */
+
+.payment-method{
+  margin-top:25px;
+  padding:20px;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.06);
+}
+
+.payment-options{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-top:10px;
+}
+
+.payment-option{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px;
+  border:1px solid #eee;
+  border-radius:6px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.payment-option:hover{
+  background:#f9f9f9;
+}
+
+.payment-option input{
+  cursor:pointer;
+}
