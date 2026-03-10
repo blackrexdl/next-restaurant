@@ -268,3 +268,43 @@ color:white;
 .payment-option input{
   cursor:pointer;
 }
+/* Order Notes */
+
+.order-notes{
+  margin-top:25px;
+  padding:20px;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.06);
+}
+
+.notes-input{
+  width:100%;
+  margin-top:10px;
+  padding:12px;
+  border:1px solid #ddd;
+  border-radius:6px;
+  min-height:90px;
+  resize:none;
+  font-size:14px;
+}
+.note-options{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:10px;
+}
+
+.note-chip{
+  padding:6px 12px;
+  border:1px solid #ddd;
+  background:#f9f9f9;
+  border-radius:20px;
+  font-size:13px;
+  cursor:pointer;
+  transition:0.2s;
+}
+
+.note-chip:hover{
+  background:#eee;
+}

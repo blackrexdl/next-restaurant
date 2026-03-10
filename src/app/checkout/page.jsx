@@ -2,10 +2,21 @@
 
 import { useCart } from "../../context/CartContext";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function CheckoutPage() {
 
   const { cart } = useCart();
+  const [note, setNote] = useState("");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   const subtotal = cart.reduce((sum, item) => {
   const qty = item.qty ?? 1;
@@ -137,6 +148,54 @@ const total = subtotal + deliveryFee + tax;
     </label>
 
   </div>
+
+</div>
+<div className="order-notes">
+
+  <h2>Order Notes</h2>
+
+  <div className="note-options">
+
+    <button
+      type="button"
+      onClick={() => setNote("No onions please")}
+      className="note-chip"
+    >
+      No onions please
+    </button>
+
+    <button
+      type="button"
+      onClick={() => setNote("Extra spicy")}
+      className="note-chip"
+    >
+      Extra spicy
+    </button>
+
+    <button
+      type="button"
+      onClick={() => setNote("Ring the doorbell")}
+      className="note-chip"
+    >
+      Ring the doorbell
+    </button>
+
+    <button
+      type="button"
+      onClick={() => setNote("Call before delivery")}
+      className="note-chip"
+    >
+      Call before delivery
+    </button>
+
+  </div>
+
+  <textarea
+    value={note}
+    onChange={(e) => setNote(e.target.value)}
+    placeholder="Add instructions for the restaurant (optional)"
+    className="notes-input"
+  />
 
 </div>
 </div>
