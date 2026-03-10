@@ -1,6 +1,7 @@
 "use client";
 
 import { useCart } from "../../context/CartContext";
+import Link from "next/link";
 
 export default function CheckoutPage() {
 
@@ -13,38 +14,55 @@ export default function CheckoutPage() {
   }, 0);
 
   return (
-    <main style={{ padding: "40px" }}>
-      <h1>Checkout</h1>
+    <main className="checkout-container">
+
+      <div className="checkout-header">
+        <h1>Order Summary</h1>
+
+        <Link href="/">
+          <button className="home-btn">← Back to Home</button>
+        </Link>
+      </div>
 
       {cart.length === 0 ? (
-        <p>Your cart is empty</p>
+        <div className="empty-cart">
+          <p>Your cart is empty</p>
+        </div>
       ) : (
-        <>
-          <ul>
+        <div className="checkout-card">
+
+          <ul className="checkout-items">
             {cart.map((item, index) => (
               <li key={item.id ?? index}>
-                {item.name} × {item.qty ?? 1} — ₹
-                {(item.qty ?? 1) * item.price}
+
+                <span className="item-name">
+                  {item.name}
+                </span>
+
+                <span className="item-qty">
+                  × {item.qty ?? 1}
+                </span>
+
+                <span className="item-price">
+                  ₹{(item.qty ?? 1) * item.price}
+                </span>
+
               </li>
             ))}
           </ul>
 
-          <h2>Total: ₹{total}</h2>
+          <div className="checkout-total">
+            <h2>Total</h2>
+            <h2>₹{total}</h2>
+          </div>
 
-          <button
-            style={{
-              padding: "10px 20px",
-              background: "#ff4d4d",
-              color: "white",
-              border: "none",
-              borderRadius: "8px",
-              marginTop: "20px"
-            }}
-          >
+          <button className="place-order-btn">
             Place Order
           </button>
-        </>
+
+        </div>
       )}
+
     </main>
   );
 }
