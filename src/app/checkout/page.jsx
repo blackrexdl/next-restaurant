@@ -251,9 +251,11 @@ const applyPromo = () => {
 </div>
 </div>
 
-          <button className="place-order-btn">
-            Place Order
-          </button>
+          <Link href="/order-success">
+  <button className="place-order-btn">
+    Place Order
+  </button>
+</Link>
 
         </div>
       )}

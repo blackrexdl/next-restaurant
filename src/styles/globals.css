@@ -308,3 +308,33 @@ color:white;
 .note-chip:hover{
   background:#eee;
 }
+/* Order Success Page */
+
+.success-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:80vh;
+}
+
+.success-card{
+  text-align:center;
+  padding:40px;
+  background:white;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.success-title{
+  color:#22c55e;
+  margin-bottom:10px;
+}
+
+.success-text{
+  font-size:18px;
+}
+
+.success-time{
+  margin-top:8px;
+  color:#666;
+}

@@ -1,7 +1,8 @@
 "use client";
-import Link from "next/link";
+
 import { useCart } from "../../../context/CartContext";
 import "./cartsidebar.css";
+import Link from "next/link";
 
 import { useState, useEffect } from "react";
 
@@ -9,12 +10,12 @@ export default function CartSidebar({ isOpen, setIsOpen }) {
 
   const [mounted, setMounted] = useState(false);
 
+  const { cart, removeFromCart, increaseQty, decreaseQty } = useCart();
+
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
-
-  const { cart, removeFromCart, increaseQty, decreaseQty } = useCart();
 
   if (!mounted) {
     return null;
@@ -30,7 +31,7 @@ export default function CartSidebar({ isOpen, setIsOpen }) {
     <div
       className={`cart-overlay ${isOpen ? "show" : ""}`}
       onClick={() => setIsOpen(false)}
->
+    >
 
       <div
         className="cart-sidebar"
@@ -87,11 +88,14 @@ export default function CartSidebar({ isOpen, setIsOpen }) {
                   <h3>Total: ₹{totalPrice}</h3>
                 </div>
 
-               <Link href="/checkout">
-  <button className="checkout-btn">
-    Proceed to Checkout
-  </button>
-</Link>
+                <Link href="/checkout">
+                  <button
+                    className="checkout-btn"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Proceed to Checkout
+                  </button>
+                </Link>
               </div>
             )}
           </>
