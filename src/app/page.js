@@ -30,12 +30,35 @@ export default function Home() {
       <section className="section container">
         <h2 className="section-title">Popular Foods</h2>
 
-        <div className="category-filter">
-          <button onClick={() => setCategory("All")}>All</button>
-          <button onClick={() => setCategory("Popular")}>Popular</button>
-          <button onClick={() => setCategory("Veg")}>Veg</button>
-          <button onClick={() => setCategory("Non-Veg")}>Non-Veg</button>
-        </div>
+       <div className="category-filter">
+  <button
+    className={category === "All" ? "active-filter" : ""}
+    onClick={() => setCategory("All")}
+  >
+    All
+  </button>
+
+  <button
+    className={category === "Popular" ? "active-filter" : ""}
+    onClick={() => setCategory("Popular")}
+  >
+    Popular
+  </button>
+
+  <button
+    className={category === "Veg" ? "active-filter" : ""}
+    onClick={() => setCategory("Veg")}
+  >
+    Veg
+  </button>
+
+  <button
+    className={category === "Non-Veg" ? "active-filter" : ""}
+    onClick={() => setCategory("Non-Veg")}
+  >
+    Non-Veg
+  </button>
+</div>
 
         <div className="food-grid">
           {filteredItems.map((item) => (

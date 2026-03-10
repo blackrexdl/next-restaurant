@@ -67,3 +67,27 @@ transition:0.2s;
 background:#ff4d4d;
 color:white;
 }
+.category-filter{
+  display:flex;
+  gap:10px;
+  margin:20px 0;
+}
+
+.category-filter button{
+  padding:8px 16px;
+  border:none;
+  background:#eee;
+  border-radius:20px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.category-filter button:hover{
+  background:#e54b4b;
+}
+
+.active-filter{
+  background:#ff4d4d;
+  color:rgb(210, 44, 44);
+  font-weight:600;
+}
