@@ -79,6 +79,44 @@ const total = subtotal + deliveryFee + tax;
   </div>
 
 </div>
+<div className="delivery-form">
+
+  <h2>Delivery Information</h2>
+
+  <div className="form-grid">
+
+    <input
+      type="text"
+      placeholder="Full Name"
+      className="input-field"
+    />
+
+    <input
+      type="tel"
+      placeholder="Phone Number"
+      className="input-field"
+    />
+
+    <textarea
+      placeholder="Delivery Address"
+      className="input-field textarea"
+    />
+
+    <input
+      type="text"
+      placeholder="City"
+      className="input-field"
+    />
+
+    <input
+      type="text"
+      placeholder="Pincode"
+      className="input-field"
+    />
+
+  </div>
+
+</div>
 
           <button className="place-order-btn">
             Place Order
