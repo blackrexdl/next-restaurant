@@ -338,3 +338,80 @@ color:white;
   margin-top:8px;
   color:#666;
 }
+
+.hero{
+  position:relative;
+  height:40vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:linear-gradient(135deg,#ff4d4d,#ff7a18);
+  color:white;
+}
+
+.hero h1{
+  font-size:60px;
+  font-weight:700;
+}
+
+.hero p{
+  margin-top:10px;
+  font-size:18px;
+}
+
+.hero-buttons{
+  margin-top:20px;
+  display:flex;
+  gap:15px;
+}
+
+.order-btn{
+  padding:12px 24px;
+  background:white;
+  color:#ff4d4d;
+  border:none;
+  border-radius:8px;
+  font-weight:600;
+}
+
+.menu-btn{
+  padding:12px 24px;
+  background:transparent;
+  border:2px solid white;
+  color:white;
+  border-radius:8px;
+}
+.hero-marquee{
+  width:100%;
+  overflow:hidden;
+  position:absolute;
+  top:20px;
+}
+
+.hero-track{
+  display:flex;
+  gap:0;
+  font-size:42px;
+  font-weight:800;
+  letter-spacing:2px;
+  white-space:nowrap;
+  width:max-content;
+  animation:scrollText 14s linear infinite;
+}
+
+.hero-track span{
+  color:white;
+  opacity:0.9;
+  padding-right:60px;
+}
+
+@keyframes scrollText{
+  0%{
+    transform:translateX(100%);
+  }
+  100%{
+    transform:translateX(-100%);
+  }
+}

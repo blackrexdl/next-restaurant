@@ -2,6 +2,7 @@
 "use client";
 import "./card.css";
 import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { useCart } from "../../../context/CartContext";
 
 export default function FoodCard({
@@ -10,6 +11,7 @@ export default function FoodCard({
   image,
   category = "Veg",
   description = "Fresh & delicious food made with love ❤️",
+  index = 0
 }) {
 
   const [imgSrc, setImgSrc] = useState(
@@ -70,13 +72,22 @@ export default function FoodCard({
 
   return (
     <>
-      <div
+      <motion.div
         ref={cardRef}
         className="card premium-card"
         data-category={category}
         onClick={() => setOpenModal(true)}
         onMouseMove={handleMouseMove}
         onMouseLeave={resetTilt}
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.97 }}
+        transition={{
+          duration: 0.45,
+          ease: "easeOut",
+          delay: index * 0.08
+        }}
       >
         {/* Image Wrapper */}
         <div className="card-image">
@@ -143,7 +154,7 @@ export default function FoodCard({
             )}
           </div>
         </div>
-      </div>
+      </motion.div>
       {openModal && (
         <div
           className="food-modal"
