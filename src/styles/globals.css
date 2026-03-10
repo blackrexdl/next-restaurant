@@ -181,3 +181,23 @@ color:white;
 .place-order-btn:hover{
   background:#e63c3c;
 }
+.price-breakdown{
+  margin-top:20px;
+}
+
+.price-row{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  color:#555;
+}
+
+.price-total{
+  display:flex;
+  justify-content:space-between;
+  font-weight:600;
+  font-size:18px;
+  padding-top:10px;
+  border-top:1px solid #eee;
+  margin-top:10px;
+}

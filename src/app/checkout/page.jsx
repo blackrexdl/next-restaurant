@@ -7,11 +7,16 @@ export default function CheckoutPage() {
 
   const { cart } = useCart();
 
-  const total = cart.reduce((sum, item) => {
-    const qty = item.qty ?? 1;
-    const price = Number(item.price) || 0;
-    return sum + price * qty;
-  }, 0);
+  const subtotal = cart.reduce((sum, item) => {
+  const qty = item.qty ?? 1;
+  const price = Number(item.price) || 0;
+  return sum + price * qty;
+}, 0);
+
+const deliveryFee = 40;
+const tax = Math.round(subtotal * 0.05);
+
+const total = subtotal + deliveryFee + tax;
 
   return (
     <main className="checkout-container">
@@ -51,10 +56,29 @@ export default function CheckoutPage() {
             ))}
           </ul>
 
-          <div className="checkout-total">
-            <h2>Total</h2>
-            <h2>₹{total}</h2>
-          </div>
+         <div className="price-breakdown">
+
+  <div className="price-row">
+    <span>Subtotal</span>
+    <span>₹{subtotal}</span>
+  </div>
+
+  <div className="price-row">
+    <span>Delivery Fee</span>
+    <span>₹{deliveryFee}</span>
+  </div>
+
+  <div className="price-row">
+    <span>Tax (5%)</span>
+    <span>₹{tax}</span>
+  </div>
+
+  <div className="price-total">
+    <span>Total</span>
+    <span>₹{total}</span>
+  </div>
+
+</div>
 
           <button className="place-order-btn">
             Place Order
