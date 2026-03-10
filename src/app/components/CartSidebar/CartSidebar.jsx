@@ -30,7 +30,7 @@ export default function CartSidebar({ isOpen, setIsOpen }) {
     <div
       className={`cart-overlay ${isOpen ? "show" : ""}`}
       onClick={() => setIsOpen(false)}
-    >
+>
 
       <div
         className="cart-sidebar"

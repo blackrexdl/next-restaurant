@@ -8,9 +8,12 @@ export default function CheckoutPage() {
 
   const { cart } = useCart();
   const [note, setNote] = useState("");
+  const [promoCode, setPromoCode] = useState("");
+  const [discount, setDiscount] = useState(0);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
@@ -27,7 +30,18 @@ export default function CheckoutPage() {
 const deliveryFee = 40;
 const tax = Math.round(subtotal * 0.05);
 
-const total = subtotal + deliveryFee + tax;
+const total = subtotal + deliveryFee + tax - discount;
+
+const applyPromo = () => {
+  if (promoCode.trim().toUpperCase() === "SAVE50") {
+    setDiscount(50);
+  } else if (promoCode.trim().toUpperCase() === "FOOD20") {
+    setDiscount(20);
+  } else {
+    setDiscount(0);
+    alert("Invalid promo code");
+  }
+};
 
   return (
     <main className="checkout-container">
@@ -67,6 +81,36 @@ const total = subtotal + deliveryFee + tax;
             ))}
           </ul>
 
+          <div className="promo-section">
+
+            <h2>Promo Code</h2>
+
+            <div className="promo-box">
+              <input
+                type="text"
+                placeholder="Enter promo code"
+                value={promoCode}
+                onChange={(e) => setPromoCode(e.target.value)}
+                className="promo-input"
+              />
+
+              <button
+                type="button"
+                onClick={applyPromo}
+                className="apply-promo-btn"
+              >
+                Apply
+              </button>
+            </div>
+
+            {discount > 0 && (
+              <p className="promo-success">
+                Discount Applied: -₹{discount}
+              </p>
+            )}
+
+          </div>
+
          <div className="price-breakdown">
 
   <div className="price-row">
@@ -83,6 +127,13 @@ const total = subtotal + deliveryFee + tax;
     <span>Tax (5%)</span>
     <span>₹{tax}</span>
   </div>
+
+  {discount > 0 && (
+    <div className="price-row">
+      <span>Promo Discount</span>
+      <span>-₹{discount}</span>
+    </div>
+  )}
 
   <div className="price-total">
     <span>Total</span>
