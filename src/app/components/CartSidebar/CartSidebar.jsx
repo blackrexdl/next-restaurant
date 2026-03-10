@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useCart } from "../../../context/CartContext";
 import "./cartsidebar.css";
 
@@ -87,9 +87,11 @@ export default function CartSidebar({ isOpen, setIsOpen }) {
                   <h3>Total: ₹{totalPrice}</h3>
                 </div>
 
-                <button className="checkout-btn">
-                  Proceed to Checkout
-                </button>
+               <Link href="/checkout">
+  <button className="checkout-btn">
+    Proceed to Checkout
+  </button>
+</Link>
               </div>
             )}
           </>
