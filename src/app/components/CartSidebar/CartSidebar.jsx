@@ -1,12 +1,11 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useCart } from "../../../context/CartContext";
-import { useEffect, useState } from "react";
 import "./cartsidebar.css";
 
+import { useState, useEffect } from "react";
+
 export default function CartSidebar({ isOpen, setIsOpen }) {
-  const { cart, removeFromCart, increaseQty, decreaseQty } = useCart();
 
   const [mounted, setMounted] = useState(false);
 
@@ -15,7 +14,11 @@ export default function CartSidebar({ isOpen, setIsOpen }) {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  const { cart, removeFromCart, increaseQty, decreaseQty } = useCart();
+
+  if (!mounted) {
+    return null;
+  }
 
   const totalPrice = cart.reduce((total, item) => {
     const qty = item.qty ?? 1;
@@ -28,8 +31,16 @@ export default function CartSidebar({ isOpen, setIsOpen }) {
       className={`cart-overlay ${isOpen ? "show" : ""}`}
       onClick={() => setIsOpen(false)}
     >
-      <div className="cart-sidebar" onClick={(e) => e.stopPropagation()}>
-        <button className="close-btn" onClick={() => setIsOpen(false)}>
+
+      <div
+        className="cart-sidebar"
+        onClick={(e) => e.stopPropagation()}
+      >
+
+        <button
+          className="close-btn"
+          onClick={() => setIsOpen(false)}
+        >
           ✕
         </button>
 
@@ -42,55 +53,50 @@ export default function CartSidebar({ isOpen, setIsOpen }) {
             <ul className="cart-items">
               {cart.map((item, index) => (
                 <li key={item.id ?? index}>
-                  <div className="cart-item-row">
 
-                    <img
-                      className="cart-thumb"
-                      src={item.image}
-                      alt={item.name}
-                    />
-
-                    <div className="item-info">
-                      <p className="product-name">{item.name}</p>
-
-                      <span className="price-line">
-                        ${item.price} × {item.qty ?? 1}
-                      </span>
-
-                      <div className="qty-controls">
-                        <button onClick={() => decreaseQty(item.id)}>-</button>
-                        <span>{item.qty ?? 1}</span>
-                        <button onClick={() => increaseQty(item.id)}>+</button>
-                      </div>
-                    </div>
-
-                    <div className="item-right">
-                      <div className="item-total">
-                        ${Number(item.price) * (item.qty ?? 1)}
-                      </div>
-
-                      <button
-                        className="remove-btn"
-                        onClick={() => removeFromCart(item.id)}
-                      >
-                        ✕
-                      </button>
-                    </div>
-
+                  <div className="item-info">
+                    <p>{item.name}</p>
+                    <span>${item.price} × {item.qty ?? 1}</span>
                   </div>
+
+                  <div className="qty-controls">
+                    <button onClick={() => decreaseQty(item.id)}>-</button>
+                    <span>{item.qty ?? 1}</span>
+                    <button onClick={() => increaseQty(item.id)}>+</button>
+                  </div>
+
+                  <div className="item-total">
+                    ${Number(item.price) * (item.qty ?? 1)}
+                  </div>
+
+                  <button
+                    className="remove-btn"
+                    onClick={() => removeFromCart(item.id)}
+                  >
+                    Remove
+                  </button>
+
                 </li>
               ))}
             </ul>
 
             {cart.length > 0 && (
               <div className="cart-footer">
-                <h3>Total: ${totalPrice}</h3>
-                <button className="checkout-btn">Checkout</button>
+                <div className="cart-summary">
+                  <p>Items: {cart.reduce((sum, item) => sum + (item.qty ?? 1), 0)}</p>
+                  <h3>Total: ₹{totalPrice}</h3>
+                </div>
+
+                <button className="checkout-btn">
+                  Proceed to Checkout
+                </button>
               </div>
             )}
           </>
         )}
+
       </div>
+
     </div>
   );
 }
