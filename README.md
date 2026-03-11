@@ -195,27 +195,52 @@ Below is a simple setup guide for different operating systems.
 
 ```
 next-restaurant
-
-app/
- ├── components/
- │   ├── Navbar/
- │   ├── CartSidebar/
- │   └── ProductCard/
-
-context/
- └── CartContext.jsx
-
-public/
- └── food-images
-
-styles/
+└── src
+    ├── app
+    │   ├── cart
+    │   │   └── page.jsx
+    │   ├── checkout
+    │   │   └── page.jsx
+    │   ├── order-success
+    │   │   └── page.jsx
+    │   ├── components
+    │   │   ├── Navbar
+    │   │   │   ├── Navbar.jsx
+    │   │   │   └── navbar.css
+    │   │   ├── Hero
+    │   │   │   ├── Hero.jsx
+    │   │   │   └── hero.css
+    │   │   ├── FoodCard
+    │   │   │   ├── FoodCard.jsx
+    │   │   │   └── card.css
+    │   │   ├── CartSidebar
+    │   │   │   ├── CartSidebar.jsx
+    │   │   │   └── cartsidebar.css
+    │   │   └── Footer
+    │   │       ├── Footer.jsx
+    │   │       └── footer.css
+    │   ├── globals.css
+    │   ├── layout.js
+    │   └── page.js
+    │
+    ├── context
+    │   └── CartContext.jsx
+    │
+    ├── lib
+    │   └── db
+    │       └── mongo.js
+    │
+    └── styles
+        └── globals.css
 ```
 
 Main areas:
 
-- **Components** → UI building blocks
-- **Context** → Global cart state
-- **App Router** → Page routing
+- **app/** → Next.js App Router pages
+- **components/** → Reusable UI components
+- **context/** → Global cart state using React Context
+- **lib/** → Database or utility logic
+- **styles/** → Global styling
 
 ---
 
