@@ -325,6 +325,15 @@
   color:#ff6b81;
 }
 
+/* ===== MODAL ADD TO CART BUTTON WIDTH ===== */
+.modal-content .order-btn {
+  width: auto;
+  margin: 16px;
+  margin-top: 8px;
+  padding: 14px;
+  font-size: 1rem;
+}
+
 /* ===== CLOSE BUTTON ===== */
 .close-modal{
   position:absolute;
