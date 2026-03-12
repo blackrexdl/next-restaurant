@@ -104,27 +104,6 @@ color:white;
 }
 /* Checkout Page */
 
-.checkout-container{
-  max-width:900px;
-  margin:auto;
-  padding:40px 20px;
-}
-
-.checkout-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:30px;
-}
-
-.home-btn{
-  background:#111;
-  color:white;
-  padding:8px 16px;
-  border:none;
-  border-radius:6px;
-  cursor:pointer;
-}
 
 .checkout-card{
   background:white;
@@ -165,22 +144,6 @@ color:white;
   font-size:18px;
 }
 
-.place-order-btn{
-  width:100%;
-  margin-top:20px;
-  padding:14px;
-  background:#ff4d4d;
-  color:white;
-  border:none;
-  border-radius:8px;
-  font-size:16px;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.place-order-btn:hover{
-  background:#e63c3c;
-}
 .price-breakdown{
   margin-top:20px;
 }
