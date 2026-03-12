@@ -378,10 +378,23 @@ color:white;
 
 .menu-btn{
   padding:12px 24px;
-  background:transparent;
-  border:2px solid white;
-  color:white;
+  background:#ffffff;
+  color:#e73131;
+  border:none;
   border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+  transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+}
+
+.menu-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 18px rgba(0,0,0,0.15);
+}
+
+.menu-btn:active{
+  transform:translateY(2px);
+  box-shadow:0 3px 8px rgba(0,0,0,0.2);
 }
 .hero-marquee{
   width:100%;

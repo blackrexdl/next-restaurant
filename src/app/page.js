@@ -60,7 +60,7 @@ export default function Home() {
   </button>
 </div>
 
-        <div className="food-grid">
+       <div id="food-section" className="food-grid">
           {filteredItems.map((item, index) => (
             <FoodCard key={item.id} index={index} {...item} />
           ))}

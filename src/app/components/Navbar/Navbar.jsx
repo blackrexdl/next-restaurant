@@ -21,24 +21,17 @@ export default function Navbar() {
     setMounted(true);
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const navbar = document.querySelector(".navbar");
-      if (!navbar) return;
+ useEffect(() => {
+  const handleOpenCart = () => {
+    setOpenCart(true);
+  };
 
-      if (window.scrollY > 40) {
-        navbar.classList.add("shrink");
-      } else {
-        navbar.classList.remove("shrink");
-      }
-    };
+  window.addEventListener("openCart", handleOpenCart);
 
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  return () => {
+    window.removeEventListener("openCart", handleOpenCart);
+  };
+}, []);
 
   return (
     <>
