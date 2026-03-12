@@ -1,0 +1,32 @@
+/* Global Reset */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  background:#f9f9f9;
+  color:#333;
+  line-height:1.6;
+}
+
+/* Default link style */
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+/* Default button style */
+button{
+  font-family:inherit;
+  cursor:pointer;
+  border:none;
+  background:none;
+}
+
+/* Remove default list styling */
+ul{
+  list-style:none;
+}

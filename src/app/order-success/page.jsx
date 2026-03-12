@@ -1,5 +1,5 @@
 "use client";
-
+import "./page.css";
 import Link from "next/link";
 
 export default function OrderSuccess() {

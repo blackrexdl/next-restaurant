@@ -1,153 +1,33 @@
-/* 1️⃣ Strong Glass (Premium Look)
 .navbar{
-background:rgba(255,255,255,0.6);
-backdrop-filter:blur(20px);
--webkit-backdrop-filter:blur(20px);
-border-bottom:1px solid rgba(255,255,255,0.5);
-box-shadow:0 8px 20px rgba(0,0,0,0.08);
-} */
-
-.navbar {
-  position: sticky;
-  top: 0;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(3.5px);
-  padding: 16px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
-  transition: all 0.3s ease;
-  z-index: 1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 40px;
+  background:white;
+  position:sticky;
+  top:0;
+  z-index:100;
 }
 
-/* Scroll Shrink Navbar */
-.navbar.shrink {
-  padding: 8px 0;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  background: rgba(255,255,255,0.65);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+.logo{
+  font-size:28px;
+  font-weight:800;
+  animation:logoFloat 3s ease-in-out infinite;
 }
 
-.navbar.shrink .logo {
-  font-size: 1.5rem;
+@keyframes logoFloat{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-4px)}
+  100%{transform:translateY(0)}
 }
 
-.navbar.shrink .cart-icon {
-  font-size: 22px;
+.nav-links{
+  display:flex;
+  gap:20px;
 }
 
-.navbar:hover {
-  background: rgba(255,255,255,0.4);
-}
-
-.nav-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  color: #ff6b81;
-  font-weight: bold;
-  font-size: 1.8rem;
-  letter-spacing: 1px;
-  transition: transform 0.3s;
-}
-
-.logo:hover {
-  transform: scale(1.05);
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.nav-links li {
-  cursor: pointer;
-  transition: color 0.3s, transform 0.2s;
-}
-
-.nav-links li:hover {
-  color: #ff4757;
-  transform: scale(1.05);
-}
-
-.btn.toggle-dark {
-  background: #ff6b81;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn.toggle-dark:hover {
-  background: #ff4757;
-}
-
-@media(max-width:768px) {
-  .nav-links {
-    display: none;
-  }
-}
-
-.cart-btn {
-  background: #ff6b81;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.cart-btn:hover {
-  background: #C3110C;
-  transform: scale(1.05);
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.cart-btn{
-  background:#f04e5c;
-  color:white;
-  border:none;
-  padding:10px 16px;
-  border-radius:8px;
-  cursor:pointer;
-}
-.cart-btn{
-position:relative;
-background:none;
-border:none;
-font-size:26px;
-cursor:pointer;
-}
-
-.cart-badge{
-position:absolute;
-top:-6px;
-right:-10px;
-background:#ff3b30;
-color:white;
-font-size:12px;
-font-weight:600;
-padding:3px 7px;
-border-radius:50px;
-min-width:18px;
-text-align:center;
-}
-
-.cart-icon{
-font-size:26px;
+.nav-links a{
+  text-decoration:none;
+  color:#333;
+  font-weight:500;
 }

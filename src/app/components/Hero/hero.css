@@ -1,59 +1,90 @@
-.hero {
-  background: linear-gradient(135deg, #ff6b81, #ff4757);
-  color: white;
-  padding: 100px 20px;
-  text-align: center;
-  border-radius: 12px;
-  margin-bottom: 40px;
-  animation: fadeIn 1s ease forwards;
+.hero{
+  position:relative;
+  height:40vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:linear-gradient(135deg,#ff4d4d,#ff7a18);
+  color:white;
 }
 
-.hero-title {
-  font-size: 2.8rem;
-  margin-bottom: 12px;
-  animation: slideDown 1s ease forwards;
+.hero h1{
+  font-size:60px;
+  font-weight:700;
 }
 
-.hero-sub {
-  font-size: 1.3rem;
-  margin-bottom: 20px;
-  animation: slideUp 1s ease forwards;
+.hero p{
+  margin-top:10px;
+  font-size:18px;
 }
 
-.hero-btn {
-  padding: 12px 24px;
-  font-size: 1rem;
-  border-radius: 8px;
-  background: #fff;
-  color: #ff4757;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s;
+.hero-buttons{
+  margin-top:20px;
+  display:flex;
+  gap:15px;
 }
 
-.hero-btn:hover {
-  transform: scale(1.05);
-  background: #ffe6e6;
+.order-btn{
+  padding:12px 24px;
+  background:white;
+  color:#ff4d4d;
+  border:none;
+  border-radius:8px;
+  font-weight:600;
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from {opacity:0;}
-  to {opacity:1;}
+.menu-btn{
+  padding:12px 24px;
+  background:#ffffff;
+  color:#e73131;
+  border:none;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+  transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
 }
 
-@keyframes slideDown {
-  from {transform: translateY(-20px); opacity:0;}
-  to {transform: translateY(0); opacity:1;}
+.menu-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 18px rgba(0,0,0,0.15);
 }
 
-@keyframes slideUp {
-  from {transform: translateY(20px); opacity:0;}
-  to {transform: translateY(0); opacity:1;}
+.menu-btn:active{
+  transform:translateY(2px);
+  box-shadow:0 3px 8px rgba(0,0,0,0.2);
 }
 
-@media(max-width:768px) {
-  .hero-title { font-size: 2rem; }
-  .hero-sub { font-size: 1rem; }
+.hero-marquee{
+  width:100%;
+  overflow:hidden;
+  position:absolute;
+  top:20px;
+}
+
+.hero-track{
+  display:flex;
+  gap:0;
+  font-size:62px;
+  font-weight:800;
+  letter-spacing:2px;
+  white-space:nowrap;
+  width:max-content;
+  animation:scrollText 34s linear infinite;
+}
+
+.hero-track span{
+  color:white;
+  opacity:0.9;
+  padding-right:60px;
+}
+
+@keyframes scrollText{
+  0%{
+    transform:translateX(0);
+  }
+  100%{
+    transform:translateX(-50%);
+  }
 }
