@@ -6,8 +6,8 @@ export default function Hero() {
 
   <div className="hero-marquee">
     <div className="hero-track">
-      <span>Fresh Pizza • Hot Burgers • Tasty Momos • Delicious Pasta •</span>
-      <span>Fresh Pizza • Hot Burgers • Tasty Momos • Delicious Pasta •</span>
+      <span>🔥 FRESH PIZZA • JUICY BURGERS • STREET STYLE MOMOS • CREAMY PASTA • HOT & DELICIOUS • MADE FRESH DAILY •</span>
+      <span>🔥 FRESH PIZZA • JUICY BURGERS • STREET STYLE MOMOS • CREAMY PASTA • HOT & DELICIOUS • MADE FRESH DAILY •</span>
     </div>
   </div>
 

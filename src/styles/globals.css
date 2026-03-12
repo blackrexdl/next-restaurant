@@ -393,12 +393,12 @@ color:white;
 .hero-track{
   display:flex;
   gap:0;
-  font-size:42px;
+  font-size:62px;
   font-weight:800;
   letter-spacing:2px;
   white-space:nowrap;
   width:max-content;
-  animation:scrollText 14s linear infinite;
+  animation:scrollText 34s linear infinite;
 }
 
 .hero-track span{
