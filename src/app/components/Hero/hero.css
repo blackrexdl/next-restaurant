@@ -15,11 +15,10 @@
   text-align: center;
 
   /* Premium dark gradient background */
-  background: linear-gradient(120deg, #0f172a, #1e293b, #334155, #1e293b);
-  background-size: 300% 300%;
-  animation: heroGradientMove 14s ease infinite;
-  color: #ffffff;
-  overflow: hidden;
+/* Premium light neutral gradient */
+background: linear-gradient(120deg, #f8fafc, #eef2f7, #e2e8f0, #f1f5f9);
+background-size: 300% 300%;
+animation: heroGradientMove 18s ease infinite;
 }
 
 /* Floating gradient glow behind hero */
@@ -45,6 +44,48 @@
   right: -150px;
   filter: blur(90px);
   animation: heroGlow 12s ease-in-out infinite alternate;
+}
+
+/* Subtle wave depth for bottom hero curve */
+.hero .after-wave {
+  content: "";
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: radial-gradient(120% 80px at 50% 0%, rgba(0,0,0,0.25), transparent 70%);
+  pointer-events: none;
+}
+
+/* Decorative corner circles */
+.hero .corner-circle {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.hero .corner-circle.top-left {
+  top: -70px;
+  left: -70px;
+}
+
+.hero .corner-circle.top-right {
+  top: -70px;
+  right: -70px;
+}
+
+.hero .corner-circle.bottom-left {
+  bottom: -70px;
+  left: -70px;
+}
+
+.hero .corner-circle.bottom-right {
+  bottom: -70px;
+  right: -70px;
 }
 
 /* ================= HERO TITLE ================= */
@@ -96,29 +137,41 @@
 .hero-buttons {
   margin-top: 20px;
   display: flex;
-  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 16px; /* space between buttons */
 }
 
-/* Primary Order Button */
 .order-btn {
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
+  padding: 12px 26px;
+  min-width: 180px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
 
-  background: #ffffff;
-  color: #b8962e;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
+  border: 1px solid rgba(255,255,255,0.15);
+
+  color: #1f2937;
   font-weight: 600;
+
   cursor: pointer;
 
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .order-btn:hover {
-  transform: translateY(-4px) scale(1.04);
+  transform: translateY(-5px) scale(1.05);
+
+  background: rgba(255,255,255,0.8); /* clearer hover state */
   box-shadow:
-    0 12px 28px rgba(0,0,0,0.35),
-    0 0 18px rgba(212,175,55,0.45);
+    0 14px 35px rgba(0,0,0,0.45),
+    0 0 14px rgba(212,175,55,0.35);
 }
 
 .order-btn:active {
@@ -128,24 +181,36 @@
 
 /* Secondary Menu Button */
 .menu-btn {
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
+  padding: 12px 26px;
+  min-width: 180px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
 
-  background: #ffffff;
-  color: #e73131;
+  background: rgba(255,255,255,0.6); /* stronger glass background */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 
+  border: 1px solid rgba(255,255,255,0.15);
+
+  color: #1f2937; /* dark text for contrast on light hero */
   font-weight: 600;
+
   cursor: pointer;
 
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .menu-btn:hover {
-  transform: translateY(-4px) scale(1.04);
+  transform: translateY(-5px) scale(1.05);
+
+  background: rgba(255,255,255,0.8); /* clearer hover state */
+
   box-shadow:
-    0 12px 28px rgba(0,0,0,0.35),
-    0 0 16px rgba(212,175,55,0.35);
+    0 14px 35px rgba(0,0,0,0.45),
+    0 0 14px rgba(212,175,55,0.35);
 }
 
 .menu-btn:active {
@@ -180,7 +245,7 @@
 }
 
 .hero-track span {
-  color: #ffffff;
+  color: #1f2937; /* darker premium slate for visibility */
   opacity: 0.9;
   padding-right: 60px;
 }

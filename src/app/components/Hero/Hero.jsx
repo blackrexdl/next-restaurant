@@ -26,9 +26,13 @@ export default function Hero() {
     </div>
   </div>
 
-  <h1>Delicious Food Delivered Fast</h1>
+  <h1>
+    Premium Taste, <strong>Delivered Fast</strong>
+  </h1>
 
-  <p>Order your favorite meals instantly</p>
+  <p>
+    Experience <strong>freshly crafted meals</strong> prepared with quality ingredients and delivered straight to your door.
+  </p>
 
   <div className="hero-buttons">
     <button className="order-btn" onClick={scrollToFood}>

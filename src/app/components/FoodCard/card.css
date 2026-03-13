@@ -174,33 +174,7 @@
 }
 
 /* ================= ORDER BUTTON ================= */
-.order-btn {
-  margin-top: auto;
-  padding: 12px 14px;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
 
-  font-weight: 600;
-  color: #fff;
-
-  background: linear-gradient(135deg,#ff6b81,#ff8fa3);
-
-  transition:
-    transform .25s cubic-bezier(.22,1,.36,1),
-    box-shadow .25s cubic-bezier(.22,1,.36,1),
-    background .25s ease;
-}
-
-.order-btn:hover {
-  transform: translateY(-3px) scale(1.04);
-  box-shadow: 0 8px 18px rgba(255,107,129,0.35);
-}
-
-.order-btn:active {
-  transform: scale(.96);
-  box-shadow: 0 4px 10px rgba(255,107,129,0.25);
-}
 
 /* ================= IMAGE SHIMMER LOADING ================= */
 .image-skeleton {
@@ -448,8 +422,3 @@
   .modal-content img { height: 200px; }
 }
 
-@media (max-width:360px) {
-  .card-title { font-size: .95rem; }
-  .card-desc { font-size: .8rem; }
-  .order-btn { padding: 10px 12px; }
-}
