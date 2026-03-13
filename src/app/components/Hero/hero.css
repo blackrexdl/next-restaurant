@@ -14,15 +14,76 @@
 
   text-align: center;
 
-  background: linear-gradient(135deg, #ff4d4d, #ff7a18);
+  /* Premium dark gradient background */
+  background: linear-gradient(120deg, #0f172a, #1e293b, #334155, #1e293b);
+  background-size: 300% 300%;
+  animation: heroGradientMove 14s ease infinite;
   color: #ffffff;
+  overflow: hidden;
+}
+
+/* Floating gradient glow behind hero */
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
+  top: -200px;
+  left: -200px;
+  filter: blur(80px);
+  animation: heroGlow 10s ease-in-out infinite alternate;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);
+  bottom: -150px;
+  right: -150px;
+  filter: blur(90px);
+  animation: heroGlow 12s ease-in-out infinite alternate;
 }
 
 /* ================= HERO TITLE ================= */
 
 .hero h1 {
+  position: relative;
   font-size: 60px;
   font-weight: 700;
+
+  padding: 12px 28px;
+  border-radius: 12px;
+
+  /* Glass blur panel */
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.15);
+
+  text-shadow:
+    0 4px 20px rgba(0,0,0,0.35),
+    0 0 20px rgba(255,255,255,0.2);
+}
+
+/* Soft spotlight behind title */
+.hero h1::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 420px;
+  height: 180px;
+
+  background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);
+  filter: blur(40px);
+
+  z-index: -1;
 }
 
 .hero p {
@@ -45,7 +106,7 @@
   border-radius: 8px;
 
   background: #ffffff;
-  color: #ff4d4d;
+  color: #b8962e;
 
   font-weight: 600;
   cursor: pointer;
@@ -54,8 +115,10 @@
 }
 
 .order-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  transform: translateY(-4px) scale(1.04);
+  box-shadow:
+    0 12px 28px rgba(0,0,0,0.35),
+    0 0 18px rgba(212,175,55,0.45);
 }
 
 .order-btn:active {
@@ -79,8 +142,10 @@
 }
 
 .menu-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  transform: translateY(-4px) scale(1.04);
+  box-shadow:
+    0 12px 28px rgba(0,0,0,0.35),
+    0 0 16px rgba(212,175,55,0.35);
 }
 
 .menu-btn:active {
@@ -160,5 +225,35 @@
 
   .hero-track {
     font-size: 32px;
+  }
+}
+
+/* Floating hero glow animation */
+@keyframes heroGlow {
+  0% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+
+  50% {
+    transform: translateY(20px) translateX(30px) scale(1.1);
+  }
+
+  100% {
+    transform: translateY(-10px) translateX(-20px) scale(1);
+  }
+}
+
+/* Animated gradient background */
+@keyframes heroGradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
   }
 }
