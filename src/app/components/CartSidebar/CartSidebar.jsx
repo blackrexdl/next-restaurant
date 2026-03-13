@@ -40,6 +40,7 @@ export default function CartSidebar({ isOpen, setIsOpen }) {
 
         <button
           className="close-btn"
+          aria-label="Close cart"
           onClick={() => setIsOpen(false)}
         >
           ✕
@@ -57,7 +58,7 @@ export default function CartSidebar({ isOpen, setIsOpen }) {
 
                   <div className="item-info">
                     <p>{item.name}</p>
-                    <span>${item.price} × {item.qty ?? 1}</span>
+                    <span>₹{item.price} × {item.qty ?? 1}</span>
                   </div>
 
                   <div className="qty-controls">
@@ -67,7 +68,7 @@ export default function CartSidebar({ isOpen, setIsOpen }) {
                   </div>
 
                   <div className="item-total">
-                    ${Number(item.price) * (item.qty ?? 1)}
+                    ₹{Number(item.price) * (item.qty ?? 1)}
                   </div>
 
                   <button

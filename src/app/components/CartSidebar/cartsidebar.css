@@ -1,23 +1,77 @@
 /* ==========================================
-   Cart Sidebar Container
-   Main fixed sidebar that appears from right
+   CART OVERLAY
+   Dark background layer behind the sidebar
 ========================================== */
 
-.cart-sidebar {
+.cart-overlay {
   position: fixed;
   top: 0;
-  right: 0;
-  width: 320px;
+  left: 0;
+  width: 100%;
   height: 100vh;
-  padding: 20px;
-  background: #ffffff;
-  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
-  overflow-y: auto;
+
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  display: flex;
+  justify-content: flex-end;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 200;
+}
+
+.cart-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 
 /* ==========================================
-   Cart Item Row
+   CART SIDEBAR CONTAINER
+   Main panel that slides from the right
+========================================== */
+
+.cart-sidebar {
+  width: 360px;
+  height: 100vh;
+
+  padding: 24px;
+
+  /* Glass background */
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  /* Glass border */
+  border-left: 1px solid rgba(255,255,255,0.4);
+
+  /* Modern depth shadow */
+  box-shadow: -10px 0 40px rgba(0,0,0,0.18);
+
+  /* Slide animation */
+  transform: translateX(110%) scale(0.96);
+  opacity: 0.6;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+
+  overflow-y: auto;
+}
+
+.cart-overlay.show .cart-sidebar {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+
+/* Subtle floating polish */
+.cart-sidebar:hover {
+  box-shadow: -14px 0 50px rgba(0,0,0,0.22);
+}
+
+
+/* ==========================================
+   CART ITEM ROW
    Each food item displayed inside cart
 ========================================== */
 
@@ -29,11 +83,111 @@
 
 
 /* ==========================================
-   Cart Total Section
+   CART TOTAL SECTION
    Displays final price of items
 ========================================== */
 
 .cart-total {
   margin-top: 20px;
   font-weight: 600;
+}
+/* ==========================================
+   CART BUTTON STYLES
+   Glass buttons + gradient checkout button
+========================================== */
+
+/* Quantity + / - buttons */
+.qty-controls button {
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.qty-controls button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+}
+
+
+/* Remove button */
+.remove-btn {
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.5);
+
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+
+  color: #ff4d4d;
+  font-weight: 500;
+
+  transition: all 0.25s ease;
+}
+
+.remove-btn:hover {
+  transform: translateY(-3px);
+  background: #ff4d4d;
+  color: white;
+  box-shadow: 0 10px 22px rgba(255,77,77,0.35);
+}
+
+
+/* Checkout button */
+.checkout-btn {
+  width: 100%;
+  margin-top: 18px;
+
+  padding: 12px 18px;
+  border-radius: 12px;
+
+  border: none;
+  cursor: pointer;
+
+  font-weight: 600;
+  font-size: 15px;
+
+  background: linear-gradient(135deg,#ff4d4d,#ff7a18);
+  color: white;
+
+  transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+
+.checkout-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+
+  box-shadow:
+    0 12px 28px rgba(0,0,0,0.25),
+    0 0 20px rgba(255,77,77,0.45);
+}
+
+.checkout-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+
+/* Close button */
+.close-btn {
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(255,255,255,0.5);
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 8px;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.1);
+  background: #ff4d4d;
+  color: white;
 }
