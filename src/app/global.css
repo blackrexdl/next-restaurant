@@ -1,32 +1,53 @@
-/* Global Reset */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+/* ======================================================
+   GLOBAL RESET
+   Removes default browser spacing and normalizes layout
+====================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* better sizing control */
 }
 
-body{
+/* ======================================================
+   BASE BODY STYLES
+   Global typography and background
+====================================================== */
+
+body {
   font-family: Arial, Helvetica, sans-serif;
-  background:#f9f9f9;
-  color:#333;
-  line-height:1.6;
+  background: #f9f9f9;   /* light app background */
+  color: #333;           /* primary text color */
+  line-height: 1.6;      /* readable text spacing */
 }
 
-/* Default link style */
-a{
-  text-decoration:none;
-  color:inherit;
+/* ======================================================
+   GLOBAL LINK STYLE
+   Removes default underline and keeps color inheritance
+====================================================== */
+
+ a {
+  text-decoration: none;
+  color: inherit;
 }
 
-/* Default button style */
-button{
-  font-family:inherit;
-  cursor:pointer;
-  border:none;
-  background:none;
+/* ======================================================
+   GLOBAL BUTTON RESET
+   Removes browser default button styles
+====================================================== */
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
 }
 
-/* Remove default list styling */
-ul{
-  list-style:none;
+/* ======================================================
+   LIST RESET
+   Removes default bullet styling
+====================================================== */
+
+ul {
+  list-style: none;
 }

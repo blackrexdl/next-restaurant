@@ -1,33 +1,72 @@
-.navbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:16px 40px;
-  background:white;
-  position:sticky;
-  top:0;
-  z-index:100;
+/* ======================================================
+   NAVBAR COMPONENT
+   Sticky top navigation bar
+====================================================== */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 40px;
+
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+
+  z-index: 100;
+
+  /* subtle separation from page */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-.logo{
-  font-size:28px;
-  font-weight:800;
-  animation:logoFloat 3s ease-in-out infinite;
+/* ================= LOGO ================= */
+
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+
+  /* subtle floating animation */
+  animation: logoFloat 3s ease-in-out infinite;
 }
 
-@keyframes logoFloat{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(-4px)}
-  100%{transform:translateY(0)}
+@keyframes logoFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
 }
 
-.nav-links{
-  display:flex;
-  gap:20px;
+/* ================= NAV LINKS ================= */
+
+.nav-links {
+  display: flex;
+  gap: 20px;
 }
 
-.nav-links a{
-  text-decoration:none;
-  color:#333;
-  font-weight:500;
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #ff4d4d;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 14px 20px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
 }

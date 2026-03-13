@@ -1,22 +1,39 @@
-.cart-sidebar{
-  position:fixed;
-  right:0;
-  top:0;
-  width:320px;
-  height:100vh;
-  background:white;
-  box-shadow:-5px 0 20px rgba(0,0,0,0.1);
-  padding:20px;
-  overflow-y:auto;
+/* ==========================================
+   Cart Sidebar Container
+   Main fixed sidebar that appears from right
+========================================== */
+
+.cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100vh;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
 }
 
-.cart-item{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:12px;
+
+/* ==========================================
+   Cart Item Row
+   Each food item displayed inside cart
+========================================== */
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
 }
 
-.cart-total{
-  margin-top:20px;
-  font-weight:600;
+
+/* ==========================================
+   Cart Total Section
+   Displays final price of items
+========================================== */
+
+.cart-total {
+  margin-top: 20px;
+  font-weight: 600;
 }

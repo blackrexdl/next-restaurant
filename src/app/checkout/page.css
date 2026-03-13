@@ -1,170 +1,221 @@
-.checkout-card{
-  background:white;
-  border-radius:12px;
-  padding:25px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+/* ======================================================
+   CHECKOUT PAGE STYLES
+   This file contains only styles used in the checkout page
+   Sections:
+   1. Checkout Summary Card
+   2. Cart Item List
+   3. Price Breakdown
+   4. Delivery Form
+   5. Payment Method
+   6. Order Notes
+====================================================== */
+
+
+/* ======================================================
+   1. CHECKOUT SUMMARY CARD
+   Main container showing cart items and total
+====================================================== */
+
+.checkout-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
-.checkout-items{
-  list-style:none;
-  padding:0;
-  margin:0;
+
+/* ======================================================
+   2. CART ITEM LIST
+   List of products added to cart
+====================================================== */
+
+.checkout-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.checkout-items li{
-  display:flex;
-  justify-content:space-between;
-  padding:12px 0;
-  border-bottom:1px solid #eee;
+.checkout-items li {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #eeeeee;
 }
 
-.item-name{
-  font-weight:500;
+/* Item name text */
+.item-name {
+  font-weight: 500;
 }
 
-.item-qty{
-  color:#777;
+/* Quantity text (lighter color) */
+.item-qty {
+  color: #777777;
 }
 
-.item-price{
-  font-weight:600;
+/* Price text */
+.item-price {
+  font-weight: 600;
 }
 
-.checkout-total{
-  display:flex;
-  justify-content:space-between;
-  margin-top:20px;
-  font-size:18px;
+
+/* ======================================================
+   3. PRICE BREAKDOWN
+   Subtotal, delivery, taxes, total price
+====================================================== */
+
+.checkout-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 18px;
 }
 
-.price-breakdown{
-  margin-top:20px;
+.price-breakdown {
+  margin-top: 20px;
 }
 
-.price-row{
-  display:flex;
-  justify-content:space-between;
-  padding:8px 0;
-  color:#555;
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  color: #555555;
 }
 
-.price-total{
-  display:flex;
-  justify-content:space-between;
-  font-weight:600;
-  font-size:18px;
-  padding-top:10px;
-  border-top:1px solid #eee;
-  margin-top:10px;
+.price-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 18px;
+  padding-top: 10px;
+  border-top: 1px solid #eeeeee;
+  margin-top: 10px;
 }
 
-/* Delivery Form */
 
-.delivery-form{
-  margin-top:30px;
-  padding:20px;
-  background:#fff;
-  border-radius:12px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.06);
+/* ======================================================
+   4. DELIVERY FORM
+   Customer delivery information form
+====================================================== */
+
+.delivery-form {
+  margin-top: 30px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
 }
 
-.delivery-form h2{
-  margin-bottom:15px;
+.delivery-form h2 {
+  margin-bottom: 15px;
 }
 
-.form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+/* Two-column grid for form inputs */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
 }
 
-.input-field{
-  padding:10px;
-  border:1px solid #ddd;
-  border-radius:6px;
-  font-size:14px;
+/* Standard input field */
+.input-field {
+  padding: 10px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  font-size: 14px;
 }
 
-.textarea{
-  grid-column:span 2;
-  min-height:80px;
-  resize:none;
+/* Textarea spanning full width */
+.textarea {
+  grid-column: span 2;
+  min-height: 80px;
+  resize: none;
 }
 
-/* Payment Method */
 
-.payment-method{
-  margin-top:25px;
-  padding:20px;
-  background:#fff;
-  border-radius:12px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.06);
+/* ======================================================
+   5. PAYMENT METHOD
+   Payment selection options
+====================================================== */
+
+.payment-method {
+  margin-top: 25px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
 }
 
-.payment-options{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  margin-top:10px;
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
 }
 
-.payment-option{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:10px;
-  border:1px solid #eee;
-  border-radius:6px;
-  cursor:pointer;
-  transition:0.2s;
+/* Individual payment option */
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #eeeeee;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
 }
 
-.payment-option:hover{
-  background:#f9f9f9;
+.payment-option:hover {
+  background: #f9f9f9;
 }
 
-.payment-option input{
-  cursor:pointer;
+.payment-option input {
+  cursor: pointer;
 }
 
-/* Order Notes */
 
-.order-notes{
-  margin-top:25px;
-  padding:20px;
-  background:#fff;
-  border-radius:12px;
-  box-shadow:0 8px 25px rgba(0,0,0,0.06);
+/* ======================================================
+   6. ORDER NOTES
+   Special instructions for restaurant
+====================================================== */
+
+.order-notes {
+  margin-top: 25px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
 }
 
-.notes-input{
-  width:100%;
-  margin-top:10px;
-  padding:12px;
-  border:1px solid #ddd;
-  border-radius:6px;
-  min-height:90px;
-  resize:none;
-  font-size:14px;
+/* Notes textarea */
+.notes-input {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  min-height: 90px;
+  resize: none;
+  font-size: 14px;
 }
 
-.note-options{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:10px;
+/* Quick selectable note suggestions */
+.note-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
 }
 
-.note-chip{
-  padding:6px 12px;
-  border:1px solid #ddd;
-  background:#f9f9f9;
-  border-radius:20px;
-  font-size:13px;
-  cursor:pointer;
-  transition:0.2s;
+.note-chip {
+  padding: 6px 12px;
+  border: 1px solid #dddddd;
+  background: #f9f9f9;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s ease;
 }
 
-.note-chip:hover{
-  background:#eee;
+.note-chip:hover {
+  background: #eeeeee;
 }

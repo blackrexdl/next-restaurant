@@ -1,8 +1,25 @@
-.footer{
-  text-align:center;
-  padding:20px;
-  margin-top:40px;
-  background:#111;
-  color:white;
-  font-size:14px;
+/* ======================================================
+   FOOTER COMPONENT
+   Simple bottom section for copyright / info
+====================================================== */
+
+.footer {
+  text-align: center;          /* center footer text */
+  padding: 20px;               /* spacing inside footer */
+  margin-top: 40px;            /* space above footer */
+
+  background: #111;            /* dark background */
+  color: #ffffff;              /* white text */
+
+  font-size: 14px;             /* readable small text */
+  letter-spacing: 0.3px;       /* subtle spacing for clarity */
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 480px) {
+  .footer {
+    font-size: 13px;
+    padding: 18px;
+  }
 }

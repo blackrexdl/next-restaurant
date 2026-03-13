@@ -1,90 +1,164 @@
-.hero{
-  position:relative;
-  height:40vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  background:linear-gradient(135deg,#ff4d4d,#ff7a18);
-  color:white;
+/* ======================================================
+   HERO SECTION
+   Top landing section with animated marquee text
+====================================================== */
+
+.hero {
+  position: relative;
+  height: 40vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  background: linear-gradient(135deg, #ff4d4d, #ff7a18);
+  color: #ffffff;
 }
 
-.hero h1{
-  font-size:60px;
-  font-weight:700;
+/* ================= HERO TITLE ================= */
+
+.hero h1 {
+  font-size: 60px;
+  font-weight: 700;
 }
 
-.hero p{
-  margin-top:10px;
-  font-size:18px;
+.hero p {
+  margin-top: 10px;
+  font-size: 18px;
 }
 
-.hero-buttons{
-  margin-top:20px;
-  display:flex;
-  gap:15px;
+/* ================= HERO BUTTONS ================= */
+
+.hero-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
 }
 
-.order-btn{
-  padding:12px 24px;
-  background:white;
-  color:#ff4d4d;
-  border:none;
-  border-radius:8px;
-  font-weight:600;
+/* Primary Order Button */
+.order-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+
+  background: #ffffff;
+  color: #ff4d4d;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.menu-btn{
-  padding:12px 24px;
-  background:#ffffff;
-  color:#e73131;
-  border:none;
-  border-radius:8px;
-  font-weight:600;
-  cursor:pointer;
-  transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+.order-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
 }
 
-.menu-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 18px rgba(0,0,0,0.15);
+.order-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
 }
 
-.menu-btn:active{
-  transform:translateY(2px);
-  box-shadow:0 3px 8px rgba(0,0,0,0.2);
+/* Secondary Menu Button */
+.menu-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+
+  background: #ffffff;
+  color: #e73131;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
 }
 
-.hero-marquee{
-  width:100%;
-  overflow:hidden;
-  position:absolute;
-  top:20px;
+.menu-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
 }
 
-.hero-track{
-  display:flex;
-  gap:0;
-  font-size:62px;
-  font-weight:800;
-  letter-spacing:2px;
-  white-space:nowrap;
-  width:max-content;
-  animation:scrollText 34s linear infinite;
+.menu-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
 }
 
-.hero-track span{
-  color:white;
-  opacity:0.9;
-  padding-right:60px;
+/* ======================================================
+   HERO MARQUEE SCROLLING TEXT
+====================================================== */
+
+.hero-marquee {
+  position: absolute;
+  top: 20px;
+
+  width: 100%;
+  overflow: hidden;
 }
 
-@keyframes scrollText{
-  0%{
-    transform:translateX(0);
+.hero-track {
+  display: flex;
+  gap: 0;
+
+  font-size: 62px;
+  font-weight: 800;
+  letter-spacing: 2px;
+
+  white-space: nowrap;
+  width: max-content;
+
+  animation: scrollText 34s linear infinite;
+}
+
+.hero-track span {
+  color: #ffffff;
+  opacity: 0.9;
+  padding-right: 60px;
+}
+
+/* ================= MARQUEE ANIMATION ================= */
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
   }
-  100%{
-    transform:translateX(-50%);
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ======================================================
+   RESPONSIVE HERO
+====================================================== */
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .hero-track {
+    font-size: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    height: 45vh;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .hero-track {
+    font-size: 32px;
   }
 }

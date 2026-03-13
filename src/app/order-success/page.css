@@ -1,28 +1,60 @@
-.success-container{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:80vh;
+/* ======================================================
+   ORDER SUCCESS PAGE
+   Confirmation screen shown after order placement
+====================================================== */
+
+/* ================= PAGE CONTAINER ================= */
+
+.success-container {
+  display: flex;
+  justify-content: center;   /* center horizontally */
+  align-items: center;       /* center vertically */
+
+  height: 80vh;              /* occupy most of viewport */
 }
 
-.success-card{
-  text-align:center;
-  padding:40px;
-  background:white;
-  border-radius:12px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+/* ================= SUCCESS CARD ================= */
+
+.success-card {
+  text-align: center;
+
+  padding: 40px;
+  background: #ffffff;
+
+  border-radius: 12px;
+
+  /* soft modern shadow */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
-.success-title{
-  color:#22c55e;
-  margin-bottom:10px;
+/* ================= SUCCESS TITLE ================= */
+
+.success-title {
+  color: #22c55e;            /* success green */
+  margin-bottom: 10px;
 }
 
-.success-text{
-  font-size:18px;
+/* ================= SUCCESS TEXT ================= */
+
+.success-text {
+  font-size: 18px;
 }
 
-.success-time{
-  margin-top:8px;
-  color:#666;
+/* ================= DELIVERY TIME ================= */
+
+.success-time {
+  margin-top: 8px;
+  color: #666;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 480px) {
+  .success-card {
+    padding: 30px 24px;
+  }
+
+  .success-text {
+    font-size: 16px;
+  }
 }
