@@ -1,26 +1,19 @@
-/* ==========================================
-   CART OVERLAY
-   Dark background layer behind the sidebar
-========================================== */
-
+/* Cart Overlay */
 .cart-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-
+  overflow: hidden; /* prevents horizontal scroll */
   background: rgba(0,0,0,0.35);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-
-  display: flex;
-  justify-content: flex-end;
+  z-index: 200;
 
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
-  z-index: 200;
 }
 
 .cart-overlay.show {
@@ -28,16 +21,14 @@
   pointer-events: auto;
 }
 
-
-/* ==========================================
-   CART SIDEBAR CONTAINER
-   Main panel that slides from the right
-========================================== */
-
+/* Cart Sidebar */
 .cart-sidebar {
+  position: absolute;
+  top: 0;
+  right: 0;
   width: 360px;
+  max-width: 100%;
   height: 100vh;
-
   padding: 24px;
 
   /* Glass background */
@@ -54,7 +45,7 @@
   /* Slide animation */
   transform: translateX(110%) scale(0.96);
   opacity: 0.6;
-  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.55s ease;
 
   overflow-y: auto;
 }

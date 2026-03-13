@@ -51,3 +51,36 @@ button {
 ul {
   list-style: none;
 }
+
+/* ======================================================
+   PREVENT HORIZONTAL SCROLL / PAGE SLIDE
+====================================================== */
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* ======================================================
+   PAGE CONTAINMENT SAFEGUARDS
+   Prevents any side-to-side movement across the site
+====================================================== */
+
+body, html {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Ensure main containers stay within viewport */
+.hero, .main, .food-grid, .cart-sidebar, .cart-overlay {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Images and media should not overflow */
+img, video, iframe {
+  max-width: 100%;
+  display: block;
+}
