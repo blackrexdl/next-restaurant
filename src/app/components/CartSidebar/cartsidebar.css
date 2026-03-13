@@ -79,6 +79,26 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 12px;
+
+  /* Item entrance animation */
+  animation: cartItemSlideIn 0.45s cubic-bezier(0.16,1,0.3,1);
+}
+/* Cart item slide animation */
+@keyframes cartItemSlideIn {
+  0% {
+    transform: translateX(40px);
+    opacity: 0;
+  }
+
+  60% {
+    transform: translateX(-6px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 
