@@ -15,10 +15,25 @@ export default function Navbar() {
   const [openCart, setOpenCart] = useState(false);
 
   const [mounted, setMounted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
  useEffect(() => {
@@ -35,7 +50,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="navbar">
+      <nav className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
 
         <h1 className="logo">Next Restaurant</h1>
 
