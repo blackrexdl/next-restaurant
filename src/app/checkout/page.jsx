@@ -47,11 +47,22 @@ const applyPromo = () => {
     <main className="checkout-container">
 
       <div className="checkout-header">
-        <h1>Order Summary</h1>
+
+        <div className="checkout-title">
+          <span className="checkout-icon">🧾</span>
+          <h1>Checkout</h1>
+        </div>
+
+        <div className="breadcrumb">
+          <Link href="/">Home</Link>
+          <span>/</span>
+          <span>Checkout</span>
+        </div>
 
         <Link href="/">
           <button className="home-btn">← Back to Home</button>
         </Link>
+
       </div>
 
       {cart.length === 0 ? (
@@ -61,21 +72,31 @@ const applyPromo = () => {
       ) : (
         <div className="checkout-card">
 
+          <div className="checkout-progress">
+            <div className="progress-step active">1</div>
+            <div className="progress-step active">2</div>
+            <div className="progress-step">3</div>
+          </div>
+
+          <div className="checkout-layout">
+
+            <div className="checkout-left">
+
           <ul className="checkout-items">
             {cart.map((item, index) => (
               <li key={item.id ?? index}>
 
-                <span className="item-name">
-                  {item.name}
-                </span>
+                <div className="item-info">
 
-                <span className="item-qty">
-                  × {item.qty ?? 1}
-                </span>
+                  <span className="item-name">
+                    {(item.name || item.title || item.productName || "Item")} × {item.qty ?? 1}
+                  </span>
 
-                <span className="item-price">
-                  ₹{(item.qty ?? 1) * item.price}
-                </span>
+                  <span className="item-price">
+                    ₹{(item.qty ?? 1) * item.price}
+                  </span>
+
+                </div>
 
               </li>
             ))}
@@ -110,6 +131,10 @@ const applyPromo = () => {
             )}
 
           </div>
+
+          </div>
+
+          <div className="checkout-right">
 
          <div className="price-breakdown">
 
@@ -185,17 +210,17 @@ const applyPromo = () => {
 
     <label className="payment-option">
       <input type="radio" name="payment" defaultChecked />
-      <span>Cash on Delivery</span>
+      <span>Cash on Delivery (Pay when food arrives)</span>
     </label>
 
     <label className="payment-option">
       <input type="radio" name="payment" />
-      <span>UPI</span>
+      <span>UPI Payment</span>
     </label>
 
     <label className="payment-option">
       <input type="radio" name="payment" />
-      <span>Card Payment</span>
+      <span>Credit / Debit Card</span>
     </label>
 
   </div>
@@ -252,10 +277,14 @@ const applyPromo = () => {
 </div>
 
           <Link href="/order-success">
-  <button className="place-order-btn">
-    Place Order
-  </button>
-</Link>
+            <button className="checkout-submit-btn">
+              Secure Checkout →
+            </button>
+          </Link>
+
+            </div>
+
+          </div>
 
         </div>
       )}
