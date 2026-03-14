@@ -229,10 +229,35 @@ body{
 .checkout-card{
   background:var(--summary);
   color:#fff;
+  line-height:1.5;
   border-radius:24px;
   padding:30px;
   position:sticky;
   top:100px;
+}
+
+/* FORCE VISIBILITY FOR ALL TEXT INSIDE ORDER SUMMARY (RIGHT SIDE) */
+
+.checkout-card h1,
+.checkout-card h2,
+.checkout-card h3,
+.checkout-card h4,
+.checkout-card p,
+.checkout-card span,
+.checkout-card li{
+  color:#ffffff;
+}
+
+.checkout-card .price-row{
+  color:#e4e4e4;
+}
+
+.checkout-card .price-total{
+  color:#ffffff;
+}
+
+.checkout-card small{
+  color:#cfcfcf;
 }
 
 /* CART ITEMS */
