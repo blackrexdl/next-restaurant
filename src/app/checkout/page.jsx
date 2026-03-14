@@ -172,34 +172,30 @@ const applyPromo = () => {
 
   <div className="form-grid">
 
-    <input
-      type="text"
-      placeholder="Full Name"
-      className="input-field"
-    />
+    <div className="input-group">
+      <input type="text" className="input-field" placeholder=" " />
+      <label>Full Name</label>
+    </div>
 
-    <input
-      type="tel"
-      placeholder="Phone Number"
-      className="input-field"
-    />
+    <div className="input-group">
+      <input type="tel" className="input-field" placeholder=" " />
+      <label>Phone Number</label>
+    </div>
 
-    <textarea
-      placeholder="Delivery Address"
-      className="input-field textarea"
-    />
+    <div className="input-group">
+      <textarea className="input-field textarea" placeholder=" " />
+      <label>Delivery Address</label>
+    </div>
 
-    <input
-      type="text"
-      placeholder="City"
-      className="input-field"
-    />
+    <div className="input-group">
+      <input type="text" className="input-field" placeholder=" " />
+      <label>City</label>
+    </div>
 
-    <input
-      type="text"
-      placeholder="Pincode"
-      className="input-field"
-    />
+    <div className="input-group">
+      <input type="text" className="input-field" placeholder=" " />
+      <label>Pincode</label>
+    </div>
 
   </div>
 <div className="payment-method">

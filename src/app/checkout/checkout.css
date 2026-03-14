@@ -161,7 +161,7 @@ body{
 .payment-method,
 .order-notes,
 .promo-section{
-  background:rgba(255,255,255,0.55);
+  background:rgba(255,255,255,0.88);
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
   border-radius:20px;
@@ -176,7 +176,22 @@ body{
 .form-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:16px;
+  gap:18px;
+  align-items:stretch;
+}
+
+/* ensure each floating input fills grid cell properly */
+
+.form-grid .input-group{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+}
+
+/* make the address textarea row span full width */
+
+.form-grid .input-group:nth-child(3){
+  grid-column:span 2;
 }
 
 .input-field{
@@ -196,8 +211,8 @@ body{
 }
 
 .textarea{
-  grid-column:span 2;
-  min-height:90px;
+  min-height:100px;
+  resize:vertical;
 }
 
 /* PAYMENT OPTIONS */
@@ -625,24 +640,78 @@ button:active{
 .promo-section h2{
   font-size:18px;
   margin-bottom:14px;
+  color:#1c1c1c;
 }
 
 /* INPUT ANIMATION */
 
+/* INPUT ANIMATION */
 .input-field{
   transition:all .25s ease;
+  color:#1c1c1c;
+}
+
+.input-field::placeholder,
+.notes-input::placeholder{
+  color:#6b6b6b;
+  opacity:1;
 }
 
 .input-field:hover{
   border-color:var(--primary);
 }
 
+/* NOTES INPUT */
+.notes-input{
+  color:#1c1c1c;
+  background:#ffffff;
+}
 .notes-input:focus{
   outline:none;
   border-color:var(--primary);
   box-shadow:0 0 0 3px rgba(255,107,61,0.15);
 }
+/* FLOATING LABEL INPUTS (MODERN STRIPE / APPLE STYLE) */
 
+.input-group{
+  position:relative;
+  width:100%;
+}
+
+.input-group .input-field{
+  width:100%;
+  padding:18px 14px 10px 14px;
+  background:#fff;
+}
+
+.input-group label{
+  position:absolute;
+  left:14px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:14px;
+  color:#7a7a7a;
+  pointer-events:none;
+  background:#fff;
+  padding:0 4px;
+  transition:all .25s ease;
+}
+
+/* when typing or focusing */
+
+.input-group .input-field:focus + label,
+.input-group .input-field:not(:placeholder-shown) + label{
+  top:6px;
+  font-size:11px;
+  color:var(--primary);
+}
+
+/* nicer focus feel */
+
+.input-group .input-field:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(255,107,61,0.15);
+}
 /* SUMMARY ITEM ANIMATION */
 
 .checkout-items li{
