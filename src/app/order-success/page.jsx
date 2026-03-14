@@ -19,9 +19,9 @@ export default function OrderSuccess() {
         </p>
 
         <Link href="/">
-          <button className="home-btn">
-            Back to Home
-          </button>
+          <button className="success-btn">
+             Back to Home
+           </button>
         </Link>
 
       </div>

@@ -42,9 +42,45 @@
 
 /* ================= DELIVERY TIME ================= */
 
+
 .success-time {
   margin-top: 8px;
   color: #666;
+}
+
+/* ================= ACTION BUTTON ================= */
+
+.success-btn {
+  margin-top: 20px;
+  padding: 12px 28px;
+
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+
+  border: none;
+  border-radius: 999px; /* pill shape */
+
+  cursor: pointer;
+
+  /* soft premium gradient */
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: #fff;
+
+  /* depth */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+
+  transition: all 0.25s ease;
+}
+
+.success-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+}
+
+.success-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
 /* ================= RESPONSIVE ================= */
