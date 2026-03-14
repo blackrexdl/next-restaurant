@@ -79,33 +79,7 @@ const applyPromo = () => {
           </div>
 
           <div className="checkout-layout">
-                    {/* Table Reservation Card */}
-          <div className="reserve-table-card">
-
-            <div className="reserve-header">
-              <h2>Reserve a Table</h2>
-              <p>Planning to dine in? Book your table in advance.</p>
-            </div>
-
-            <div className="reserve-preview">
-              <div className="reserve-date">
-                <span className="calendar-icon">📅</span>
-                <span>Select date & time</span>
-              </div>
-
-              <div className="reserve-details">
-                <span>Guests: 2 - 6</span>
-                <span>Available today</span>
-              </div>
-            </div>
-
-            <Link href="/reservation">
-              <button className="reserve-btn">
-                Reserve Table
-              </button>
-            </Link>
-
-          </div>
+          
             <div className="checkout-left">
 
           <ul className="checkout-items">
