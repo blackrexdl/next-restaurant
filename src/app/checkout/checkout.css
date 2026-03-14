@@ -237,3 +237,154 @@ body{
   background:var(--primary);
   color:#fff;
 }
+
+
+/* CHECKOUT STEP PROGRESS BAR */
+
+.checkout-progress{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:40px;
+  position:relative;
+}
+
+.checkout-progress::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:0;
+  right:0;
+  height:4px;
+  background:var(--border);
+  transform:translateY(-50%);
+  z-index:0;
+}
+
+.progress-step{
+  position:relative;
+  z-index:1;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:#fff;
+  border:2px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  font-weight:600;
+}
+
+.progress-step.active{
+  background:var(--primary);
+  color:#fff;
+  border-color:var(--primary);
+  box-shadow:0 8px 18px rgba(255,107,61,0.35);
+}
+
+
+/* CREDIT CARD VISUAL */
+
+.credit-card-preview{
+  background:linear-gradient(135deg,#2c2d38,#1c1d26);
+  border-radius:18px;
+  padding:24px;
+  color:#fff;
+  margin-bottom:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.25);
+}
+
+.card-number{
+  font-size:20px;
+  letter-spacing:3px;
+  margin-top:16px;
+}
+
+.card-meta{
+  display:flex;
+  justify-content:space-between;
+  margin-top:18px;
+  font-size:14px;
+  opacity:0.85;
+}
+
+.card-holder{
+  text-transform:uppercase;
+  font-weight:500;
+}
+
+.card-expiry{
+  font-weight:500;
+}
+
+
+/* PRODUCT IMAGE IN SUMMARY */
+
+.checkout-items li{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.item-image{
+  width:46px;
+  height:46px;
+  border-radius:10px;
+  object-fit:cover;
+}
+
+.item-info{
+  flex:1;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+
+/* SUCCESS ORDER STATE */
+
+.order-success{
+  text-align:center;
+  padding:80px 20px;
+}
+
+.success-icon{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 24px;
+  font-size:40px;
+  color:#fff;
+  box-shadow:0 18px 40px rgba(255,107,61,0.4);
+  animation:successPop .6s ease;
+}
+
+.success-title{
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.success-text{
+  color:var(--muted);
+  font-size:15px;
+}
+
+@keyframes successPop{
+  0%{
+    transform:scale(.5);
+    opacity:0;
+  }
+  70%{
+    transform:scale(1.05);
+  }
+  100%{
+    transform:scale(1);
+    opacity:1;
+  }
+}
