@@ -155,7 +155,7 @@
   width: 100%;
   margin-top: 18px;
 
-  padding: 12px 18px;
+  padding: 13px 18px;
   border-radius: 12px;
 
   border: none;
@@ -163,23 +163,33 @@
 
   font-weight: 600;
   font-size: 15px;
+  letter-spacing: 0.3px;
 
-  background: linear-gradient(135deg,#ff4d4d,#ff7a18);
-  color: white;
+  /* premium gradient */
+  background: linear-gradient(135deg, #ff6b81, #ff8fa3);
+  color: rgb(0, 0, 0);
 
-  transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+  /* depth */
+  box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+
+  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.25s cubic-bezier(0.16,1,0.3,1),
+              filter 0.25s ease;
 }
 
 .checkout-btn:hover {
-  transform: translateY(-4px) scale(1.03);
+  transform: translateY(-4px) scale(1.04);
+
+  filter: brightness(1.05);
 
   box-shadow:
-    0 12px 28px rgba(0,0,0,0.25),
-    0 0 20px rgba(255,77,77,0.45);
+    0 14px 34px rgba(0,0,0,0.28),
+    0 0 18px rgba(255,77,77,0.45);
 }
 
 .checkout-btn:active {
-  transform: translateY(1px) scale(0.98);
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
 }
 
 

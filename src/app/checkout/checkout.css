@@ -1,0 +1,396 @@
+:root {
+  --brand-primary: #ff6b3d;
+  --brand-primary-dark: #e55a30;
+  --brand-bg-soft: #fff7f3;
+  --text-main: #1a1a1a;
+  --border-soft: #f0e6e2;
+}
+
+/* ======================================================
+   GLOBAL PAGE BACKGROUND
+   Makes checkout look like a real landing section
+====================================================== */
+
+body {
+  background: linear-gradient(180deg, #fff7f3 0%, #ffffff 60%);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ======================================================
+   CHECKOUT PAGE STYLES
+   This file contains only styles used in the checkout page
+   Sections:
+   1. Checkout Summary Card
+   2. Cart Item List
+   3. Price Breakdown
+   4. Delivery Form
+   5. Payment Method
+   6. Order Notes
+====================================================== */
+
+
+/* ======================================================
+   1. CHECKOUT SUMMARY CARD
+   Main container showing cart items and total
+====================================================== */
+
+.checkout-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 28px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
+}
+
+
+/* ======================================================
+   2. CART ITEM LIST
+   List of products added to cart
+====================================================== */
+
+.checkout-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.checkout-items li {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+/* Item name text */
+.item-name {
+  font-weight: 500;
+}
+
+/* Quantity text (lighter color) */
+.item-qty {
+  color: #777777;
+}
+
+/* Price text */
+.item-price {
+  font-weight: 600;
+}
+
+
+/* ======================================================
+   3. PRICE BREAKDOWN
+   Subtotal, delivery, taxes, total price
+====================================================== */
+
+.checkout-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+.price-breakdown {
+  margin-top: 20px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  color: #555555;
+}
+
+.price-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  color: var(--brand-primary);
+  font-size: 18px;
+  padding-top: 10px;
+  border-top: 1px solid #eeeeee;
+  margin-top: 10px;
+}
+
+
+/* ======================================================
+   4. DELIVERY FORM
+   Customer delivery information form
+====================================================== */
+
+.delivery-form {
+  margin-top: 30px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+  transition: all 0.25s ease;
+}
+
+.delivery-form h2 {
+  margin-bottom: 15px;
+}
+
+/* Two-column grid for form inputs */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Standard input field */
+.input-field {
+  padding: 10px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Textarea spanning full width */
+.textarea {
+  grid-column: span 2;
+  min-height: 80px;
+  resize: none;
+}
+
+
+/* ======================================================
+   5. PAYMENT METHOD
+   Payment selection options
+====================================================== */
+
+.payment-method {
+  margin-top: 25px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+  transition: all 0.25s ease;
+}
+
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Individual payment option */
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #eeeeee;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.payment-option:hover {
+  background: var(--brand-bg-soft);
+  border-color: var(--brand-primary);
+}
+
+.payment-option input {
+  cursor: pointer;
+}
+
+
+/* ======================================================
+   6. ORDER NOTES
+   Special instructions for restaurant
+====================================================== */
+
+.order-notes {
+  margin-top: 25px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+  transition: all 0.25s ease;
+}
+
+/* Notes textarea */
+.notes-input {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  min-height: 90px;
+  resize: none;
+  font-size: 14px;
+}
+
+/* Quick selectable note suggestions */
+.note-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.note-chip {
+  padding: 6px 12px;
+  border: 1px solid var(--border-soft);
+  background: var(--brand-bg-soft);
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.note-chip:hover {
+  background: var(--brand-primary);
+  color: #ffffff;
+  border-color: var(--brand-primary);
+}
+
+
+/* ======================================================
+   7. PAGE LAYOUT WRAPPER
+   Makes checkout feel like a proper landing section
+====================================================== */
+
+.checkout-wrapper {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 24px 60px 24px;
+}
+
+.checkout-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.checkout-header h1 {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.checkout-header p {
+  color: #777;
+  font-size: 15px;
+}
+
+
+/* ======================================================
+   8. GRID LAYOUT
+   Cart summary + delivery form side by side
+====================================================== */
+
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ======================================================
+   9. INPUT FIELD IMPROVEMENTS
+====================================================== */
+
+.input-field:focus,
+.notes-input:focus {
+  outline: none;
+  border-color: #111;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
+}
+
+
+/* ======================================================
+   10. PRIMARY ACTION BUTTON
+   Professional checkout button style
+====================================================== */
+
+.checkout-submit-btn {
+  width: 100%;
+  margin-top: 25px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-primary-dark));
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 10px 26px rgba(255,107,61,0.35);
+}
+
+.checkout-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(255,107,61,0.45);
+}
+
+.checkout-submit-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+
+/* ======================================================
+   11. CARD HOVER POLISH
+   Subtle elevation for modern UI feel
+====================================================== */
+
+.checkout-card:hover,
+.delivery-form:hover,
+.payment-method:hover,
+.order-notes:hover {
+  transform: translateY(-2px);
+  transition: 0.25s ease;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.08);
+}
+
+
+/* ======================================================
+   PROFESSIONAL UI POLISH
+====================================================== */
+
+.checkout-header h1 {
+  letter-spacing: -0.5px;
+}
+
+.checkout-header p {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.price-row span:last-child {
+  font-weight: 500;
+}
+
+.input-field {
+  background: #fafafa;
+  transition: 0.2s ease;
+}
+
+.input-field:hover {
+  border-color: #cccccc;
+}
+
+.payment-option {
+  background: #fafafa;
+}
+
+.payment-option:hover {
+  transform: translateY(-1px);
+}
+
+.note-chip {
+  font-weight: 500;
+}

@@ -1,5 +1,5 @@
 "use client";
-import "./page.css";
+import "./checkout.css";
 import { useCart } from "../../context/CartContext";
 import Link from "next/link";
 import { useState, useEffect } from "react";
