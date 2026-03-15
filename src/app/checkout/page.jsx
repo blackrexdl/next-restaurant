@@ -14,6 +14,8 @@ export default function CheckoutPage() {
   const [cardNumber, setCardNumber] = useState("");
   const [cardName, setCardName] = useState("");
   const [cardExpiry, setCardExpiry] = useState("");
+  const [cardCvv, setCardCvv] = useState("");
+  const [cardFlipped, setCardFlipped] = useState(false);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -224,22 +226,37 @@ const applyPromo = () => {
 
   </div>
 
-  <div className="credit-card-preview">
+  <div className={`credit-card-wrapper ${cardFlipped ? "flipped" : ""}`}>
 
-    <div className="card-chip">💳</div>
+    <div className="credit-card-preview card-front">
 
-    <div className={`card-number ${cardNumber ? "updated" : ""}`}>
-      {cardNumber || "•••• •••• •••• ••••"}
+      <div className="card-chip">💳</div>
+
+      <div className={`card-number ${cardNumber ? "updated" : ""}`}>
+        {cardNumber || "•••• •••• •••• ••••"}
+      </div>
+
+      <div className="card-meta">
+        <span className="card-holder">
+          {cardName || "CARD HOLDER"}
+        </span>
+
+        <span className="card-expiry">
+          {cardExpiry || "MM/YY"}
+        </span>
+      </div>
+
     </div>
 
-    <div className="card-meta">
-      <span className="card-holder">
-        {cardName || "CARD HOLDER"}
-      </span>
+    <div className="credit-card-back">
 
-      <span className="card-expiry">
-        {cardExpiry || "MM/YY"}
-      </span>
+      <div className="card-strip"></div>
+
+      <div className="card-cvv-box">
+        <span>CVV</span>
+        <strong>{cardCvv || "***"}</strong>
+      </div>
+
     </div>
 
   </div>
@@ -277,6 +294,20 @@ const applyPromo = () => {
         onChange={(e)=>setCardExpiry(e.target.value)}
       />
       <label>Expiry (MM/YY)</label>
+    </div>
+
+    <div className="input-group">
+      <input
+        type="text"
+        className="input-field"
+        placeholder=" "
+        value={cardCvv}
+        maxLength={4}
+        onFocus={() => setCardFlipped(true)}
+        onBlur={() => setCardFlipped(false)}
+        onChange={(e)=>setCardCvv(e.target.value)}
+      />
+      <label>CVV</label>
     </div>
 
   </div>
