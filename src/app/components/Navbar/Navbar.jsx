@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useCart } from "../../../context/CartContext";
 import CartSidebar from "../CartSidebar/CartSidebar";
 
@@ -13,6 +13,9 @@ export default function Navbar() {
   return total + (item.qty ?? 1);
 }, 0);
   const [openCart, setOpenCart] = useState(false);
+  const cartBtnRef = useRef(null);
+  const badgeRef = useRef(null);
+  const prevCountRef = useRef(cartCount);
 
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -48,6 +51,26 @@ export default function Navbar() {
   };
 }, []);
 
+  useEffect(() => {
+    if (cartCount > prevCountRef.current) {
+      if (cartBtnRef.current) {
+        cartBtnRef.current.classList.add("bump");
+        setTimeout(() => {
+          cartBtnRef.current?.classList.remove("bump");
+        }, 350);
+      }
+
+      if (badgeRef.current) {
+        badgeRef.current.classList.add("pulse");
+        setTimeout(() => {
+          badgeRef.current?.classList.remove("pulse");
+        }, 400);
+      }
+    }
+
+    prevCountRef.current = cartCount;
+  }, [cartCount]);
+
   return (
     <>
       <nav className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
@@ -55,13 +78,14 @@ export default function Navbar() {
         <h1 className="logo">Next Restaurant</h1>
 
         <button
+          ref={cartBtnRef}
           className="cart-btn"
           onClick={() => setOpenCart(true)}
         >
           <span className="cart-icon">🛒</span>
 
           {mounted && cartCount > 0 && (
-            <span className="cart-badge">
+            <span ref={badgeRef} className="cart-badge">
               {cartCount}
             </span>
           )}

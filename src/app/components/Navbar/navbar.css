@@ -55,6 +55,88 @@
   color: #ff4d4d;
 }
 
+/* ================= CART BUTTON ================= */
+
+.cart-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 8px 16px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.08);
+
+  background: #ffffff;
+  color: #333;
+
+  font-weight: 600;
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+  animation: cartFloat 4s ease-in-out infinite;
+}
+
+.cart-btn:hover {
+  background: #ff4d4d;
+  color: #ffffff;
+  border-color: #ff4d4d;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.cart-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 20px;
+  height: 20px;
+
+  padding: 0 6px;
+
+  border-radius: 50%;
+  background: #ff4d4d;
+  color: #fff;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ================= MICRO INTERACTIONS ================= */
+
+/* subtle floating effect like Apple UI */
+@keyframes cartFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
+}
+
+/* cart bump when item added */
+.cart-btn.bump {
+  animation: cartBump 0.35s ease;
+}
+
+@keyframes cartBump {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* badge pulse when cart updates */
+.cart-count.pulse {
+  animation: badgePulse 0.4s ease;
+}
+
+@keyframes badgePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 768px) {
@@ -68,6 +150,10 @@
 
   .nav-links {
     gap: 16px;
+  }
+  .cart-btn {
+    padding: 6px 12px;
+    font-size: 13px;
   }
 }
 
