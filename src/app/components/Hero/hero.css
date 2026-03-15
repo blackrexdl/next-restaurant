@@ -20,32 +20,6 @@ background: linear-gradient(120deg, #f8fafc, #eef2f7, #e2e8f0, #f1f5f9);
 background-size: 300% 300%;
 animation: heroGradientMove 18s ease infinite;
 }
-
-/* Floating gradient glow behind hero */
-.hero::before {
-  content: "";
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 70%);
-  top: -200px;
-  left: -200px;
-  filter: blur(80px);
-  animation: heroGlow 10s ease-in-out infinite alternate;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);
-  bottom: -150px;
-  right: -150px;
-  filter: blur(90px);
-  animation: heroGlow 12s ease-in-out infinite alternate;
-}
-
 /* Subtle wave depth for bottom hero curve */
 .hero .after-wave {
   content: "";
