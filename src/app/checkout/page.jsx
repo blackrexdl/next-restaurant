@@ -11,6 +11,9 @@ export default function CheckoutPage() {
   const [promoCode, setPromoCode] = useState("");
   const [discount, setDiscount] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const [cardNumber, setCardNumber] = useState("");
+  const [cardName, setCardName] = useState("");
+  const [cardExpiry, setCardExpiry] = useState("");
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -218,6 +221,63 @@ const applyPromo = () => {
       <input type="radio" name="payment" />
       <span>Credit / Debit Card</span>
     </label>
+
+  </div>
+
+  <div className="credit-card-preview">
+
+    <div className="card-chip">💳</div>
+
+    <div className={`card-number ${cardNumber ? "updated" : ""}`}>
+      {cardNumber || "•••• •••• •••• ••••"}
+    </div>
+
+    <div className="card-meta">
+      <span className="card-holder">
+        {cardName || "CARD HOLDER"}
+      </span>
+
+      <span className="card-expiry">
+        {cardExpiry || "MM/YY"}
+      </span>
+    </div>
+
+  </div>
+
+  <div className="card-form">
+
+    <div className="input-group">
+      <input
+        type="text"
+        className="input-field"
+        placeholder=" "
+        value={cardNumber}
+        onChange={(e)=>setCardNumber(e.target.value)}
+      />
+      <label>Card Number</label>
+    </div>
+
+    <div className="input-group">
+      <input
+        type="text"
+        className="input-field"
+        placeholder=" "
+        value={cardName}
+        onChange={(e)=>setCardName(e.target.value)}
+      />
+      <label>Card Holder Name</label>
+    </div>
+
+    <div className="input-group">
+      <input
+        type="text"
+        className="input-field"
+        placeholder=" "
+        value={cardExpiry}
+        onChange={(e)=>setCardExpiry(e.target.value)}
+      />
+      <label>Expiry (MM/YY)</label>
+    </div>
 
   </div>
 
