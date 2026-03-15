@@ -167,3 +167,135 @@
   box-shadow: 0 6px 20px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
 }
+
+/* ======================================================
+   ADVANCED CART MICRO‑INTERACTIONS
+   Food fly animation + cart drawer spring + glass sidebar
+====================================================== */
+
+/* ---------- FOOD IMAGE FLY TO CART ---------- */
+
+.fly-item {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+
+  pointer-events: none;
+  z-index: 9999;
+
+  left: var(--fly-start-x);
+  top: var(--fly-start-y);
+
+  animation: flyToCart 0.9s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+@keyframes flyToCart {
+
+  0% {
+    transform: translate(0,0) scale(1);
+    opacity: 1;
+  }
+
+  40% {
+    transform: translate(
+      calc((var(--fly-end-x) - var(--fly-start-x)) * 0.6),
+      calc((var(--fly-end-y) - var(--fly-start-y)) * -0.6)
+    ) scale(0.8);
+    opacity: 0.95;
+  }
+
+  75% {
+    transform: translate(
+      calc(var(--fly-end-x) - var(--fly-start-x)),
+      calc(var(--fly-end-y) - var(--fly-start-y))
+    ) scale(0.5);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translate(
+      calc(var(--fly-end-x) - var(--fly-start-x)),
+      calc(var(--fly-end-y) - var(--fly-start-y))
+    ) scale(0.2);
+    opacity: 0;
+  }
+
+}
+
+
+/* ---------- CART DRAWER SPRING MOTION ---------- */
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: -420px;
+
+  width: 420px;
+  height: 100vh;
+
+  background: #ffffff;
+
+  box-shadow: -10px 0 30px rgba(0,0,0,0.12);
+
+  transition: right 0.55s cubic-bezier(.22,1,.36,1);
+
+  z-index: 500;
+}
+
+.cart-drawer.open {
+  right: 0;
+}
+
+/* subtle spring bounce */
+.cart-drawer.open {
+  animation: drawerSpring 0.6s ease;
+}
+
+@keyframes drawerSpring {
+  0% {
+    transform: translateX(80px);
+  }
+
+  60% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+/* ---------- GLASSMORPHISM CART SIDEBAR ---------- */
+
+.cart-glass {
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-left: 1px solid rgba(255,255,255,0.4);
+
+  box-shadow: -12px 0 40px rgba(0,0,0,0.15);
+}
+
+
+/* ---------- OVERLAY WHEN CART OPEN ---------- */
+
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.35);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.3s ease;
+
+  z-index: 400;
+}
+
+.cart-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
