@@ -224,16 +224,57 @@ body{
 }
 
 .payment-option{
-  padding:14px;
-  border-radius:12px;
+  padding:16px;
+  border-radius:14px;
   border:1px solid var(--border);
   display:flex;
   align-items:center;
   gap:12px;
   cursor:pointer;
   background:#fafafa;
+  position:relative;
+  transition:all .25s ease;
+}
+/* APPLE-STYLE PAYMENT SELECT ANIMATION */
+
+.payment-option input{
+  position:relative;
+  z-index:2;
 }
 
+/* hover lift */
+
+.payment-option:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 24px rgba(0,0,0,0.08);
+}
+
+/* active selection glow */
+
+.payment-option:has(input:checked){
+  border-color:var(--primary);
+  background:linear-gradient(
+    135deg,
+    rgba(255,107,61,0.08),
+    rgba(255,107,61,0.03)
+  );
+  box-shadow:
+    0 10px 24px rgba(255,107,61,0.18),
+    inset 0 0 0 1px rgba(255,107,61,0.25);
+  transform:scale(1.02);
+}
+
+/* radio pop animation */
+
+.payment-option input:checked{
+  animation:paymentPop .35s ease;
+}
+
+@keyframes paymentPop{
+  0%{transform:scale(.7);}
+  60%{transform:scale(1.25);}
+  100%{transform:scale(1);}
+}
 .payment-option:hover{
   border-color:var(--primary);
   background:#fff4ef;
@@ -438,16 +479,68 @@ body{
 .credit-card-preview{
   background:linear-gradient(135deg,#2c2d38,#1c1d26);
   border-radius:18px;
-  padding:24px;
+  padding:26px;
   color:#fff;
   margin-bottom:20px;
   box-shadow:0 20px 40px rgba(0,0,0,0.25);
+  position:relative;
+  overflow:hidden;
+  transition:transform .35s ease, box-shadow .35s ease;
+}
+
+/* subtle hover tilt like modern fintech UI */
+
+.credit-card-preview:hover{
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:0 28px 60px rgba(0,0,0,0.35);
+}
+
+/* glow stripe animation */
+
+.credit-card-preview::before{
+  content:"";
+  position:absolute;
+  top:-40%;
+  left:-40%;
+  width:180%;
+  height:180%;
+  background:linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255,255,255,0.08),
+    transparent 60%
+  );
+  transform:rotate(25deg);
+  animation:cardShine 6s linear infinite;
+}
+
+@keyframes cardShine{
+  0%{
+    transform:translateX(-120%) rotate(25deg);
+  }
+  100%{
+    transform:translateX(120%) rotate(25deg);
+  }
 }
 
 .card-number{
-  font-size:20px;
+  font-size:22px;
   letter-spacing:3px;
-  margin-top:16px;
+  margin-top:18px;
+  font-weight:600;
+  transition:all .25s ease;
+}
+
+/* typing animation feel */
+
+.card-number.updated{
+  animation:numberPop .35s ease;
+}
+
+@keyframes numberPop{
+  0%{transform:scale(.95);opacity:.7;}
+  60%{transform:scale(1.05);}
+  100%{transform:scale(1);opacity:1;}
 }
 
 .card-meta{
@@ -461,10 +554,14 @@ body{
 .card-holder{
   text-transform:uppercase;
   font-weight:500;
+  letter-spacing:1px;
+  transition:.25s;
 }
 
 .card-expiry{
   font-weight:500;
+  letter-spacing:1px;
+  transition:.25s;
 }
 
 
