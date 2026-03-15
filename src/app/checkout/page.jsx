@@ -20,6 +20,13 @@ export default function CheckoutPage() {
   const [cardTyping, setCardTyping] = useState(false);
   const [cardValid, setCardValid] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("cod");
+  const [reserveNote, setReserveNote] = useState("");
+  const [reserveName, setReserveName] = useState("");
+  const [reservePhone, setReservePhone] = useState("");
+  const [reserveDate, setReserveDate] = useState("");
+  const [reserveTime, setReserveTime] = useState("");
+  const [reserveGuests, setReserveGuests] = useState("2");
+  const [reserveOccasion, setReserveOccasion] = useState("");
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -90,6 +97,8 @@ const applyPromo = () => {
           <div className="checkout-layout">
           
             <div className="checkout-left">
+             
+
 
           <ul className="checkout-items">
             {cart.map((item, index) => (
@@ -140,7 +149,130 @@ const applyPromo = () => {
             )}
 
           </div>
+<div className="reservation-box">
 
+  <h2>Reserve a Table</h2>
+
+  <div className="form-grid">
+
+    <div className="input-group">
+      <input type="text" name="reserveName" className="input-field" placeholder=" " required value={reserveName} onChange={(e)=>setReserveName(e.target.value)} />
+      <label>Full Name</label>
+    </div>
+
+    <div className="input-group">
+      <input type="tel" name="reservePhone" className="input-field" placeholder=" " required value={reservePhone} onChange={(e)=>setReservePhone(e.target.value)} />
+      <label>Phone Number</label>
+    </div>
+
+    <div className="input-group">
+      <input type="date" name="reserveDate" className="input-field" placeholder=" " required value={reserveDate} onChange={(e)=>setReserveDate(e.target.value)} />
+      <label>Reservation Date</label>
+    </div>
+
+    <div className="input-group">
+      <input type="time" name="reserveTime" className="input-field" placeholder=" " required value={reserveTime} onChange={(e)=>setReserveTime(e.target.value)} />
+      <label>Reservation Time</label>
+    </div>
+
+    <div className="input-group">
+      <select name="reserveGuests" className="input-field" value={reserveGuests} onChange={(e)=>setReserveGuests(e.target.value)}>
+        <option value="1">1 Guest</option>
+        <option value="2">2 Guests</option>
+        <option value="3">3 Guests</option>
+        <option value="4">4 Guests</option>
+        <option value="5">5 Guests</option>
+        <option value="6">6 Guests</option>
+        <option value="7">7 Guests</option>
+        <option value="8">8 Guests</option>
+        <option value="9">9 Guests</option>
+        <option value="10">10 Guests</option>
+        <option value="11">11 Guests</option>
+        <option value="12">12 Guests</option>
+      </select>
+      <label>Number of Guests</label>
+    </div>
+
+    <div className="input-group">
+      <select name="reserveOccasion" className="input-field" value={reserveOccasion} onChange={(e)=>setReserveOccasion(e.target.value)}>
+        <option value="" disabled>Select Occasion</option>
+        <option value="birthday">Birthday</option>
+        <option value="anniversary">Anniversary</option>
+        <option value="date">Date Night</option>
+        <option value="business">Business Meeting</option>
+        <option value="family">Family Dinner</option>
+        <option value="other">Other</option>
+      </select>
+      <label>Occasion</label>
+    </div>
+
+    <div className="input-group">
+      <textarea
+        name="reserveNote"
+        className="input-field textarea"
+        placeholder=" "
+        value={reserveNote}
+        onChange={(e)=>setReserveNote(e.target.value)}
+      ></textarea>
+      <label>Special Request</label>
+    </div>
+
+  </div>
+
+  <div className="note-options">
+    <button
+      type="button"
+      className="note-chip"
+      onClick={() =>
+        setReserveNote((prev) =>
+          prev ? prev + ", Window seat if possible" : "Window seat if possible"
+        )
+      }
+    >
+      Window seat
+    </button>
+    <button
+      type="button"
+      className="note-chip"
+      onClick={() =>
+        setReserveNote((prev) =>
+          prev ? prev + ", Birthday decoration" : "Birthday decoration"
+        )
+      }
+    >
+      Birthday decoration
+    </button>
+    <button
+      type="button"
+      className="note-chip"
+      onClick={() =>
+        setReserveNote((prev) =>
+          prev ? prev + ", Quiet corner table" : "Quiet corner table"
+        )
+      }
+    >
+      Quiet corner
+    </button>
+    <button
+      type="button"
+      className="note-chip"
+      onClick={() =>
+        setReserveNote((prev) =>
+          prev ? prev + ", High chair needed" : "High chair needed"
+        )
+      }
+    >
+      High chair
+    </button>
+  </div>
+
+  <Link href="/reservation">
+    <button className="reserve-btn">
+      Reserve Table →
+    </button>
+  </Link>
+
+</div>
           </div>
 
           <div className="checkout-right">
