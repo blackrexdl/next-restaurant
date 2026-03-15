@@ -16,6 +16,10 @@ export default function CheckoutPage() {
   const [cardExpiry, setCardExpiry] = useState("");
   const [cardCvv, setCardCvv] = useState("");
   const [cardFlipped, setCardFlipped] = useState(false);
+  const [cardBrand, setCardBrand] = useState("");
+  const [cardTyping, setCardTyping] = useState(false);
+  const [cardValid, setCardValid] = useState(null);
+  const [paymentMethod, setPaymentMethod] = useState("cod");
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -210,29 +214,36 @@ const applyPromo = () => {
   <div className="payment-options">
 
     <label className="payment-option">
-      <input type="radio" name="payment" defaultChecked />
+      <input type="radio" name="payment" checked={paymentMethod === "cod"} onChange={() => setPaymentMethod("cod")} />
       <span>Cash on Delivery (Pay when food arrives)</span>
     </label>
 
     <label className="payment-option">
-      <input type="radio" name="payment" />
+      <input type="radio" name="payment" checked={paymentMethod === "upi"} onChange={() => setPaymentMethod("upi")} />
       <span>UPI Payment</span>
     </label>
 
     <label className="payment-option">
-      <input type="radio" name="payment" />
+      <input type="radio" name="payment" checked={paymentMethod === "card"} onChange={() => setPaymentMethod("card")} />
       <span>Credit / Debit Card</span>
     </label>
 
   </div>
+
+  {paymentMethod === "card" && ( <>
 
   <div className={`credit-card-wrapper ${cardFlipped ? "flipped" : ""}`}>
 
     <div className="credit-card-preview card-front">
 
       <div className="card-chip">💳</div>
+      <div className="card-brand">
+        {cardBrand === "visa" && "VISA"}
+        {cardBrand === "mastercard" && "MASTERCARD"}
+        {cardBrand === "amex" && "AMEX"}
+      </div>
 
-      <div className={`card-number ${cardNumber ? "updated" : ""}`}>
+      <div className={`card-number ${cardNumber ? "updated" : ""} ${cardTyping ? "typing" : ""}`}>
         {cardNumber || "•••• •••• •••• ••••"}
       </div>
 
@@ -269,10 +280,68 @@ const applyPromo = () => {
         className="input-field"
         placeholder=" "
         value={cardNumber}
-        onChange={(e)=>setCardNumber(e.target.value)}
+        maxLength={19}
+        onChange={(e) => {
+          const raw = e.target.value.replace(/\D/g, "").slice(0, 16);
+
+          const formatted = raw.replace(/(.{4})/g, "$1 ").trim();
+
+          setCardNumber(formatted);
+
+          setCardTyping(true);
+          setTimeout(() => setCardTyping(false), 300);
+
+          if (/^4/.test(raw)) {
+            setCardBrand("visa");
+          } else if (/^5[1-5]/.test(raw)) {
+            setCardBrand("mastercard");
+          } else if (/^3[47]/.test(raw)) {
+            setCardBrand("amex");
+          } else if (/^6/.test(raw)) {
+            setCardBrand("discover");
+          } else if (/^60/.test(raw)) {
+            setCardBrand("rupay");
+          } else {
+            setCardBrand("");
+          }
+
+          /* Luhn validation */
+          const checkLuhn = (num) => {
+            let sum = 0;
+            let shouldDouble = false;
+
+            for (let i = num.length - 1; i >= 0; i--) {
+              let digit = parseInt(num.charAt(i));
+
+              if (shouldDouble) {
+                digit *= 2;
+                if (digit > 9) digit -= 9;
+              }
+
+              sum += digit;
+              shouldDouble = !shouldDouble;
+            }
+
+            return sum % 10 === 0;
+          };
+
+          if (raw.length >= 13) {
+            setCardValid(checkLuhn(raw));
+          } else {
+            setCardValid(null);
+          }
+        }}
       />
       <label>Card Number</label>
     </div>
+
+    {cardValid === false && (
+      <p className="card-error">Invalid card number</p>
+    )}
+
+    {cardValid === true && (
+      <p className="card-valid">Card number looks valid</p>
+    )}
 
     <div className="input-group">
       <input
@@ -291,7 +360,13 @@ const applyPromo = () => {
         className="input-field"
         placeholder=" "
         value={cardExpiry}
-        onChange={(e)=>setCardExpiry(e.target.value)}
+        onChange={(e)=>{
+          let value = e.target.value.replace(/\D/g, "").slice(0,4);
+          if (value.length >= 3) {
+            value = value.slice(0,2) + "/" + value.slice(2);
+          }
+          setCardExpiry(value);
+        }}
       />
       <label>Expiry (MM/YY)</label>
     </div>
@@ -302,15 +377,20 @@ const applyPromo = () => {
         className="input-field"
         placeholder=" "
         value={cardCvv}
-        maxLength={4}
+        maxLength={cardBrand === "amex" ? 4 : 3}
         onFocus={() => setCardFlipped(true)}
         onBlur={() => setCardFlipped(false)}
-        onChange={(e)=>setCardCvv(e.target.value)}
+        onChange={(e)=>{
+          const limit = cardBrand === "amex" ? 4 : 3;
+          const value = e.target.value.replace(/\D/g, "").slice(0, limit);
+          setCardCvv(value);
+        }}
       />
       <label>CVV</label>
     </div>
 
   </div>
+  </> )}
 
 </div>
 <div className="order-notes">
