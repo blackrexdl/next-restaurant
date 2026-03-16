@@ -1,5 +1,8 @@
 "use client";
-import "./checkout.css";
+import "./checkout-layout.css";
+import "./checkout-payment.css";
+import "./checkout-form.css";
+import "./checkout-card.css";
 import { useCart } from "../../context/CartContext";
 import Link from "next/link";
 import { useState, useEffect } from "react";
