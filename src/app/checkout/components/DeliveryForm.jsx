@@ -10,27 +10,27 @@ export default function DeliveryForm() {
       <div className="form-grid">
 
         <div className="input-group">
-          <input className="input-field"/>
+          <input type="text" className="input-field" placeholder=" " />
           <label>Full Name</label>
         </div>
 
         <div className="input-group">
-          <input className="input-field"/>
-          <label>Phone</label>
+          <input type="tel" className="input-field" placeholder=" " />
+          <label>Phone Number</label>
         </div>
 
         <div className="input-group">
-          <textarea className="input-field textarea"/>
-          <label>Address</label>
+          <textarea className="input-field textarea" placeholder=" " />
+          <label>Delivery Address</label>
         </div>
 
         <div className="input-group">
-          <input className="input-field"/>
+          <input type="text" className="input-field" placeholder=" " />
           <label>City</label>
         </div>
 
         <div className="input-group">
-          <input className="input-field"/>
+          <input type="text" className="input-field" placeholder=" " />
           <label>Pincode</label>
         </div>
 

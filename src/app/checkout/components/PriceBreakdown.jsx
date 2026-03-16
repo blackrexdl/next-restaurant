@@ -1,5 +1,12 @@
-import "./checkout.css";
-export default function PriceBreakdown({ subtotal, deliveryFee, tax, discount, total }) {
+"use client";
+
+export default function PriceBreakdown({
+  subtotal,
+  deliveryFee,
+  tax,
+  discount,
+  total
+}) {
 
   return (
     <div className="price-breakdown">
