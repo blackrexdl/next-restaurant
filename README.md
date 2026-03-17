@@ -69,9 +69,9 @@ The project structure is beginner‑friendly and ideal for learning **Next.js fu
 
 ---
 
-# File Tree: next-restaurant# File Tree: next-restaurant
+# File Tree: next-restaurant
 
-**Generated:** 3/11/2026, 10:46:42 PM
+**Generated:** 3/17/2026, 6:12:08 PM
 **Root Path:** `/Users/shubhamsharma/VS CODE/next-restaurant`
 
 ```
@@ -90,6 +90,15 @@ The project structure is beginner‑friendly and ideal for learning **Next.js fu
 │   │   ├── 📁 cart
 │   │   │   └── 📄 page.jsx
 │   │   ├── 📁 checkout
+│   │   │   ├── 📁 components
+│   │   │   │   ├── 📄 CheckoutItems.jsx
+│   │   │   │   ├── 📄 DeliveryForm.jsx
+│   │   │   │   ├── 📄 OrderNotes.jsx
+│   │   │   │   ├── 📄 PaymentMethod.jsx
+│   │   │   │   ├── 📄 PriceBreakdown.jsx
+│   │   │   │   ├── 📄 PromoSection.jsx
+│   │   │   │   └── 📄 ReservationForm.jsx
+│   │   │   ├── 🎨 checkout.css
 │   │   │   └── 📄 page.jsx
 │   │   ├── 📁 components
 │   │   │   ├── 📁 CartSidebar
@@ -108,9 +117,13 @@ The project structure is beginner‑friendly and ideal for learning **Next.js fu
 │   │   │       ├── 📄 Navbar.jsx
 │   │   │       └── 🎨 navbar.css
 │   │   ├── 📁 order-success
+│   │   │   ├── 🎨 page.css
 │   │   │   └── 📄 page.jsx
+│   │   ├── 📁 reservation
+│   │   │   ├── 📄 page.jsx
+│   │   │   └── 🎨 reservation.css
 │   │   ├── 📄 favicon.ico
-│   │   ├── 🎨 globals.css
+│   │   ├── 🎨 global.css
 │   │   ├── 📄 layout.js
 │   │   ├── 📄 page.js
 │   │   └── 🎨 page.module.css
