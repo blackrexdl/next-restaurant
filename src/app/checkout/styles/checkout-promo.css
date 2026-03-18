@@ -1,12 +1,12 @@
-
 /* PROMO SECTION */
 
 .promo-section{
   background:var(--card);
-  border-radius:20px;
-  padding:26px;
+  border-radius:16px;
+  padding:20px;
   border:1px solid var(--border);
-  box-shadow:0 20px 40px rgba(0,0,0,0.04);
+  box-shadow:0 8px 20px rgba(0,0,0,0.06);
+  margin-bottom:16px;
 }
 
 .promo-box{
@@ -17,32 +17,41 @@
 
 .promo-input{
   flex:1;
-  padding:14px;
-  border-radius:10px;
+  padding:12px;
+  border-radius:12px;
   border:1px solid var(--border);
   font-size:14px;
+  outline:none;
+  transition:all .2s ease;
+}
+
+.promo-input:focus{
+  border-color:var(--primary);
+  box-shadow:0 0 0 2px rgba(255,107,61,0.2);
 }
 
 .apply-promo-btn{
-  padding:14px 20px;
+  padding:12px 18px;
   border:none;
-  border-radius:10px;
+  border-radius:12px;
   background:linear-gradient(135deg,var(--primary),var(--primary-dark));
   color:#fff;
   font-weight:600;
   cursor:pointer;
   transition:.2s;
+  font-size:14px;
 }
 
 .apply-promo-btn:hover{
   transform:translateY(-1px);
-  box-shadow:0 10px 20px rgba(255,107,61,0.35);
+  box-shadow:0 6px 14px rgba(255,107,61,0.25);
 }
 
 .promo-success{
   margin-top:10px;
   color:#2e9f5b;
   font-weight:600;
+  font-size:13px;
 }
 
 /* CART TEXT VISIBILITY FIX */
@@ -52,6 +61,7 @@
   font-weight:500;
   display:inline-block;
   margin-right:auto;
+  line-height:1.4;
 }
 
 .item-qty{
