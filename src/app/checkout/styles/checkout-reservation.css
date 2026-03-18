@@ -73,18 +73,7 @@
   min-height:48px;
 }
 
-.input-group label{
-  position:absolute;
-  left:14px;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:14px;
-  color:#7a7a7a;
-  pointer-events:none;
-  background:#fff;
-  padding:0 4px;
-  transition:all .25s ease;
-}
+
 
 /* when typing or focusing */
 
@@ -100,4 +89,51 @@
 .input-group .input-field:focus{
   border-color:var(--primary);
   box-shadow:0 0 0 3px rgba(255,107,61,0.15);
+}
+
+/* reservation layout improvement */
+.reservation-box .form-grid .input-group:nth-child(7){
+  grid-column: span 2;
+}
+.input-field{
+  padding:14px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:#fafafa;
+  font-size:14px;
+  transition:.2s;
+  width:100%;
+  min-height:48px;
+  box-sizing:border-box;
+}
+
+select.input-field{
+  height:48px;
+  line-height:48px;
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+}
+
+.input-field:focus{
+  outline:none;
+  border-color:var(--primary);
+  background:#fff;
+  box-shadow:0 0 0 3px rgba(255,107,61,0.15);
+}
+
+.textarea{
+  min-height:100px;
+  resize:vertical;
+  width:80%;
+}
+/* FORM TITLE STYLE */
+
+.delivery-form h2,
+.payment-method h2,
+.order-notes h2,
+.promo-section h2{
+  font-size:18px;
+  margin-bottom:14px;
+  color:#1c1c1c;
 }

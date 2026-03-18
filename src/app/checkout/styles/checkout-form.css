@@ -1,5 +1,12 @@
 
-/* FORM SIDE */
+/* ensure consistent spacing with main layout */
+.delivery-form,
+.payment-method,
+.order-notes,
+.promo-section,
+.reservation-box{
+  width:100%;
+}
 
 .delivery-form,
 .payment-method,
@@ -21,7 +28,7 @@
 .form-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:18px;
+  gap:14px;
   align-items:stretch;
 }
 
@@ -31,55 +38,11 @@
   width:100%;
   display:flex;
   flex-direction:column;
+  gap:6px;
 }
 
 /* make the address textarea row span full width */
 
 .form-grid .input-group:nth-child(3){
   grid-column:span 2;
-}
-/* reservation layout improvement */
-.reservation-box .form-grid .input-group:nth-child(7){
-  grid-column: span 2;
-}
-.input-field{
-  padding:14px;
-  border-radius:10px;
-  border:1px solid var(--border);
-  background:#fafafa;
-  font-size:14px;
-  transition:.2s;
-  width:100%;
-  min-height:48px;
-  box-sizing:border-box;
-}
-
-select.input-field{
-  height:48px;
-  line-height:48px;
-  appearance:none;
-  -webkit-appearance:none;
-  -moz-appearance:none;
-}
-
-.input-field:focus{
-  outline:none;
-  border-color:var(--primary);
-  background:#fff;
-  box-shadow:0 0 0 3px rgba(255,107,61,0.15);
-}
-
-.textarea{
-  min-height:100px;
-  resize:vertical;
-}
-/* FORM TITLE STYLE */
-
-.delivery-form h2,
-.payment-method h2,
-.order-notes h2,
-.promo-section h2{
-  font-size:18px;
-  margin-bottom:14px;
-  color:#1c1c1c;
 }
