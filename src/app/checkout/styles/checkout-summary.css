@@ -6,6 +6,7 @@
   height:46px;
   border-radius:10px;
   object-fit:cover;
+  border:1px solid var(--border);
 }
 
 .item-info{
@@ -13,6 +14,7 @@
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:10px;
 }
 
 
@@ -20,26 +22,26 @@
 
 .order-success{
   text-align:center;
-  padding:80px 20px;
+  padding:60px 20px;
 }
 
 .success-icon{
-  width:90px;
-  height:90px;
+  width:70px;
+  height:70px;
   border-radius:50%;
   background:linear-gradient(135deg,var(--primary),var(--primary-dark));
   display:flex;
   align-items:center;
   justify-content:center;
   margin:0 auto 24px;
-  font-size:40px;
+  font-size:30px;
   color:#fff;
-  box-shadow:0 18px 40px rgba(255,107,61,0.4);
+  box-shadow:0 10px 24px rgba(255,107,61,0.3);
   animation:successPop .6s ease;
 }
 
 .success-title{
-  font-size:28px;
+  font-size:24px;
   font-weight:700;
   margin-bottom:10px;
 }
@@ -66,10 +68,11 @@
 
 .checkout-items li{
   transition:.2s;
+  animation:cartFade .3s ease;
 }
 
 .checkout-items li:hover{
-  transform:translateX(3px);
+  transform:translateX(2px);
 }
 
 /* CART ITEM FADE ANIMATION */
@@ -87,9 +90,16 @@
 /* reservation field spacing */
 
 .reservation-box .form-grid{
-  gap:26px;
+  gap:18px;
 }
 
 .reservation-box .input-group{
   margin-bottom:6px;
+}
+
+/* ensure summary items align cleanly */
+.checkout-items li{
+  display:flex;
+  align-items:center;
+  gap:10px;
 }
