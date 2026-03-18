@@ -29,14 +29,7 @@ export default function CheckoutPage() {
   const [promoCode, setPromoCode] = useState("");
   const [discount, setDiscount] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState("cod");
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
 
   const subtotal = cart.reduce((sum, item) => {
     const qty = item.qty ?? 1;
@@ -63,46 +56,48 @@ export default function CheckoutPage() {
     <main className="checkout-page">
 
       <div className="checkout-header">
+        <div className="checkout-wrapper">
 
-        <div className="checkout-title">
-          <span className="checkout-icon">🧾</span>
-          <h1>Checkout</h1>
+          <div className="checkout-title">
+            <span className="checkout-icon">🧾</span>
+            <h1>Checkout</h1>
+          </div>
+
+          <div className="breadcrumb">
+            <Link href="/">Home</Link>
+            <span>/</span>
+            <span>Checkout</span>
+          </div>
+
+          <Link href="/">
+            <button className="home-btn">← Back to Home</button>
+          </Link>
+
         </div>
-
-        <div className="breadcrumb">
-          <Link href="/">Home</Link>
-          <span>/</span>
-          <span>Checkout</span>
-        </div>
-
-        <Link href="/">
-          <button className="home-btn">← Back to Home</button>
-        </Link>
-
       </div>
 
       {cart.length === 0 ? (
-        <div className="empty-cart checkout-empty">
+        <div className="checkout-container"><div className="checkout-wrapper"><div className="empty-cart checkout-empty">
           <p>Your cart is empty</p>
-        </div>
+        </div></div></div>
       ) : (
 
   <div className="checkout-container">
+
+    <div className="checkout-progress">
+      <div className="progress-step active">1</div>
+      <div className="progress-step active">2</div>
+      <div className="progress-step">3</div>
+    </div>
+
     <div className="checkout-wrapper">
 
-      {/* Progress Bar */}
-      <div className="checkout-progress">
-        <div className="progress-step active">1</div>
-        <div className="progress-step active">2</div>
-        <div className="progress-step">3</div>
-      </div>
-
       {/* Main Layout */}
-      <div className="checkout-layout fade-in">
+      <div className="checkout-layout fade-in checkout-main">
 
         {/* LEFT SIDE */}
         <div className="checkout-left">
-          <div className="card"><CheckoutItems cart={cart} /></div>
+          <CheckoutItems cart={cart} />
 
           <div className="card">
             <PromoSection
@@ -145,11 +140,13 @@ export default function CheckoutPage() {
             />
           </div>
 
-          <Link href="/order-success">
-            <button type="button" className="checkout-submit-btn primary-btn">
-              Secure Checkout →
-            </button>
-          </Link>
+          <div className="checkout-action">
+            <Link href="/order-success">
+              <button type="button" className="checkout-submit-btn primary-btn">
+                Secure Checkout →
+              </button>
+            </Link>
+          </div>
 
         </div>
 
