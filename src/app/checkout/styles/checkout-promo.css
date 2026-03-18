@@ -1,0 +1,76 @@
+
+/* PROMO SECTION */
+
+.promo-section{
+  background:var(--card);
+  border-radius:20px;
+  padding:26px;
+  border:1px solid var(--border);
+  box-shadow:0 20px 40px rgba(0,0,0,0.04);
+}
+
+.promo-box{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+
+.promo-input{
+  flex:1;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  font-size:14px;
+}
+
+.apply-promo-btn{
+  padding:14px 20px;
+  border:none;
+  border-radius:10px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.apply-promo-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 10px 20px rgba(255,107,61,0.35);
+}
+
+.promo-success{
+  margin-top:10px;
+  color:#2e9f5b;
+  font-weight:600;
+}
+
+/* CART TEXT VISIBILITY FIX */
+
+.item-name{
+  color:#ffffff;
+  font-weight:500;
+  display:inline-block;
+  margin-right:auto;
+}
+
+.item-qty{
+  color:#ffffff;
+  font-weight:500;
+  margin-left:6px;
+}
+
+.item-price{
+  color:#ffffff;
+  font-weight:600;
+}
+
+/* BUTTON GLOBAL IMPROVEMENT */
+
+button{
+  font-family:inherit;
+}
+
+button:active{
+  transform:scale(.97);
+}

@@ -1,10 +1,18 @@
 // Optimized component-based version
 "use client";
-import "./checkout.css";
 import { useCart } from "../../context/CartContext";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-
+// import "./checkout.css";
+import "./styles/checkout-layout.css";
+import "./styles/checkout-header.css";
+import "./styles/checkout-form.css";
+import "./styles/checkout-payment.css";
+import "./styles/checkout-summary.css";
+import "./styles/checkout-promo.css";
+import "./styles/checkout-reservation.css";
+import "./styles/checkout-card.css";
+import "./styles/checkout-animations.css";
 import CheckoutItems from "./components/CheckoutItems";
 import PromoSection from "./components/PromoSection";
 import ReservationForm from "./components/ReservationForm";
@@ -74,67 +82,81 @@ export default function CheckoutPage() {
       </div>
 
       {cart.length === 0 ? (
-        <div className="empty-cart">
+        <div className="empty-cart checkout-empty">
           <p>Your cart is empty</p>
         </div>
       ) : (
 
-     <div className="checkout-container">
-  <div className="checkout-wrapper">
+  <div className="checkout-container">
+    <div className="checkout-wrapper">
 
-    <div className="checkout-progress">
-      <div className="progress-step active">1</div>
-      <div className="progress-step active">2</div>
-      <div className="progress-step">3</div>
-    </div>
-
-    <div className="checkout-layout">
-
-      <div className="checkout-left">
-        <CheckoutItems cart={cart} />
-
-        <PromoSection
-          promoCode={promoCode}
-          setPromoCode={setPromoCode}
-          discount={discount}
-          applyPromo={applyPromo}
-        />
-
-        <ReservationForm />
+      {/* Progress Bar */}
+      <div className="checkout-progress">
+        <div className="progress-step active">1</div>
+        <div className="progress-step active">2</div>
+        <div className="progress-step">3</div>
       </div>
 
-      <div className="checkout-right">
-        <PriceBreakdown
-          subtotal={subtotal}
-          deliveryFee={deliveryFee}
-          tax={tax}
-          discount={discount}
-          total={total}
-        />
+      {/* Main Layout */}
+      <div className="checkout-layout fade-in">
 
-        <DeliveryForm />
+        {/* LEFT SIDE */}
+        <div className="checkout-left">
+          <div className="card"><CheckoutItems cart={cart} /></div>
 
-        <PaymentMethod
-          paymentMethod={paymentMethod}
-          setPaymentMethod={setPaymentMethod}
-        />
+          <div className="card">
+            <PromoSection
+              promoCode={promoCode}
+              setPromoCode={setPromoCode}
+              discount={discount}
+              applyPromo={applyPromo}
+            />
+          </div>
 
-        <OrderNotes
-          note={note}
-          setNote={setNote}
-        />
+          <div className="card"><ReservationForm /></div>
+        </div>
 
-        <Link href="/order-success">
-          <button className="checkout-submit-btn">
-            Secure Checkout →
-          </button>
-        </Link>
+        {/* RIGHT SIDE */}
+        <div className="checkout-right">
+
+          <div className="checkout-card">
+            <PriceBreakdown
+              subtotal={subtotal}
+              deliveryFee={deliveryFee}
+              tax={tax}
+              discount={discount}
+              total={total}
+            />
+          </div>
+
+          <div className="card"><DeliveryForm /></div>
+
+          <div className="card">
+            <PaymentMethod
+              paymentMethod={paymentMethod}
+              setPaymentMethod={setPaymentMethod}
+            />
+          </div>
+
+          <div className="card">
+            <OrderNotes
+              note={note}
+              setNote={setNote}
+            />
+          </div>
+
+          <Link href="/order-success">
+            <button type="button" className="checkout-submit-btn primary-btn">
+              Secure Checkout →
+            </button>
+          </Link>
+
+        </div>
+
       </div>
 
     </div>
-
   </div>
-</div>
       )}
     </main>
   );

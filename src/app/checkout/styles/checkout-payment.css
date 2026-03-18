@@ -1,0 +1,431 @@
+
+/* PAYMENT OPTIONS */
+
+.payment-options{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.payment-option{
+  padding:16px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  gap:12px;
+  cursor:pointer;
+  background:#fafafa;
+  position:relative;
+  transition:all .25s ease;
+}
+/* APPLE-STYLE PAYMENT SELECT ANIMATION */
+
+.payment-option input{
+  position:relative;
+  z-index:2;
+}
+
+/* hover lift */
+
+.payment-option:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 24px rgba(0,0,0,0.08);
+}
+
+/* active selection glow */
+
+.payment-option:has(input:checked){
+  border-color:var(--primary);
+  background:linear-gradient(
+    135deg,
+    rgba(255,107,61,0.08),
+    rgba(255,107,61,0.03)
+  );
+  box-shadow:
+    0 10px 24px rgba(255,107,61,0.18),
+    inset 0 0 0 1px rgba(255,107,61,0.25);
+  transform:scale(1.02);
+}
+
+/* radio pop animation */
+
+.payment-option input:checked{
+  animation:paymentPop .35s ease;
+}
+
+@keyframes paymentPop{
+  0%{transform:scale(.7);}
+  60%{transform:scale(1.25);}
+  100%{transform:scale(1);}
+}
+
+/* ORDER SUMMARY */
+
+.checkout-card{
+  background:var(--summary);
+  color:#fff;
+  line-height:1.5;
+  border-radius:24px;
+  padding:30px;
+  position:sticky;
+  top:100px;
+}
+
+/* FORCE VISIBILITY FOR ALL TEXT INSIDE ORDER SUMMARY (RIGHT SIDE) */
+
+.checkout-card h1,
+.checkout-card h2,
+.checkout-card h3,
+.checkout-card h4,
+.checkout-card p,
+.checkout-card span,
+.checkout-card li{
+  color:#ffffff;
+}
+
+.checkout-card .price-row{
+  color:#e4e4e4;
+}
+
+.checkout-card .price-total{
+  color:#ffffff;
+}
+
+.checkout-card small{
+  color:#cfcfcf;
+}
+
+/* CART ITEMS */
+
+.checkout-items{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+
+.checkout-items li{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.checkout-items li:last-child{
+  border:none;
+}
+
+.item-name{
+  font-weight:500;
+}
+
+/* PRICE */
+
+.price-breakdown{
+  margin-top:20px;
+}
+
+.price-row{
+  display:flex;
+  justify-content:space-between;
+  padding:6px 0;
+  color:#d1d1d1;
+}
+
+.price-total{
+  display:flex;
+  justify-content:space-between;
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px solid rgba(255,255,255,0.2);
+  font-size:20px;
+  font-weight:700;
+}
+
+/* BUTTON */
+
+.checkout-submit-btn{
+  width:100%;
+  margin-top:24px;
+  padding:16px;
+  border:none;
+  border-radius:14px;
+  font-size:16px;
+  font-weight:600;
+  color:#fff;
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  cursor:pointer;
+  box-shadow:0 14px 30px rgba(255,107,61,0.4);
+  transition:.25s;
+}
+
+.checkout-submit-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 20px 40px rgba(255,107,61,0.5);
+}
+
+/* NOTES */
+
+.notes-input{
+  width:100%;
+  margin-top:10px;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid var(--border);
+}
+
+.note-options{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.note-chip{
+  padding:6px 14px;
+  border-radius:20px;
+  border:1px solid var(--border);
+  background:#f7f7f7;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.note-chip:hover{
+  background:var(--primary);
+  color:#fff;
+}
+
+
+/* CHECKOUT STEP PROGRESS BAR */
+
+.checkout-progress{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:40px;
+  position:relative;
+}
+
+.checkout-progress::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:0;
+  right:0;
+  height:4px;
+  background:var(--border);
+  transform:translateY(-50%);
+  z-index:0;
+}
+
+.progress-step{
+  position:relative;
+  z-index:1;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:#fff;
+  border:2px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  font-weight:600;
+  transition:all .35s ease;
+}
+
+.progress-step.active{
+  background:var(--primary);
+  color:#fff;
+  border-color:var(--primary);
+  box-shadow:0 8px 20px rgba(255,107,61,0.35);
+  animation:stepPop .5s ease;
+}
+
+@keyframes stepPop{
+  0%{transform:scale(.7);opacity:0}
+  60%{transform:scale(1.15)}
+  100%{transform:scale(1);opacity:1}
+}
+
+
+/* CARD FLIP 3D WRAPPER */
+
+.credit-card-wrapper{
+  perspective:1000px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:180px;
+  margin-bottom:20px;
+}
+
+.credit-card-wrapper .card-front,
+.credit-card-wrapper .credit-card-back{
+  position:absolute;
+  width:100%;
+  height:75%;
+  top:10px;
+  left:0;
+  
+  backface-visibility:hidden;
+  transition:transform .6s cubic-bezier(.4,.2,.2,1);
+  border-radius:18px;
+}
+
+/* front face */
+
+.credit-card-wrapper .card-front{
+  transform:rotateY(0deg);
+}
+
+/* back face */
+
+.credit-card-back{
+  background:linear-gradient(135deg,#1c1d26,#2c2d38);
+  padding:26px;
+  color:#fff;
+  transform:rotateY(180deg);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:18px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.25);
+}
+
+/* magnetic strip */
+
+.card-strip{
+  width:100%;
+  height:36px;
+  background:#000;
+  border-radius:4px;
+}
+
+/* cvv area */
+
+.card-cvv-box{
+  background:#fff;
+  color:#000;
+  padding:8px 10px;
+  border-radius:6px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:14px;
+  width:120px;
+}
+
+/* flip state */
+
+.credit-card-wrapper.flipped .card-front{
+  transform:rotateY(-180deg);
+}
+
+.credit-card-wrapper.flipped .credit-card-back{
+  transform:rotateY(0deg);
+}
+
+/* CREDIT CARD VISUAL */
+
+.credit-card-preview.card-front{
+  background:linear-gradient(135deg,#2c2d38,#1c1d26);
+  border-radius:18px;
+  padding:26px;
+  color:#fff;
+  margin-bottom:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.25);
+  position:relative;
+  overflow:hidden;
+  transition:transform .35s ease, box-shadow .35s ease;
+}
+
+/* subtle hover tilt like modern fintech UI */
+
+.credit-card-preview:hover{
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:0 28px 60px rgba(0,0,0,0.35);
+}
+
+/* glow stripe animation */
+
+.credit-card-preview::before{
+  content:"";
+  position:absolute;
+  top:-40%;
+  left:-40%;
+  width:180%;
+  height:180%;
+  background:linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(255,255,255,0.08),
+    transparent 60%
+  );
+  transform:rotate(25deg);
+  animation:cardShine 6s linear infinite;
+}
+
+@keyframes cardShine{
+  0%{
+    transform:translateX(-120%) rotate(25deg);
+  }
+  100%{
+    transform:translateX(120%) rotate(25deg);
+  }
+}
+
+.card-number{
+  font-size:22px;
+  letter-spacing:3px;
+  margin-top:18px;
+  font-weight:600;
+  transition:all .25s ease;
+}
+
+/* typing animation feel */
+
+.card-number.updated{
+  animation:numberPop .35s ease;
+}
+
+@keyframes numberPop{
+  0%{transform:scale(.95);opacity:.7;}
+  60%{transform:scale(1.05);}
+  100%{transform:scale(1);opacity:1;}
+}
+
+.card-meta{
+  display:flex;
+  justify-content:space-between;
+  margin-top:18px;
+  font-size:14px;
+  opacity:0.85;
+}
+
+.card-holder{
+  text-transform:uppercase;
+  font-weight:500;
+  letter-spacing:1px;
+  transition:.25s;
+}
+
+.card-expiry{
+  font-weight:500;
+  letter-spacing:1px;
+  transition:.25s;
+}
+/* PAYMENT OPTION VISIBILITY */
+
+.payment-option input{
+  width:18px;
+  height:18px;
+  accent-color:var(--primary);
+}
+
+.payment-option span{
+  font-weight:500;
+  color:var(--text);
+}
+
