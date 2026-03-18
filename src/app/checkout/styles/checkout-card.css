@@ -1,40 +1,42 @@
 .credit-card-wrapper{
   perspective:1000px;
   height:180px;
+  margin-top:10px;
 }
 
 .credit-card-preview{
   position:relative;
   width:100%;
   height:100%;
-  border-radius:18px;
-  padding:20px;
+  border-radius:16px;
+  padding:18px;
   color:#fff;
-  background:linear-gradient(135deg,#2c2d38,#1c1d26);
+  background:linear-gradient(135deg,#1f2230,#12131a);
   display:flex;
   flex-direction:column;
   justify-content:space-between;
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+  box-shadow:0 8px 24px rgba(0,0,0,0.35);
 }
 
 .card-chip{
-  width:40px;
+  width:42px;
   height:28px;
   background:linear-gradient(135deg,#d4af37,#f1c40f);
   border-radius:6px;
+  box-shadow:inset 0 1px 2px rgba(255,255,255,0.3);
 }
 
 .card-number{
-  font-size:18px;
-  letter-spacing:2px;
-  margin:10px 0;
+  font-size:17px;
+  letter-spacing:2.5px;
+  margin:8px 0;
 }
 
 .card-footer{
   display:flex;
   justify-content:space-between;
   font-size:12px;
-  opacity:0.85;
+  opacity:0.9;
 }
 
 .checkout-section > * {
@@ -43,8 +45,14 @@
 
 .card,
 .checkout-card {
-  width: 100%;
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 18px;
+  width:100%;
+  background:#ffffff;
+  border-radius:14px;
+  padding:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.credit-card-preview:hover{
+  transform:translateY(-2px);
+  transition:all .25s ease;
 }
