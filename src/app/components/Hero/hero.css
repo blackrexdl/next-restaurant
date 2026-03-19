@@ -296,3 +296,79 @@ animation: heroGradientMove 18s ease infinite;
     background-position: 0% 50%;
   }
 }
+
+/* ================= MOBILE RESPONSIVE IMPROVEMENTS ================= */
+
+@media (max-width: 768px) {
+
+  .hero {
+    height: 50vh;
+    padding: 20px 16px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+    padding: 10px 18px;
+  }
+
+  .hero h1::before {
+    width: 300px;
+    height: 140px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .order-btn,
+  .menu-btn {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .hero-marquee {
+    top: 10px;
+  }
+
+  .hero-track {
+    font-size: 36px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .hero {
+    height: 55vh;
+    padding: 16px 12px;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .hero-track {
+    font-size: 26px;
+  }
+
+  .hero-buttons {
+    gap: 10px;
+  }
+
+  .order-btn,
+  .menu-btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+}
