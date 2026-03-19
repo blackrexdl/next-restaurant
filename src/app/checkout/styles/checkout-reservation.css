@@ -137,3 +137,57 @@ select.input-field{
   margin-bottom:14px;
   color:#1c1c1c;
 }
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+  .reservation-box{
+    padding:20px;
+  }
+
+  .reservation-box h2{
+    font-size:16px;
+  }
+
+  .reservation-box .form-grid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .reservation-box .form-grid .input-group:nth-child(7){
+    grid-column:span 1;
+  }
+
+  .input-field{
+    font-size:14px;
+    padding:12px;
+  }
+
+  .textarea{
+    width:100%;
+  }
+
+  .reserve-btn{
+    padding:14px;
+    font-size:14px;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .reservation-box{
+    padding:16px;
+  }
+
+  .reservation-box h2{
+    font-size:15px;
+  }
+
+  .reserve-btn{
+    padding:12px;
+    font-size:13px;
+  }
+
+}
