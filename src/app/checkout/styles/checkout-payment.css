@@ -1,6 +1,4 @@
 
-/* PAYMENT OPTIONS */
-
 .payment-options{
   display:flex;
   flex-direction:column;
@@ -429,3 +427,102 @@
   color:var(--text);
 }
 
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+  .checkout-progress{
+    margin-bottom:24px;
+  }
+
+  .progress-step{
+    width:32px;
+    height:32px;
+    font-size:12px;
+  }
+
+  .checkout-card{
+    position:static;
+    padding:20px;
+    border-radius:16px;
+  }
+
+  .checkout-items li{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:6px;
+  }
+
+  .price-row,
+  .price-total{
+    font-size:14px;
+  }
+
+  .checkout-submit-btn{
+    padding:14px;
+    font-size:14px;
+  }
+
+  .payment-option{
+    padding:14px;
+    border-radius:12px;
+  }
+
+  .note-options{
+    gap:8px;
+  }
+
+  .note-chip{
+    font-size:12px;
+    padding:5px 10px;
+  }
+
+  .credit-card-wrapper{
+    height:150px;
+  }
+
+  .credit-card-preview.card-front{
+    padding:18px;
+  }
+
+  .card-number{
+    font-size:18px;
+    letter-spacing:2px;
+  }
+
+  .card-meta{
+    font-size:12px;
+  }
+}
+
+@media(max-width:480px){
+
+  .progress-step{
+    width:28px;
+    height:28px;
+    font-size:11px;
+  }
+
+  .checkout-card{
+    padding:16px;
+  }
+
+  .checkout-submit-btn{
+    padding:12px;
+    font-size:13px;
+  }
+
+  .payment-option{
+    padding:12px;
+  }
+
+  .credit-card-wrapper{
+    height:130px;
+  }
+
+  .card-number{
+    font-size:16px;
+  }
+
+}
