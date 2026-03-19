@@ -167,3 +167,85 @@ body{
     0 30px 60px rgba(0,0,0,0.12),
     0 0 40px rgba(255,107,61,0.25);
 }
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media(max-width:1200px){
+  .checkout-layout{
+    gap:30px;
+  }
+}
+
+@media(max-width:768px){
+
+  .checkout-container{
+    padding:30px 0 30px;
+    margin:10px;
+    border-radius:16px;
+  }
+
+  .checkout-wrapper{
+    padding:0 16px;
+  }
+
+  .checkout-header{
+    margin-bottom:24px;
+  }
+
+  .checkout-title{
+    flex-direction:column;
+    gap:4px;
+  }
+
+  .checkout-icon{
+    font-size:22px;
+  }
+
+  .breadcrumb{
+    flex-wrap:wrap;
+    font-size:12px;
+    text-align:center;
+  }
+
+  .home-btn{
+    width:100%;
+  }
+
+  .checkout-layout{
+    gap:24px;
+  }
+
+  .checkout-left,
+  .checkout-right{
+    gap:16px;
+  }
+
+  .glass-panel{
+    border-radius:16px;
+    padding:16px;
+  }
+}
+
+@media(max-width:480px){
+
+  .checkout-container{
+    padding:20px 0 20px;
+  }
+
+  .checkout-wrapper{
+    padding:0 12px;
+  }
+
+  .checkout-title{
+    font-size:18px;
+  }
+
+  .breadcrumb{
+    font-size:11px;
+  }
+
+  .home-btn{
+    padding:10px;
+    font-size:13px;
+  }
+}
