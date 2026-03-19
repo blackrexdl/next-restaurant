@@ -68,7 +68,56 @@
 
   .nav-links {
     gap: 16px;
+    display: none;
   }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+/* Hamburger button styles */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 22px;
+  height: 2px;
+  background: #333;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+/* Mobile menu base styles */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%;
+  height: 100vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 20px;
+  gap: 20px;
+  transition: right 0.3s ease;
+  z-index: 200;
+  box-shadow: -4px 0 20px rgba(0,0,0,0.08);
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 /* ================= GLASSMORPHISM SCROLL EFFECT ================= */
@@ -80,4 +129,40 @@
   border-bottom: 1px solid rgba(0,0,0,0.08);
   box-shadow: 0 6px 20px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
+}
+
+/* Overlay for mobile menu */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 150;
+}
+
+.menu-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Small mobile tweaks */
+@media (max-width: 480px) {
+
+  .navbar {
+    padding: 12px 16px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .mobile-menu {
+    width: 80%;
+  }
+
 }
