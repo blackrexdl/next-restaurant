@@ -34,7 +34,7 @@
   font-size:13px;
   font-weight:600;
   color:#555;
-  transition:all .3s ease;
+  transition:all .25s ease-in-out;
 }
 
 /* active step styling + animation */
@@ -48,6 +48,40 @@
 
 @keyframes stepPop{
   0%{transform:scale(.7);opacity:0}
-  60%{transform:scale(1.15)}
+  50%{transform:scale(1.08)}
   100%{transform:scale(1);opacity:1}
+}
+
+.progress-step:hover{
+  transform:scale(1.05);
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+  .checkout-progress{
+    margin-bottom:24px;
+  }
+
+  .progress-step{
+    width:30px;
+    height:30px;
+    font-size:12px;
+  }
+
+  .checkout-progress::before{
+    height:2px;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .progress-step{
+    width:26px;
+    height:26px;
+    font-size:11px;
+  }
+
 }
