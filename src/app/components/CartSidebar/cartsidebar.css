@@ -212,3 +212,58 @@
   background: #ff4d4d;
   color: white;
 }
+.cart-sidebar,
+.cart-item,
+.qty-controls,
+.checkout-btn,
+.close-btn {
+  /* No changes here, just for context. */
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+  .cart-sidebar{
+    width:100%;
+    padding:20px;
+    border-left:none;
+    border-top-left-radius:16px;
+    border-bottom-left-radius:16px;
+  }
+
+  .cart-item{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:6px;
+  }
+
+  .qty-controls{
+    display:flex;
+    gap:8px;
+  }
+
+  .checkout-btn{
+    padding:14px;
+    font-size:14px;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .cart-sidebar{
+    padding:16px;
+  }
+
+  .checkout-btn{
+    padding:12px;
+    font-size:13px;
+  }
+
+  .close-btn{
+    width:30px;
+    height:30px;
+  }
+
+}
