@@ -10,9 +10,11 @@ export default function Navbar() {
 
   const { cart } = useCart();
   const cartCount = cart.reduce((total, item) => {
-  return total + (item.qty ?? 1);
-}, 0);
+    return total + (item.qty ?? 1);
+  }, 0);
+
   const [openCart, setOpenCart] = useState(false);
+
   const cartBtnRef = useRef(null);
   const badgeRef = useRef(null);
   const prevCountRef = useRef(cartCount);
@@ -20,52 +22,34 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setMounted(true);
-  }, []);
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
- useEffect(() => {
-  const handleOpenCart = () => {
-    setOpenCart(true);
-  };
+  useEffect(() => {
+    const handleOpenCart = () => {
+      setOpenCart(true);
+    };
 
-  window.addEventListener("openCart", handleOpenCart);
-
-  return () => {
-    window.removeEventListener("openCart", handleOpenCart);
-  };
-}, []);
+    window.addEventListener("openCart", handleOpenCart);
+    return () => window.removeEventListener("openCart", handleOpenCart);
+  }, []);
 
   useEffect(() => {
     if (cartCount > prevCountRef.current) {
-      if (cartBtnRef.current) {
-        cartBtnRef.current.classList.add("bump");
-        setTimeout(() => {
-          cartBtnRef.current?.classList.remove("bump");
-        }, 350);
-      }
+      cartBtnRef.current?.classList.add("bump");
+      setTimeout(() => cartBtnRef.current?.classList.remove("bump"), 350);
 
-      if (badgeRef.current) {
-        badgeRef.current.classList.add("pulse");
-        setTimeout(() => {
-          badgeRef.current?.classList.remove("pulse");
-        }, 400);
-      }
+      badgeRef.current?.classList.add("pulse");
+      setTimeout(() => badgeRef.current?.classList.remove("pulse"), 400);
     }
 
     prevCountRef.current = cartCount;
@@ -82,8 +66,7 @@ export default function Navbar() {
           className="cart-btn"
           onClick={() => setOpenCart(true)}
         >
-          <span className="cart-icon">🛒</span>
-
+          🛒
           {mounted && cartCount > 0 && (
             <span ref={badgeRef} className="cart-badge">
               {cartCount}
@@ -93,10 +76,7 @@ export default function Navbar() {
 
       </nav>
 
-      <CartSidebar
-        isOpen={openCart}
-        setIsOpen={setOpenCart}
-      />
+      <CartSidebar isOpen={openCart} setIsOpen={setOpenCart} />
     </>
   );
 }
