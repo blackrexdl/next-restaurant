@@ -25,6 +25,21 @@ export default function CheckoutPage() {
     setIsClient(true);
   }, []);
 
+  useEffect(() => {
+    if (showSuccess) {
+      document.body.style.overflow = "hidden";
+
+      const timer = setTimeout(() => {
+        setShowSuccess(false);
+      }, 2500);
+
+      return () => {
+        clearTimeout(timer);
+        document.body.style.overflow = "auto";
+      };
+    }
+  }, [showSuccess]);
+
   const [note, setNote] = useState("");
   const [promoCode, setPromoCode] = useState("");
   const [discount, setDiscount] = useState(0);
@@ -169,13 +184,15 @@ export default function CheckoutPage() {
   </div>
       )}
       {showSuccess && (
-        <div className="success-overlay">
-          <div className="success-modal">
+        <div className="success-overlay" onClick={() => setShowSuccess(false)}>
+          <div className="success-modal" onClick={(e) => e.stopPropagation()}>
 
-            <h1 className="success-title">✔ Order Placed Successfully!</h1>
+            <div className="success-icon">🎉</div>
+
+            <h1 className="success-title">Order Placed Successfully!</h1>
 
             <p className="success-text">
-              Your food is being prepared.
+              Your food is being prepared with care.
             </p>
 
             <p className="success-time">
@@ -186,7 +203,7 @@ export default function CheckoutPage() {
               className="success-btn"
               onClick={() => setShowSuccess(false)}
             >
-              Close
+              Done
             </button>
 
           </div>
