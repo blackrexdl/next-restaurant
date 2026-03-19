@@ -44,3 +44,50 @@
   transform:translateY(-1px);
   box-shadow:0 6px 16px rgba(0,0,0,0.2);
 }
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+  .checkout-header{
+    margin-bottom:20px;
+  }
+
+  .checkout-title{
+    flex-direction:column;
+    gap:4px;
+    font-size:20px;
+  }
+
+  .checkout-icon{
+    font-size:22px;
+  }
+
+  .breadcrumb{
+    flex-wrap:wrap;
+    font-size:12px;
+    text-align:center;
+    line-height:1.4;
+  }
+
+  .home-btn{
+    width:100%;
+    padding:12px;
+  }
+}
+
+@media(max-width:480px){
+
+  .checkout-title{
+    font-size:18px;
+  }
+
+  .breadcrumb{
+    font-size:11px;
+  }
+
+  .home-btn{
+    font-size:13px;
+    padding:10px;
+  }
+}
