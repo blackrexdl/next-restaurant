@@ -16,6 +16,7 @@
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: all 0.25s ease-in-out;
 }
 
 .card-chip {
@@ -54,6 +55,63 @@
 }
 
 .credit-card-preview:hover {
-  transform: translateY(-2px);
-  transition: all 0.25s ease;
+  transform: translateY(-3px) scale(1.01);
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+  .credit-card-wrapper{
+    height:150px;
+  }
+
+  .credit-card-preview{
+    padding:16px;
+    border-radius:14px;
+  }
+
+  .card-chip{
+    width:36px;
+    height:24px;
+  }
+
+  .card-number{
+    font-size:15px;
+    letter-spacing:2px;
+  }
+
+  .card-footer{
+    font-size:11px;
+  }
+
+  .checkout-card{
+    padding:18px;
+    border-radius:16px;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .credit-card-wrapper{
+    height:130px;
+  }
+
+  .credit-card-preview{
+    padding:14px;
+  }
+
+  .card-number{
+    font-size:14px;
+  }
+
+  .card-footer{
+    font-size:10px;
+  }
+
+  .checkout-card{
+    padding:16px;
+  }
+
 }
