@@ -1,0 +1,53 @@
+/* ===== FULL SCREEN OVERLAY ===== */
+.app-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+}
+
+/* ===== GLASS CARD ===== */
+.loader-glass {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+
+  padding: 40px 30px;
+  border-radius: 20px;
+
+  text-align: center;
+
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+/* ===== DONUT LOADER ===== */
+.donut-loader {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 15px;
+
+  border-radius: 50%;
+  border: 6px solid #eee;
+  border-top: 6px solid #f59e0b;
+
+  animation: spin 0.9s linear infinite;
+}
+
+/* ===== TEXT ===== */
+.loader-text {
+  font-size: 14px;
+  color: #333;
+  opacity: 0.8;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
