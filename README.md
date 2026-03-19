@@ -71,7 +71,7 @@ The project structure is beginner‑friendly and ideal for learning **Next.js fu
 
 # File Tree: next-restaurant
 
-**Generated:** 3/17/2026, 6:12:08 PM
+**Generated:** 3/19/2026, 9:06:01 PM
 **Root Path:** `/Users/shubhamsharma/VS CODE/next-restaurant`
 
 ```
@@ -87,8 +87,6 @@ The project structure is beginner‑friendly and ideal for learning **Next.js fu
 │   └── 🖼️ window.svg
 ├── 📁 src
 │   ├── 📁 app
-│   │   ├── 📁 cart
-│   │   │   └── 📄 page.jsx
 │   │   ├── 📁 checkout
 │   │   │   ├── 📁 components
 │   │   │   │   ├── 📄 CheckoutItems.jsx
@@ -98,6 +96,17 @@ The project structure is beginner‑friendly and ideal for learning **Next.js fu
 │   │   │   │   ├── 📄 PriceBreakdown.jsx
 │   │   │   │   ├── 📄 PromoSection.jsx
 │   │   │   │   └── 📄 ReservationForm.jsx
+│   │   │   ├── 📁 styles
+│   │   │   │   ├── 🎨 checkout-animations.css
+│   │   │   │   ├── 🎨 checkout-card.css
+│   │   │   │   ├── 🎨 checkout-form.css
+│   │   │   │   ├── 🎨 checkout-header.css
+│   │   │   │   ├── 🎨 checkout-layout.css
+│   │   │   │   ├── 🎨 checkout-payment.css
+│   │   │   │   ├── 🎨 checkout-popup.css
+│   │   │   │   ├── 🎨 checkout-promo.css
+│   │   │   │   ├── 🎨 checkout-reservation.css
+│   │   │   │   └── 🎨 checkout-summary.css
 │   │   │   ├── 🎨 checkout.css
 │   │   │   └── 📄 page.jsx
 │   │   ├── 📁 components
@@ -113,12 +122,12 @@ The project structure is beginner‑friendly and ideal for learning **Next.js fu
 │   │   │   ├── 📁 Hero
 │   │   │   │   ├── 📄 Hero.jsx
 │   │   │   │   └── 🎨 hero.css
+│   │   │   ├── 📁 Loader
+│   │   │   │   ├── 📄 Loader.jsx
+│   │   │   │   └── 🎨 loader.css
 │   │   │   └── 📁 Navbar
 │   │   │       ├── 📄 Navbar.jsx
 │   │   │       └── 🎨 navbar.css
-│   │   ├── 📁 order-success
-│   │   │   ├── 🎨 page.css
-│   │   │   └── 📄 page.jsx
 │   │   ├── 📁 reservation
 │   │   │   ├── 📄 page.jsx
 │   │   │   └── 🎨 reservation.css
