@@ -11,7 +11,7 @@ import "./checkout/styles/checkout-animations.css";
 import "../styles/globals.css";
 import { CartProvider } from "../context/CartContext";
 import Navbar from "./components/Navbar/Navbar";
-
+import Footer from "./components/Footer/Footer";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
           <>
             <Navbar />
             {children}
+            <Footer />
           </>
         </CartProvider>
       </body>
