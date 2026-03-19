@@ -1,31 +1,44 @@
 "use client";
+import { useState } from "react";
+import "../order-success/page.css";
 import "./page.css";
 import Link from "next/link";
 
-export default function OrderSuccess() {
+export default function Checkout() {
+  const [showSuccess, setShowSuccess] = useState(false);
+
   return (
-    <main className="success-container">
+    <main>
+      {/* Other checkout content */}
 
-      <div className="success-card">
+      <button onClick={() => setShowSuccess(true)}>
+        Secure Payment
+      </button>
 
-        <h1 className="success-title">✔ Order Placed Successfully!</h1>
+      {showSuccess && (
+        <div className="success-overlay">
+          <div className="success-modal">
 
-        <p className="success-text">
-          Your food is being prepared.
-        </p>
+            <h1 className="success-title">✔ Order Placed Successfully!</h1>
 
-        <p className="success-time">
-          Estimated delivery: 25–30 minutes
-        </p>
+            <p className="success-text">
+              Your food is being prepared.
+            </p>
 
-        <Link href="/">
-          <button className="success-btn">
-             Back to Home
-           </button>
-        </Link>
+            <p className="success-time">
+              Estimated delivery: 25–30 minutes
+            </p>
 
-      </div>
+            <button
+              className="success-btn"
+              onClick={() => setShowSuccess(false)}
+            >
+              Close
+            </button>
 
+          </div>
+        </div>
+      )}
     </main>
   );
 }

@@ -5,6 +5,7 @@ import { useCart } from "../../context/CartContext";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 // import "./checkout.css";
+import "../order-success/page.css";
 import CheckoutItems from "./components/CheckoutItems";
 import PromoSection from "./components/PromoSection";
 import ReservationForm from "./components/ReservationForm";
@@ -17,6 +18,7 @@ export default function CheckoutPage() {
 
   const { cart } = useCart();
   const [isClient, setIsClient] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -150,11 +152,13 @@ export default function CheckoutPage() {
           </div>
 
           <div className="checkout-action">
-            <Link href="/order-success">
-              <button type="button" className="checkout-submit-btn primary-btn">
-                Secure Checkout →
-              </button>
-            </Link>
+            <button
+              type="button"
+              className="checkout-submit-btn primary-btn"
+              onClick={() => setShowSuccess(true)}
+            >
+              Secure Checkout →
+            </button>
           </div>
 
         </div>
@@ -163,6 +167,30 @@ export default function CheckoutPage() {
 
     </div>
   </div>
+      )}
+      {showSuccess && (
+        <div className="success-overlay">
+          <div className="success-modal">
+
+            <h1 className="success-title">✔ Order Placed Successfully!</h1>
+
+            <p className="success-text">
+              Your food is being prepared.
+            </p>
+
+            <p className="success-time">
+              Estimated delivery: 25–30 minutes
+            </p>
+
+            <button
+              className="success-btn"
+              onClick={() => setShowSuccess(false)}
+            >
+              Close
+            </button>
+
+          </div>
+        </div>
       )}
     </main>
   );
