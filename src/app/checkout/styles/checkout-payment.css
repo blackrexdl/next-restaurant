@@ -64,7 +64,7 @@
 
 .checkout-card{
   background:var(--summary);
-  color:#fff;
+  color:#000000;
   line-height:1.5;
   border-radius:24px;
   padding:30px;
@@ -81,7 +81,7 @@
 .checkout-card p,
 .checkout-card span,
 .checkout-card li{
-  color:#ffffff;
+  color:#000000;
 }
 
 .checkout-card .price-row{
