@@ -28,6 +28,7 @@ export default function FoodCard({
   const cardRef = useRef(null);
 
   const handleMouseMove = (e) => {
+    if (window.innerWidth <= 768) return;
     const card = cardRef.current;
     if (!card) return;
 
@@ -58,9 +59,12 @@ export default function FoodCard({
     addToCart({ title, price, image: imgSrc, category });
 
     setShowToast(true);
-    setTimeout(() => {
+
+    const timer = setTimeout(() => {
       setShowToast(false);
     }, 2000);
+
+    return () => clearTimeout(timer);
   };
 
   const cartItem = cart.find((item) => item.title === title);
@@ -76,7 +80,10 @@ export default function FoodCard({
         ref={cardRef}
         className="card premium-card"
         data-category={category}
-        onClick={() => setOpenModal(true)}
+        onClick={(e) => {
+          if (e.target.closest("button")) return;
+          setOpenModal(true);
+        }}
         onMouseMove={handleMouseMove}
         onMouseLeave={resetTilt}
         initial={{ opacity: 0, y: 50 }}
@@ -98,8 +105,10 @@ export default function FoodCard({
             loading="lazy"
             onLoad={() => requestAnimationFrame(() => setLoaded(true))}
             onError={() => {
-              setImgSrc(fallbackImage);
-              setLoaded(false);
+              if (imgSrc !== fallbackImage) {
+                setImgSrc(fallbackImage);
+                setLoaded(false);
+              }
             }}
           />
           {!loaded && <div className="image-skeleton" />}
@@ -158,6 +167,9 @@ export default function FoodCard({
       {openModal && (
         <div
           className="food-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Food details"
           onClick={() => setOpenModal(false)}
         >
           <div
@@ -166,12 +178,13 @@ export default function FoodCard({
           >
             <button
               className="close-modal"
+              aria-label="Close modal"
               onClick={() => setOpenModal(false)}
             >
               ✕
             </button>
 
-            <img src={imgSrc} alt={title} />
+            <img src={imgSrc} alt={`${title} food image`} />
 
             <h2>{title}</h2>
               {/* Rating Start */}
