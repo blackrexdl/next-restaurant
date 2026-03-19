@@ -1,18 +1,10 @@
 // Optimized component-based version
 "use client";
+// CSS handled globally via layout.js to avoid hydration/layout issues
 import { useCart } from "../../context/CartContext";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import "./checkout.css";
-import "./styles/checkout-layout.css";
-import "./styles/checkout-header.css";
-import "./styles/checkout-form.css";
-import "./styles/checkout-payment.css";
-import "./styles/checkout-summary.css";
-import "./styles/checkout-promo.css";
-import "./styles/checkout-reservation.css";
-import "./styles/checkout-card.css";
-import "./styles/checkout-animations.css";
 import CheckoutItems from "./components/CheckoutItems";
 import PromoSection from "./components/PromoSection";
 import ReservationForm from "./components/ReservationForm";
@@ -24,12 +16,29 @@ import OrderNotes from "./components/OrderNotes";
 export default function CheckoutPage() {
 
   const { cart } = useCart();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsClient(true);
+  }, []);
 
   const [note, setNote] = useState("");
   const [promoCode, setPromoCode] = useState("");
   const [discount, setDiscount] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState("cod");
 
+  if (!isClient) {
+    return (
+      <main className="checkout-page">
+        <div className="checkout-container">
+          <div className="checkout-wrapper">
+            <div className="checkout-loading">Loading...</div>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   const subtotal = cart.reduce((sum, item) => {
     const qty = item.qty ?? 1;
