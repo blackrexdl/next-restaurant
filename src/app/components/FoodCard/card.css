@@ -518,3 +518,125 @@
   background: #ff9800;
   color: white;
 }
+
+/* ================= MOBILE RESPONSIVE IMPROVEMENTS ================= */
+
+@media (max-width: 768px) {
+
+  .card {
+    max-width: 100%;
+  }
+
+  .card:hover {
+    transform: translateY(-6px) scale(1.01);
+  }
+
+  .card-img {
+    transform: scale(1);
+  }
+
+  .card:hover .card-img {
+    transform: scale(1.04);
+  }
+
+  .card-body {
+    gap: 8px;
+  }
+
+  .card-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .order-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .card {
+    border-radius: 16px;
+  }
+
+  .card-body {
+    padding: 10px;
+  }
+
+  .card-title {
+    font-size: 0.95rem;
+  }
+
+  .card-desc {
+    font-size: 0.8rem;
+  }
+
+  .price {
+    font-size: 0.9rem;
+  }
+
+  .order-btn {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .badge {
+    font-size: 0.65rem;
+    padding: 3px 6px;
+  }
+
+}
+
+/* ================= MODAL RESPONSIVE IMPROVEMENTS ================= */
+
+@media (max-width: 768px) {
+
+  .modal-content {
+    max-width: 100%;
+    border-radius: 16px;
+  }
+
+  .modal-content img {
+    height: 200px;
+  }
+
+  .modal-add-btn {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .modal-content img {
+    height: 180px;
+  }
+
+  .modal-content h2 {
+    font-size: 1.1rem;
+  }
+
+  .modal-content p {
+    font-size: 0.85rem;
+  }
+
+}
+
+/* ================= QUANTITY CONTROLS TOUCH AREA IMPROVEMENTS ================= */
+
+@media (max-width: 768px) {
+
+  .qty-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .qty-controls {
+    padding: 6px;
+  }
+
+}
