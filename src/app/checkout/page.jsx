@@ -5,7 +5,7 @@ import { useCart } from "../../context/CartContext";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 // import "./checkout.css";
-import "../order-success/page.css";
+import "./styles/checkout-popup.css";
 import CheckoutItems from "./components/CheckoutItems";
 import PromoSection from "./components/PromoSection";
 import ReservationForm from "./components/ReservationForm";
