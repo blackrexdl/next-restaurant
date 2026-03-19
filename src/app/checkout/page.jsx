@@ -2,7 +2,7 @@
 "use client";
 import { useCart } from "../../context/CartContext";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 // import "./checkout.css";
 import "./styles/checkout-layout.css";
 import "./styles/checkout-header.css";
