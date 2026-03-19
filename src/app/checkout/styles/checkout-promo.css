@@ -84,3 +84,63 @@ button{
 button:active{
   transform:scale(.97);
 }
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+  .promo-section{
+    padding:18px;
+    border-radius:14px;
+  }
+
+  .promo-box{
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .promo-input{
+    width:100%;
+    font-size:14px;
+  }
+
+  .apply-promo-btn{
+    width:100%;
+    padding:14px;
+    font-size:14px;
+  }
+
+  .promo-success{
+    font-size:12px;
+  }
+
+  .item-name{
+    font-size:13px;
+  }
+
+  .item-qty{
+    font-size:12px;
+  }
+
+  .item-price{
+    font-size:13px;
+  }
+
+}
+
+@media(max-width:480px){
+
+  .promo-section{
+    padding:16px;
+  }
+
+  .apply-promo-btn{
+    padding:12px;
+    font-size:13px;
+  }
+
+  .promo-input{
+    font-size:13px;
+  }
+
+}
