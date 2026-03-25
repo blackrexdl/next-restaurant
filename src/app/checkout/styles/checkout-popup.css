@@ -27,6 +27,11 @@
 
   box-shadow: 0 25px 80px rgba(0,0,0,0.25);
   animation: scaleIn 0.35s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
 }
 
 .success-icon {
@@ -35,18 +40,35 @@
   animation: popIcon 0.4s ease;
 }
 
+.success-icon-wrap{
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 30% 30%, rgba(255,107,61,0.18), rgba(255,107,61,0.06));
+  box-shadow: 0 10px 25px rgba(255,107,61,0.25);
+  margin-bottom: 6px;
+}
+
 .success-title {
   margin-bottom: 8px;
+  animation: fadeUp 0.4s ease both;
 }
 
 .success-text {
   font-size: 14px;
+  animation: fadeUp 0.4s ease both;
+  animation-delay: 0.05s;
 }
 
 .success-time {
   font-size: 13px;
   color: #555;
   margin-bottom: 20px;
+  animation: fadeUp 0.4s ease both;
+  animation-delay: 0.1s;
 }
 
 .success-btn {
@@ -58,10 +80,38 @@
   cursor: pointer;
 
   transition: 0.25s ease;
+  animation: fadeUp 0.4s ease both;
+  animation-delay: 0.15s;
 }
 
 .success-btn:hover {
   transform: translateY(-3px) scale(1.02);
+}
+
+.success-btn:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255,107,61,0.25), 0 10px 25px rgba(255,107,61,0.35);
+}
+
+.success-close{
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.05);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s ease;
+}
+
+.success-close:hover{
+  background: rgba(0,0,0,0.1);
+  transform: rotate(90deg);
 }
 
 /* ===== ANIMATIONS ===== */
@@ -78,5 +128,21 @@
 
 @keyframes popIcon {
   0% { transform: scale(0.5); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px){
+  .success-modal{
+    padding: 28px 18px;
+    border-radius: 18px;
+  }
+
+  .success-title{ font-size: 18px; }
+  .success-btn{ width: 100%; }
 }
