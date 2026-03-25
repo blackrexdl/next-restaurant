@@ -11,7 +11,14 @@ export default function OrderNotes({ note, setNote }) {
 
         <button
           type="button"
-          onClick={() => setNote("No onions please")}
+          onClick={() => {
+            const text = "No onions please";
+            setNote((prev) => {
+              if (!prev) return text;
+              if (prev.includes(text)) return prev;
+              return `${prev}, ${text}`;
+            });
+          }}
           className="note-chip"
         >
           No onions please
@@ -19,7 +26,14 @@ export default function OrderNotes({ note, setNote }) {
 
         <button
           type="button"
-          onClick={() => setNote("Extra spicy")}
+          onClick={() => {
+            const text = "Extra spicy";
+            setNote((prev) => {
+              if (!prev) return text;
+              if (prev.includes(text)) return prev;
+              return `${prev}, ${text}`;
+            });
+          }}
           className="note-chip"
         >
           Extra spicy
@@ -27,7 +41,14 @@ export default function OrderNotes({ note, setNote }) {
 
         <button
           type="button"
-          onClick={() => setNote("Ring the doorbell")}
+          onClick={() => {
+            const text = "Ring the doorbell";
+            setNote((prev) => {
+              if (!prev) return text;
+              if (prev.includes(text)) return prev;
+              return `${prev}, ${text}`;
+            });
+          }}
           className="note-chip"
         >
           Ring the doorbell
@@ -35,7 +56,14 @@ export default function OrderNotes({ note, setNote }) {
 
         <button
           type="button"
-          onClick={() => setNote("Call before delivery")}
+          onClick={() => {
+            const text = "Call before delivery";
+            setNote((prev) => {
+              if (!prev) return text;
+              if (prev.includes(text)) return prev;
+              return `${prev}, ${text}`;
+            });
+          }}
           className="note-chip"
         >
           Call before delivery
