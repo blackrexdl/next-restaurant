@@ -1,6 +1,8 @@
 .checkout-header{
   text-align:center;
-  margin-bottom:28px;
+  margin-bottom:26px;
+  padding-bottom:10px;
+  border-bottom:1px solid var(--border);
 }
 
 .checkout-title{
@@ -10,22 +12,29 @@
   gap:10px;
   font-weight:600;
   font-size:22px;
+  color:#1c1c1c;
 }
 
 .checkout-icon{
-  font-size:28px;
+  font-size:26px;
   display:flex;
   align-items:center;
   justify-content:center;
+  transition:transform .25s ease;
+}
+
+.checkout-icon:hover{
+  transform:scale(1.08);
 }
 
 .breadcrumb{
   display:flex;
   justify-content:center;
   gap:6px;
-  font-size:14px;
+  font-size:13px;
   color:var(--muted);
-  margin-top:6px;
+  margin-top:8px;
+  opacity:0.85;
 }
 
 .home-btn{
@@ -37,12 +46,13 @@
   display:inline-block;
   font-size:14px;
   font-weight:500;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15);
   transition:all .25s ease;
 }
 
 .home-btn:hover{
-  transform:translateY(-1px);
-  box-shadow:0 6px 16px rgba(0,0,0,0.2);
+  transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(0,0,0,0.25);
 }
 
 /* ================= MOBILE RESPONSIVE ================= */
@@ -50,23 +60,23 @@
 @media(max-width:768px){
 
   .checkout-header{
-    margin-bottom:20px;
+    margin-bottom:18px;
+    padding-bottom:8px;
   }
 
   .checkout-title{
     flex-direction:column;
     gap:4px;
-    font-size:20px;
+    font-size:19px;
   }
 
   .checkout-icon{
-    font-size:22px;
+    font-size:20px;
   }
 
   .breadcrumb{
     flex-wrap:wrap;
     font-size:12px;
-    text-align:center;
     line-height:1.4;
   }
 
@@ -79,7 +89,7 @@
 @media(max-width:480px){
 
   .checkout-title{
-    font-size:18px;
+    font-size:17px;
   }
 
   .breadcrumb{
