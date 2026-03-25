@@ -204,3 +204,62 @@
   50%{ transform: scale(1.2); }
   100%{ transform: scale(1); }
 }
+.fade-in {
+  animation: fadeIn .4s ease;
+}
+
+.slide-up {
+  animation: slideUp .4s ease;
+}
+
+.discount-row {
+  color: #22c55e;
+  font-weight: 500;
+}
+
+.total-glow {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.total-value {
+  transition: all .3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.price-row {
+  opacity: 0;
+  animation: slideUp .4s ease forwards;
+  animation-delay: calc(var(--i) * 0.08s);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.total-value {
+  font-weight: 700;
+  transition: transform .2s ease;
+}
+
+.total-glow:hover .total-value {
+  transform: scale(1.05);
+}
