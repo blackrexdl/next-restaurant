@@ -10,28 +10,28 @@ export default function DeliveryForm() {
       <div className="form-grid">
 
         <div className="input-group">
-          <input type="text" className="input-field" placeholder=" " />
-          <label>Full Name</label>
+          <input id="fullName" type="text" name="fullName" className="input-field" placeholder=" " required autoComplete="name" />
+          <label htmlFor="fullName">Full Name</label>
         </div>
 
         <div className="input-group">
-          <input type="tel" className="input-field" placeholder=" " />
-          <label>Phone Number</label>
+          <input id="phone" type="tel" name="phone" className="input-field" placeholder=" " required autoComplete="tel" />
+          <label htmlFor="phone">Phone Number</label>
         </div>
 
         <div className="input-group">
-          <textarea className="input-field textarea" placeholder=" " />
-          <label>Delivery Address</label>
+          <textarea id="address" name="address" className="input-field textarea" placeholder=" " required autoComplete="street-address" />
+          <label htmlFor="address">Delivery Address</label>
         </div>
 
         <div className="input-group">
-          <input type="text" className="input-field" placeholder=" " />
-          <label>City</label>
+          <input id="city" type="text" name="city" className="input-field" placeholder=" " required autoComplete="address-level2" />
+          <label htmlFor="city">City</label>
         </div>
 
         <div className="input-group">
-          <input type="text" className="input-field" placeholder=" " />
-          <label>Pincode</label>
+          <input id="pincode" type="text" name="pincode" className="input-field" placeholder=" " required pattern="[0-9]{6}" autoComplete="postal-code" />
+          <label htmlFor="pincode">Pincode</label>
         </div>
 
       </div>
