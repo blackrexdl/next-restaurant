@@ -162,3 +162,31 @@ select.input-field {
     font-size: 13px;
   }
 }
+.note-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.chip {
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all .2s ease;
+}
+
+.chip.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+
+.input-error-text {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: -6px;
+}

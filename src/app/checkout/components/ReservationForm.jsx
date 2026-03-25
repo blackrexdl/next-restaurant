@@ -12,6 +12,9 @@ export default function ReservationForm() {
   const [reserveOccasion,setReserveOccasion]=useState("");
   const [reserveNote,setReserveNote]=useState("");
 
+  const [phoneError, setPhoneError] = useState("");
+  const [selectedNotes, setSelectedNotes] = useState([]);
+
   return (
     <div className="reservation-box">
 
@@ -20,19 +23,29 @@ export default function ReservationForm() {
       <div className="form-grid">
 
         <div className="input-group">
-          <input className="input-field" value={reserveName}
-          onChange={(e)=>setReserveName(e.target.value)} />
+          <input type="text" required className="input-field" value={reserveName}
+          onChange={(e)=>setReserveName(e.target.value.toUpperCase())} />
           <label>Full Name</label>
         </div>
 
         <div className="input-group">
-          <input className="input-field" value={reservePhone}
-          onChange={(e)=>setReservePhone(e.target.value)} />
+          <input type="tel" required pattern="[0-9]{10}" className="input-field" value={reservePhone}
+          onChange={(e) => {
+            const val = e.target.value.replace(/[^0-9]/g, "").slice(0, 10);
+            setReservePhone(val);
+
+            if (val.length < 10) {
+              setPhoneError("Enter valid 10-digit number");
+            } else {
+              setPhoneError("");
+            }
+          }} />
           <label>Phone</label>
         </div>
+        {phoneError && <p className="input-error-text">{phoneError}</p>}
 
         <div className="input-group">
-          <input type="date" className="input-field"
+          <input type="date" min={new Date().toISOString().split("T")[0]} className="input-field"
           value={reserveDate}
           onChange={(e)=>setReserveDate(e.target.value)} />
           <label>Date</label>
@@ -49,10 +62,11 @@ export default function ReservationForm() {
           <select className="input-field"
           value={reserveGuests}
           onChange={(e)=>setReserveGuests(e.target.value)}>
-            <option>1 Guest</option>
-            <option>2 Guests</option>
-            <option>3 Guests</option>
-            <option>4 Guests</option>
+            <option value="">Select Guests</option>
+            <option value="1">1 Guest</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
           </select>
           <label>Guests</label>
         </div>
@@ -69,6 +83,31 @@ export default function ReservationForm() {
           <label>Occasion</label>
         </div>
 
+        <div className="note-chips">
+          {["Window seat", "Birthday setup", "Anniversary decor", "High chair", "Quiet corner"].map((note) => (
+            <button
+              key={note}
+              type="button"
+              className={`chip ${selectedNotes.includes(note) ? "active" : ""}`}
+              onClick={() => {
+                setSelectedNotes((prev) => {
+                  if (prev.includes(note)) {
+                    const updated = prev.filter(n => n !== note);
+                    setReserveNote(updated.join(", "));
+                    return updated;
+                  } else {
+                    const updated = [...prev, note];
+                    setReserveNote(updated.join(", "));
+                    return updated;
+                  }
+                });
+              }}
+            >
+              {note}
+            </button>
+          ))}
+        </div>
+
         <div className="input-group">
           <textarea
           className="input-field textarea"
@@ -79,11 +118,18 @@ export default function ReservationForm() {
 
       </div>
 
-      <Link href="/reservation">
-        <button className="reserve-btn">
-          Reserve Table →
-        </button>
-      </Link>
+      <button
+        className="reserve-btn"
+        onClick={() => {
+          if (!reserveName || !reservePhone || !reserveDate || !reserveTime || !reserveGuests || phoneError) {
+            alert("Please fill all required fields");
+            return;
+          }
+          window.location.href = "/reservation";
+        }}
+      >
+        Reserve Table →
+      </button>
 
     </div>
   );
