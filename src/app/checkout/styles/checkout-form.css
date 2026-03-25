@@ -16,7 +16,7 @@
 .order-notes,
 .promo-section,
 .reservation-box{
-  composes: checkout-section;
+  color-scheme: checkout-section;
 }
 
 /* FORM GRID */
