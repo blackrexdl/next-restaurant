@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function PaymentMethod({ paymentMethod, setPaymentMethod }) {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -10,6 +10,10 @@ export default function PaymentMethod({ paymentMethod, setPaymentMethod }) {
   const [cvv, setCvv] = useState("");
   const [cardType, setCardType] = useState("");
   const [showQR, setShowQR] = useState(false);
+
+  const nameRef = useRef(null);
+  const expiryRef = useRef(null);
+  const cvvRef = useRef(null);
 
   // Card type detection helper
   const detectCardType = (number) => {
@@ -53,6 +57,12 @@ export default function PaymentMethod({ paymentMethod, setPaymentMethod }) {
     return cvv.length === 3;
   };
 
+  const isCardFormValid =
+    isValidCardNumber(cardNumber) &&
+    isValidExpiry(expiry) &&
+    isValidCvv(cvv) &&
+    cardName.length > 2;
+
   return (
     <div className="payment-method">
 
@@ -61,7 +71,7 @@ export default function PaymentMethod({ paymentMethod, setPaymentMethod }) {
       {paymentMethod === "card" && (
         <div className={`credit-card-wrapper ${isFlipped ? "flipped" : ""}`}>
           <div className="credit-card-preview card-front">
-            <div className="card-type">{cardType || 'CARD'}</div>
+            <div className={`card-type ${cardType.toLowerCase()}`}>{cardType || 'CARD'}</div>
             <div className="card-number">{cardNumber || "1234 5678 9012 3456"}</div>
             <div className="card-meta">
               <span className="card-holder">{cardName || "YOUR NAME"}</span>
@@ -94,6 +104,7 @@ export default function PaymentMethod({ paymentMethod, setPaymentMethod }) {
                 const formatted = val.replace(/(.{4})/g, "$1 ").trim();
                 setCardNumber(formatted);
                 setCardType(detectCardType(val));
+                if (val.length === 16 && nameRef.current) nameRef.current.focus();
               }}
             />
             <label>Card Number</label>
@@ -105,7 +116,9 @@ export default function PaymentMethod({ paymentMethod, setPaymentMethod }) {
               className="input-field"
               placeholder=" "
               value={cardName}
+              ref={nameRef}
               onChange={(e) => setCardName(e.target.value.toUpperCase())}
+              onKeyDown={(e) => { if (e.key === 'Enter' && expiryRef.current) expiryRef.current.focus(); }}
             />
             <label>Card Holder</label>
           </div>
@@ -119,12 +132,14 @@ export default function PaymentMethod({ paymentMethod, setPaymentMethod }) {
                 placeholder=" "
                 value={expiry}
                 maxLength={5}
+                ref={expiryRef}
                 onChange={(e) => {
                   let val = e.target.value.replace(/[^0-9]/g, "");
                   if (val.length >= 3) {
                     val = val.slice(0,2) + "/" + val.slice(2,4);
                   }
                   setExpiry(val);
+                  if (val.length === 5 && cvvRef.current) cvvRef.current.focus();
                 }}
               />
               <label>Expiry</label>
@@ -137,6 +152,7 @@ export default function PaymentMethod({ paymentMethod, setPaymentMethod }) {
                 placeholder=" "
                 value={cvv}
                 maxLength={cardType === 'Amex' ? 4 : 3}
+                ref={cvvRef}
                 onFocus={() => setIsFlipped(true)}
                 onBlur={() => setIsFlipped(false)}
                 onChange={(e) => {
@@ -160,13 +176,29 @@ export default function PaymentMethod({ paymentMethod, setPaymentMethod }) {
         </div>
       )}
 
+      {paymentMethod === "card" && (
+        <button
+          className={`pay-btn ${isCardFormValid ? 'active' : ''}`}
+          disabled={!isCardFormValid}
+        >
+          Pay Securely
+        </button>
+      )}
+
       {paymentMethod === "upi" && showQR && (
-        <div className="upi-qr-box">
-          <div className="qr-placeholder">
-            <p>Scan to Pay (Demo)</p>
-            <div className="fake-qr"></div>
+        <>
+          <div className="upi-qr-box">
+            <div className="qr-placeholder">
+              <p>Scan to Pay (Demo)</p>
+              <div className="fake-qr"></div>
+            </div>
           </div>
-        </div>
+          <button className="pay-btn active">I've Paid</button>
+        </>
+      )}
+
+      {paymentMethod === "cod" && (
+        <button className="pay-btn active">Place Order</button>
       )}
 
       <div className="payment-options">
