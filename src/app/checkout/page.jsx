@@ -113,16 +113,14 @@ export default function CheckoutPage() {
         <div className="checkout-left">
           <CheckoutItems cart={cart} />
 
-          <div className="card">
-            <PromoSection
-              promoCode={promoCode}
-              setPromoCode={setPromoCode}
-              discount={discount}
-              applyPromo={applyPromo}
-            />
-          </div>
+          <PromoSection
+            promoCode={promoCode}
+            setPromoCode={setPromoCode}
+            discount={discount}
+            applyPromo={applyPromo}
+          />
 
-          <div className="card"><ReservationForm /></div>
+          <ReservationForm />
         </div>
 
         {/* RIGHT SIDE */}
@@ -138,21 +136,17 @@ export default function CheckoutPage() {
             />
           </div>
 
-          <div className="card"><DeliveryForm /></div>
+          <DeliveryForm />
 
-          <div className="card">
-            <PaymentMethod
-              paymentMethod={paymentMethod}
-              setPaymentMethod={setPaymentMethod}
-            />
-          </div>
+          <PaymentMethod
+            paymentMethod={paymentMethod}
+            setPaymentMethod={setPaymentMethod}
+          />
 
-          <div className="card">
-            <OrderNotes
-              note={note}
-              setNote={setNote}
-            />
-          </div>
+          <OrderNotes
+            note={note}
+            setNote={setNote}
+          />
 
           <div className="checkout-action">
             <button
@@ -175,7 +169,16 @@ export default function CheckoutPage() {
         <div className="success-overlay" onClick={() => setShowSuccess(false)}>
           <div className="success-modal" onClick={(e) => e.stopPropagation()}>
 
-            <div className="success-icon">🎉</div>
+            <button
+              className="success-close"
+              onClick={() => setShowSuccess(false)}
+            >
+              ✕
+            </button>
+
+            <div className="success-icon-wrap">
+              <div className="success-icon">🎉</div>
+            </div>
 
             <h1 className="success-title">Order Placed Successfully!</h1>
 
