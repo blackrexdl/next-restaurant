@@ -17,13 +17,7 @@ import OrderNotes from "./components/OrderNotes";
 export default function CheckoutPage() {
 
   const { cart } = useCart();
-  const [isClient, setIsClient] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setIsClient(true);
-  }, []);
 
   useEffect(() => {
     if (showSuccess) {
@@ -40,22 +34,16 @@ export default function CheckoutPage() {
     }
   }, [showSuccess]);
 
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
+
   const [note, setNote] = useState("");
   const [promoCode, setPromoCode] = useState("");
   const [discount, setDiscount] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState("cod");
-
-  if (!isClient) {
-    return (
-      <main className="checkout-page">
-        <div className="checkout-container">
-          <div className="checkout-wrapper">
-            <div className="checkout-loading">Loading...</div>
-          </div>
-        </div>
-      </main>
-    );
-  }
 
   const subtotal = cart.reduce((sum, item) => {
     const qty = item.qty ?? 1;
@@ -102,7 +90,7 @@ export default function CheckoutPage() {
         </div>
       </div>
 
-      {cart.length === 0 ? (
+      {!mounted ? null : cart.length === 0 ? (
         <div className="checkout-container"><div className="checkout-wrapper"><div className="empty-cart checkout-empty">
           <p>Your cart is empty</p>
         </div></div></div>
