@@ -65,21 +65,23 @@
   position:relative;
   width:100%;
 }
-
-.input-group .input-field{
-  width:100%;
-  padding:18px 14px 10px 14px;
+.input-group label{
+  position:absolute;
+  left:14px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:13px;
+  color:#6b6b6b;
+  pointer-events:none;
   background:#fff;
-  min-height:48px;
+  padding:0 4px;
+  transition:all .2s ease;
 }
-
-
-
-/* when typing or focusing */
 
 .input-group .input-field:focus + label,
 .input-group .input-field:not(:placeholder-shown) + label{
   top:6px;
+  transform:none;
   font-size:11px;
   color:var(--primary);
 }
