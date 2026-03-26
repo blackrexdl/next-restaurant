@@ -242,6 +242,9 @@ const menuItems = [
 export default function Home() {
   const [category, setCategory] = useState("All");
 
+  const topRated = [...menuItems].sort((a,b)=>b.rating-a.rating).slice(0,5);
+  const trending = menuItems.filter(item => item.badge && item.badge.includes("Trending"));
+
   const filteredItems = (
     category === "All"
       ? menuItems
@@ -251,6 +254,24 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <section className="section container">
+        <h2 className="section-title">🔥 Top Rated</h2>
+        <div className="food-grid">
+          {topRated.map((item, index) => (
+            <FoodCard key={item.id} index={index} {...item} />
+          ))}
+        </div>
+      </section>
+
+      <section className="section container">
+        <h2 className="section-title">🚀 Trending</h2>
+        <div className="food-grid">
+          {trending.map((item, index) => (
+            <FoodCard key={item.id} index={index} {...item} />
+          ))}
+        </div>
+      </section>
+
       <section className="section container">
         <h2 className="section-title">
           {category === "All" ? "Top Rated Foods" : category}

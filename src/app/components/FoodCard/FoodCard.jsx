@@ -79,13 +79,15 @@ export default function FoodCard({
 
   const hasOrdered = cartItem && (cartItem.qty || 0) > 0;
 
-  const [userRatings, setUserRatings] = useState(() => {
+  const [userRatings, setUserRatings] = useState([]);
+
+  useEffect(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem(`ratings-${finalTitle}`);
-      return saved ? JSON.parse(saved) : [];
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setUserRatings(saved ? JSON.parse(saved) : []);
     }
-    return [];
-  });
+  }, [finalTitle]);
 
   const averageRating = userRatings.length > 0 ? userRatings.reduce((a,b) => a + b, 0) / userRatings.length : rating;
 
@@ -99,6 +101,16 @@ export default function FoodCard({
 
   const [reviewText, setReviewText] = useState("");
 
+  const [reviewsList, setReviewsList] = useState([]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`reviews-${finalTitle}`);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setReviewsList(saved ? JSON.parse(saved) : []);
+    }
+  }, [finalTitle]);
+
   const submitReview = () => {
     if (!hasOrdered || !reviewText.trim()) return;
 
@@ -107,6 +119,7 @@ export default function FoodCard({
     const updated = [...existing, reviewText];
 
     localStorage.setItem(key, JSON.stringify(updated));
+    setReviewsList(updated);
     setReviewText("");
   };
 
@@ -128,7 +141,7 @@ export default function FoodCard({
     <>
       <motion.div
         ref={cardRef}
-        className="card premium-card"
+        className="card premium-card glass-card"
         data-category={category}
         onClick={(e) => {
           if (e.target.closest("button")) return;
@@ -178,7 +191,9 @@ export default function FoodCard({
         <div className="card-body">
           <h3 className="card-title">{finalTitle}</h3>
           <div className="rating">
-  <span className="star">⭐</span>
+  {[1,2,3,4,5].map((i) => (
+    <span key={i} className={i <= Math.round(averageRating) ? "star filled" : "star"}>★</span>
+  ))}
   <span className="rating-value">{averageRating.toFixed(1)}</span>
   <span className="rating-count">({userRatings.length || reviews})</span>
 </div>
@@ -225,6 +240,7 @@ export default function FoodCard({
           <div
             className="modal-content"
             onClick={(e) => e.stopPropagation()}
+            style={{ padding: "20px", borderRadius: "16px" }}
           >
             <button
               className="close-modal"
@@ -238,7 +254,9 @@ export default function FoodCard({
 
             <h2>{finalTitle}</h2>
               <div className="rating">
-  <span className="star">⭐</span>
+  {[1,2,3,4,5].map((i) => (
+    <span key={i} className={i <= Math.round(averageRating) ? "star filled" : "star"}>★</span>
+  ))}
   <span className="rating-value">{averageRating.toFixed(1)}</span>
   <span className="rating-count">({userRatings.length || reviews})</span>
 </div>
@@ -262,7 +280,15 @@ export default function FoodCard({
                   key={star}
                   onClick={() => submitRating(star)}
                   disabled={!hasOrdered}
-                  style={{ margin: "3px", opacity: hasOrdered ? 1 : 0.5, cursor: hasOrdered ? "pointer" : "not-allowed" }}
+                  style={{
+                    margin: "3px",
+                    padding: "5px 8px",
+                    borderRadius: "6px",
+                    border: "none",
+                    background: hasOrdered ? "#f59e0b" : "#555",
+                    color: "#fff",
+                    cursor: hasOrdered ? "pointer" : "not-allowed"
+                  }}
                 >
                   {star}⭐
                 </button>
@@ -274,16 +300,51 @@ export default function FoodCard({
               value={reviewText}
               onChange={(e) => setReviewText(e.target.value)}
               disabled={!hasOrdered}
-              style={{ width: "100%", marginTop: "10px", padding: "6px" }}
+              style={{
+                width: "100%",
+                marginTop: "10px",
+                padding: "8px",
+                borderRadius: "8px",
+                border: "1px solid rgba(255,255,255,0.1)",
+                background: "rgba(255,255,255,0.05)",
+                color: "#fff"
+              }}
             />
 
             <button
               onClick={submitReview}
               disabled={!hasOrdered}
-              style={{ marginTop: "5px" }}
+              style={{
+                marginTop: "8px",
+                padding: "8px 12px",
+                borderRadius: "8px",
+                border: "none",
+                background: hasOrdered ? "#16a34a" : "#555",
+                color: "#fff",
+                cursor: hasOrdered ? "pointer" : "not-allowed"
+              }}
             >
               Submit Review
             </button>
+
+            <div style={{ marginTop: "10px" }}>
+              <h4>Reviews</h4>
+              {reviewsList.length === 0 ? (
+                <p style={{ fontSize: "12px", color: "#888" }}>No reviews yet</p>
+              ) : (
+                reviewsList.slice(-3).reverse().map((rev, i) => (
+                  <div key={i} style={{
+                    background: "rgba(255,255,255,0.05)",
+                    padding: "6px 10px",
+                    borderRadius: "8px",
+                    marginBottom: "6px",
+                    fontSize: "13px"
+                  }}>
+                    {rev}
+                  </div>
+                ))
+              )}
+            </div>
 
             {cartItem ? (
               <div className="qty-controls">
