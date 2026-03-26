@@ -12,7 +12,6 @@ export default function ReservationForm() {
   const [reserveOccasion,setReserveOccasion]=useState("");
   const [reserveNote,setReserveNote]=useState("");
 
-  const [phoneError, setPhoneError] = useState("");
   const [selectedNotes, setSelectedNotes] = useState([]);
 
   return (
@@ -29,20 +28,18 @@ export default function ReservationForm() {
         </div>
 
         <div className="input-group">
-          <input type="tel" required pattern="[0-9]{10}" className="input-field" value={reservePhone}
-          onChange={(e) => {
-            const val = e.target.value.replace(/[^0-9]/g, "").slice(0, 10);
-            setReservePhone(val);
-
-            if (val.length < 10) {
-              setPhoneError("Enter valid 10-digit number");
-            } else {
-              setPhoneError("");
-            }
-          }} />
+          <input
+            type="tel"
+            required
+            className="input-field"
+            value={reservePhone}
+            onChange={(e) => {
+              const val = e.target.value.replace(/[^0-9]/g, "");
+              setReservePhone(val);
+            }}
+          />
           <label>Phone</label>
         </div>
-        {phoneError && <p className="input-error-text">{phoneError}</p>}
 
         <div className="input-group">
           <input type="date" min={new Date().toISOString().split("T")[0]} className="input-field"
@@ -121,7 +118,7 @@ export default function ReservationForm() {
       <button
         className="reserve-btn"
         onClick={() => {
-          if (!reserveName || !reservePhone || !reserveDate || !reserveTime || !reserveGuests || phoneError) {
+          if (!reserveName || !reservePhone || !reserveDate || !reserveTime || !reserveGuests) {
             alert("Please fill all required fields");
             return;
           }
