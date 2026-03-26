@@ -6,16 +6,21 @@ import { motion } from "framer-motion";
 import { useCart } from "../../../context/CartContext";
 
 export default function FoodCard({
-  title = "Khana Kha Liya?",
-  price = 199,
+  title,
+  price,
   image,
-  category = "Veg",
-  description = "Fresh & delicious food made with love ❤️",
+  category = "Popular",
+  description,
   index = 0
 }) {
 
+ 
+  const finalTitle = title || "Delicious Food Item";
+  const finalDesc = description || "Freshly prepared with quality ingredients.";
+  const finalPrice = price || 199;
+
   const [imgSrc, setImgSrc] = useState(
-    image || `https://source.unsplash.com/600x400/?punjabi food,${encodeURIComponent(title)}`
+    image || `https://source.unsplash.com/600x400/?${encodeURIComponent(finalTitle)},food`
   );
 
   const [loaded, setLoaded] = useState(false);
@@ -56,7 +61,7 @@ export default function FoodCard({
   const { cart, addToCart, increaseQty, decreaseQty } = useCart();
 
   const handleAddToCart = () => {
-    addToCart({ title, price, image: imgSrc, category });
+    addToCart({ title: finalTitle, price: finalPrice, image: imgSrc, category });
 
     setShowToast(true);
 
@@ -67,7 +72,7 @@ export default function FoodCard({
     return () => clearTimeout(timer);
   };
 
-  const cartItem = cart.find((item) => item.title === title);
+  const cartItem = cart.find((item) => item.title === finalTitle);
 
   const fallbackImage =
     "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800";
@@ -100,7 +105,7 @@ export default function FoodCard({
         <div className="card-image">
           <img
             src={imgSrc}
-            alt={title}
+            alt={finalTitle}
             className={`card-img ${loaded ? "loaded" : ""}`}
             loading="lazy"
             onLoad={() => requestAnimationFrame(() => setLoaded(true))}
@@ -131,26 +136,26 @@ export default function FoodCard({
 
         {/* Content */}
         <div className="card-body">
-          <h3 className="card-title">{title}</h3>
+          <h3 className="card-title">{finalTitle}</h3>
           {/* Rating Start */}
           {/* <div className="rating">
             <span className="star">★★★★★</span>
             <span className="rating-count">(4.5)</span>
           </div> */}
-          <p className="card-desc">{description}</p>
+          <p className="card-desc">{finalDesc}</p>
 
           <div className="card-footer">
-            <span className="price">₹{price}</span>
+            <span className="price">₹{finalPrice}</span>
             {cartItem ? (
               <div className="qty-controls">
                 <button className="qty-btn" onClick={(e) => {
                   e.stopPropagation();
-                  decreaseQty(title);
+                  decreaseQty(finalTitle);
                 }}>-</button>
                 <span className="qty-count">{cartItem.qty || 1}</span>
                 <button className="qty-btn" onClick={(e) => {
                   e.stopPropagation();
-                  increaseQty(title);
+                  increaseQty(finalTitle);
                 }}>+</button>
               </div>
             ) : (
@@ -184,16 +189,16 @@ export default function FoodCard({
               ✕
             </button>
 
-            <img src={imgSrc} alt={`${title} food image`} />
+            <img src={imgSrc} alt={`${finalTitle} food image`} />
 
-            <h2>{title}</h2>
+            <h2>{finalTitle}</h2>
               {/* Rating Start */}
             {/* <div className="rating">
               <span className="star">★★★★★</span>
               <span className="rating-count">(4.5)</span>
             </div> */}
-            <p>{description}</p>
-            <p>Price: ₹{price}</p>
+            <p>{finalDesc}</p>
+            <p>Price: ₹{finalPrice}</p>
             <p>Category: {category}</p>
 
             {cartItem ? (
@@ -202,7 +207,7 @@ export default function FoodCard({
                   className="qty-btn"
                   onClick={(e) => {
                     e.stopPropagation();
-                    decreaseQty(title);
+                    decreaseQty(finalTitle);
                   }}
                 >
                   -
@@ -212,7 +217,7 @@ export default function FoodCard({
                   className="qty-btn"
                   onClick={(e) => {
                     e.stopPropagation();
-                    increaseQty(title);
+                    increaseQty(finalTitle);
                   }}
                 >
                   +
@@ -249,7 +254,7 @@ export default function FoodCard({
             animation: "fadeIn 0.3s ease"
           }}
         >
-          {title} added to cart 🛒
+          {finalTitle} added to cart 🛒
         </div>
       )}
     </>
