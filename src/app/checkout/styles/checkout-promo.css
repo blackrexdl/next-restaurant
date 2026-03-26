@@ -68,7 +68,7 @@
 /* CART TEXT VISIBILITY FIX */
 
 .checkout-items .item-name{
-  color:#1c1c1c;
+  color:#ffffff;
   font-weight:500;
   display:inline-block;
   margin-right:auto;
@@ -82,7 +82,7 @@
 }
 
 .checkout-items .item-price{
-  color:#1c1c1c;
+  color:#ffffff;
   font-weight:600;
 }
 
