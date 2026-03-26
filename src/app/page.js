@@ -6,15 +6,183 @@ import FoodCard from "./components/FoodCard/FoodCard";
 
 // Menu Data (easy to extend later)
 const menuItems = [
-  { id: 1, title: "Pizza", price: 199, category: "Popular", image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800" },
-  { id: 2, title: "Burger", price: 149, category: "Popular", image: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=800" },
-  { id: 3, title: "Momos", price: 99, category: "Veg", image: "https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=800" },
-  { id: 4, title: "Khana Kha Liya?", price: 249, category: "Veg", image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800" },
-  { id: 5, title: "Tu Kha Liya?", price: 299, category: "Veg", image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800" },
-  { id: 6, title: "Paneer Tikka", price: 219, category: "Veg", image: "https://images.unsplash.com/photo-1604908176997-4310f5d10f0c?w=800" },
-  { id: 7, title: "Butter Chicken", price: 279, category: "Non-Veg", image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=800" },
-  { id: 8, title: "Biryani", price: 199, category: "Non-Veg", image: "https://images.unsplash.com/photo-1563379091339-03246963d51a?w=800" }
+  {
+    id: 1,
+    title: "Pav Bhaji",
+    price: 199,
+    category: "Street Food",
+    image: "/images/pav-bhaji.jpg"
+  },
+  {
+    id: 2,
+    title: "Vada Pav",
+    price: 79,
+    category: "Street Food",
+    image: "/images/vada-pav.jpg"
+  },
+  {
+    id: 13,
+    title: "Samosa Chaat",
+    price: 129,
+    category: "Street Food",
+    image: "/images/samosa-chaat.jpg"
+  },
+  {
+    id: 14,
+    title: "Aloo Tikki Chaat",
+    price: 119,
+    category: "Street Food",
+    image: "/images/aloo-tikki.jpg"
+  },
+  {
+    id: 3,
+    title: "Steamed Veg Momos",
+    price: 129,
+    category: "Street Food",
+    image: "/images/momos.jpg"
+  },
+  {
+    id: 11,
+    title: "Fried Veg Momos",
+    price: 149,
+    category: "Street Food",
+    image: "/images/fried-momos.jpg"
+  },
+  {
+    id: 12,
+    title: "Tandoori Momos",
+    price: 179,
+    category: "Street Food",
+    image: "/images/Tandoori-momos.jpg"
+  },
+  {
+    id: 4,
+    title: "Paneer Butter Masala",
+    price: 269,
+    category: "Main Course",
+    image: "/images/paneer-butter-masala.jpg"
+  },
+  {
+    id: 5,
+    title: "Cold Coffee",
+    price: 149,
+    category: "Beverages",
+    image: "/images/cold-coffee.jpg"
+  },
+  {
+    id: 17,
+    title: "Cappuccino",
+    price: 159,
+    category: "Beverages",
+    image: "/images/cappuccino.jpg"
+  },
+  {
+    id: 18,
+    title: "Cafe Latte",
+    price: 169,
+    category: "Beverages",
+    image: "/images/latte.jpg"
+  },
+  {
+    id: 19,
+    title: "Espresso",
+    price: 129,
+    category: "Beverages",
+    image: "/images/espresso.jpg"
+  },
+  {
+    id: 20,
+    title: "Mocha Coffee",
+    price: 179,
+    category: "Beverages",
+    image: "/images/mocha.jpg"
+  },
+  {
+    id: 6,
+    title: "Paneer Tikka",
+    price: 219,
+    category: "Main Course",
+    image: "/images/paneer-tikka.jpg"
+  },
+  {
+    id: 7,
+    title: "Butter Chicken",
+    price: 299,
+    category: "Main Course",
+    image: "/images/butter-chicken.jpg"
+  },
+  {
+    id: 8,
+    title: "Chicken Biryani",
+    price: 249,
+    category: "Main Course",
+    image: "/images/biryani.jpg"
+  },
+  {
+    id: 9,
+    title: "Masala Dosa",
+    price: 149,
+    category: "South Indian",
+    image: "/images/masala-dosa.jpg"
+  },
+  {
+    id: 15,
+    title: "Idli Sambar",
+    price: 129,
+    category: "South Indian",
+    image: "/images/idli.jpg"
+  },
+  {
+    id: 16,
+    title: "Chole Bhature",
+    price: 179,
+    category: "Main Course",
+    image: "/images/chole-bhature.jpg"
+  },
+  {
+    id: 10,
+    title: "Chocolate Shake",
+    price: 179,
+    category: "Beverages",
+    image: "/images/chocolate-shake.jpg"
+  },
+  {
+    id: 21,
+    title: "Strawberry Shake",
+    price: 169,
+    category: "Beverages",
+    image: "/images/strawberry-shake.jpg"
+  },
+  {
+    id: 22,
+    title: "Vanilla Shake",
+    price: 159,
+    category: "Beverages",
+    image: "/images/vanilla-shake.jpg"
+  },
+  {
+    id: 23,
+    title: "Oreo Shake",
+    price: 189,
+    category: "Beverages",
+    image: "/images/oreo-shake.jpg"
+  },
+  {
+    id: 24,
+    title: "Banana Shake",
+    price: 149,
+    category: "Beverages",
+    image: "/images/banana-shake.jpg"
+  },
+  {
+    id: 25,
+    title: "Mango Shake",
+    price: 179,
+    category: "Beverages",
+    image: "/images/mango-shake.jpg"
+  }
 ];
+
 
 export default function Home() {
   const [category, setCategory] = useState("All");
@@ -39,24 +207,31 @@ export default function Home() {
   </button>
 
   <button
-    className={category === "Popular" ? "active-filter" : ""}
-    onClick={() => setCategory("Popular")}
+    className={category === "Street Food" ? "active-filter" : ""}
+    onClick={() => setCategory("Street Food")}
   >
-    Popular
+    Street Food
   </button>
 
   <button
-    className={category === "Veg" ? "active-filter" : ""}
-    onClick={() => setCategory("Veg")}
+    className={category === "South Indian" ? "active-filter" : ""}
+    onClick={() => setCategory("South Indian")}
   >
-    Veg
+    South Indian
   </button>
 
   <button
-    className={category === "Non-Veg" ? "active-filter" : ""}
-    onClick={() => setCategory("Non-Veg")}
+    className={category === "Beverages" ? "active-filter" : ""}
+    onClick={() => setCategory("Beverages")}
   >
-    Non-Veg
+    Beverages
+  </button>
+
+  <button
+    className={category === "Main Course" ? "active-filter" : ""}
+    onClick={() => setCategory("Main Course")}
+  >
+    Main Course
   </button>
 </div>
 

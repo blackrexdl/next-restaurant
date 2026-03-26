@@ -74,8 +74,9 @@ export default function FoodCard({
 
   const cartItem = cart.find((item) => item.title === finalTitle);
 
-  const fallbackImage =
-    "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800";
+  // const fallbackImage = these lines are for backuo the images and use your own images in the public folder and use the path here instead of these unsplash links
+  //   "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800";
+  const fallbackImage = "/images/fallback.jpg";
 
   if (!mounted) return null;
 
