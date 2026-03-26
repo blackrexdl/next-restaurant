@@ -97,6 +97,19 @@ export default function FoodCard({
     localStorage.setItem(`ratings-${finalTitle}`, JSON.stringify(updated));
   };
 
+  const [reviewText, setReviewText] = useState("");
+
+  const submitReview = () => {
+    if (!hasOrdered || !reviewText.trim()) return;
+
+    const key = `reviews-${finalTitle}`;
+    const existing = JSON.parse(localStorage.getItem(key)) || [];
+    const updated = [...existing, reviewText];
+
+    localStorage.setItem(key, JSON.stringify(updated));
+    setReviewText("");
+  };
+
   let dynamicBadge = badge;
 
   if (!dynamicBadge) {
@@ -166,8 +179,8 @@ export default function FoodCard({
           <h3 className="card-title">{finalTitle}</h3>
           <div className="rating">
   <span className="star">⭐</span>
-  <span className="rating-value">{rating}</span>
-  <span className="rating-count">({reviews})</span>
+  <span className="rating-value">{averageRating.toFixed(1)}</span>
+  <span className="rating-count">({userRatings.length || reviews})</span>
 </div>
           {/* Rating Start */}
           {/* <div className="rating">
@@ -226,8 +239,8 @@ export default function FoodCard({
             <h2>{finalTitle}</h2>
               <div className="rating">
   <span className="star">⭐</span>
-  <span className="rating-value">{rating}</span>
-  <span className="rating-count">({reviews})</span>
+  <span className="rating-value">{averageRating.toFixed(1)}</span>
+  <span className="rating-count">({userRatings.length || reviews})</span>
 </div>
             {/* <div className="rating">
               <span className="star">★★★★★</span>
@@ -255,6 +268,22 @@ export default function FoodCard({
                 </button>
               ))}
             </div>
+
+            <textarea
+              placeholder="Write a review..."
+              value={reviewText}
+              onChange={(e) => setReviewText(e.target.value)}
+              disabled={!hasOrdered}
+              style={{ width: "100%", marginTop: "10px", padding: "6px" }}
+            />
+
+            <button
+              onClick={submitReview}
+              disabled={!hasOrdered}
+              style={{ marginTop: "5px" }}
+            >
+              Submit Review
+            </button>
 
             {cartItem ? (
               <div className="qty-controls">

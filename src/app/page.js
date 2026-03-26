@@ -242,16 +242,19 @@ const menuItems = [
 export default function Home() {
   const [category, setCategory] = useState("All");
 
-  const filteredItems =
+  const filteredItems = (
     category === "All"
       ? menuItems
-      : menuItems.filter((item) => item.category === category);
+      : menuItems.filter((item) => item.category === category)
+  ).sort((a, b) => b.rating - a.rating);
 
   return (
     <main>
       <Hero />
       <section className="section container">
-        <h2 className="section-title">Popular Foods</h2>
+        <h2 className="section-title">
+          {category === "All" ? "Top Rated Foods" : category}
+        </h2>
 
        <div className="category-filter">
   <button
