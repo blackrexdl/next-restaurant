@@ -11,6 +11,9 @@ export default function FoodCard({
   image,
   category = "Popular",
   description,
+  rating = 4.3,
+  reviews = 120,
+  badge,
   index = 0
 }) {
 
@@ -74,6 +77,34 @@ export default function FoodCard({
 
   const cartItem = cart.find((item) => item.title === finalTitle);
 
+  const hasOrdered = cartItem && (cartItem.qty || 0) > 0;
+
+  const [userRatings, setUserRatings] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem(`ratings-${finalTitle}`);
+      return saved ? JSON.parse(saved) : [];
+    }
+    return [];
+  });
+
+  const averageRating = userRatings.length > 0 ? userRatings.reduce((a,b) => a + b, 0) / userRatings.length : rating;
+
+  const submitRating = (value) => {
+    if (!hasOrdered) return;
+
+    const updated = [...userRatings, value];
+    setUserRatings(updated);
+    localStorage.setItem(`ratings-${finalTitle}`, JSON.stringify(updated));
+  };
+
+  let dynamicBadge = badge;
+
+  if (!dynamicBadge) {
+    if (averageRating >= 4.5) dynamicBadge = "Best Seller 🔥";
+    else if (averageRating >= 4.0) dynamicBadge = "Popular ⭐";
+    else if (averageRating >= 3.0) dynamicBadge = "Trending";
+  }
+
   // const fallbackImage = these lines are for backuo the images and use your own images in the public folder and use the path here instead of these unsplash links
   //   "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800";
   const fallbackImage = "/images/fallback.jpg";
@@ -121,16 +152,11 @@ export default function FoodCard({
           {/* Gradient Overlay */}
           <div className="image-overlay"></div>
 
-          {/* Floating badge */}
-         <span
-  className={`badge ${
-    category === "Veg"
-      ? "veg-badge"
-      : category === "Non-Veg"
-      ? "nonveg-badge"
-      : "popular-badge"
-  }`}
->
+          {dynamicBadge && (
+            <span className="top-badge">{dynamicBadge}</span>
+          )}
+
+         <span className="badge category-badge">
   {category}
 </span>
         </div>
@@ -138,6 +164,11 @@ export default function FoodCard({
         {/* Content */}
         <div className="card-body">
           <h3 className="card-title">{finalTitle}</h3>
+          <div className="rating">
+  <span className="star">⭐</span>
+  <span className="rating-value">{rating}</span>
+  <span className="rating-count">({reviews})</span>
+</div>
           {/* Rating Start */}
           {/* <div className="rating">
             <span className="star">★★★★★</span>
@@ -193,7 +224,11 @@ export default function FoodCard({
             <img src={imgSrc} alt={`${finalTitle} food image`} />
 
             <h2>{finalTitle}</h2>
-              {/* Rating Start */}
+              <div className="rating">
+  <span className="star">⭐</span>
+  <span className="rating-value">{rating}</span>
+  <span className="rating-count">({reviews})</span>
+</div>
             {/* <div className="rating">
               <span className="star">★★★★★</span>
               <span className="rating-count">(4.5)</span>
@@ -201,6 +236,25 @@ export default function FoodCard({
             <p>{finalDesc}</p>
             <p>Price: ₹{finalPrice}</p>
             <p>Category: {category}</p>
+
+            {!hasOrdered && (
+              <p style={{ fontSize: "12px", color: "#888" }}>
+                Order this item to rate ⭐
+              </p>
+            )}
+
+            <div>
+              {[1,2,3,4,5].map((star) => (
+                <button
+                  key={star}
+                  onClick={() => submitRating(star)}
+                  disabled={!hasOrdered}
+                  style={{ margin: "3px", opacity: hasOrdered ? 1 : 0.5, cursor: hasOrdered ? "pointer" : "not-allowed" }}
+                >
+                  {star}⭐
+                </button>
+              ))}
+            </div>
 
             {cartItem ? (
               <div className="qty-controls">
