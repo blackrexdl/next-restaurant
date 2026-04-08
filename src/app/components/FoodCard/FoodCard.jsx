@@ -232,6 +232,19 @@ export default function FoodCard({
       {openModal && (
         <div
           className="food-modal"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "rgba(0,0,0,0.6)",
+            backdropFilter: "blur(8px)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 9999
+          }}
           role="dialog"
           aria-modal="true"
           aria-label="Food details"
@@ -240,10 +253,29 @@ export default function FoodCard({
           <div
             className="modal-content"
             onClick={(e) => e.stopPropagation()}
-            style={{ padding: "20px", borderRadius: "16px" }}
+            style={{ 
+              padding: "20px", 
+              borderRadius: "16px",
+              position: "relative",
+              maxWidth: "400px",
+              width: "90%"
+            }}
           >
             <button
               className="close-modal"
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                zIndex: 10,
+                background: "rgba(0,0,0,0.6)",
+                color: "#fff",
+                border: "none",
+                borderRadius: "50%",
+                width: "30px",
+                height: "30px",
+                cursor: "pointer"
+              }}
               aria-label="Close modal"
               onClick={() => setOpenModal(false)}
             >
