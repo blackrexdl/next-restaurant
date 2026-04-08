@@ -261,28 +261,31 @@ export default function FoodCard({
               width: "90%"
             }}
           >
-            <button
-              className="close-modal"
-              style={{
-                position: "absolute",
-                top: "10px",
-                right: "10px",
-                zIndex: 10,
-                background: "rgba(0,0,0,0.6)",
-                color: "#fff",
-                border: "none",
-                borderRadius: "50%",
-                width: "30px",
-                height: "30px",
-                cursor: "pointer"
-              }}
-              aria-label="Close modal"
-              onClick={() => setOpenModal(false)}
-            >
-              ✕
-            </button>
+            <div style={{ position: "relative" }}>
+              <img src={imgSrc} alt={`${finalTitle} food image`} />
 
-            <img src={imgSrc} alt={`${finalTitle} food image`} />
+              <button
+                className="close-modal"
+                style={{
+                  position: "absolute",
+                  top: "8px",
+                  right: "8px",
+                  zIndex: 20,
+                  background: "rgba(0,0,0,0.7)",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "50%",
+                  width: "32px",
+                  height: "32px",
+                  cursor: "pointer",
+                  backdropFilter: "blur(6px)"
+                }}
+                aria-label="Close modal"
+                onClick={() => setOpenModal(false)}
+              >
+                ✕
+              </button>
+            </div>
 
             <h2>{finalTitle}</h2>
               <div className="rating">
