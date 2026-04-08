@@ -286,6 +286,7 @@
   grid-template-rows: auto 1fr;
   animation: modalCard 0.35s ease;
   overflow: hidden;
+  padding-top: 0;
 }
 
 /* card pop animation */
@@ -303,9 +304,37 @@
 /* ===== PRODUCT IMAGE ===== */
 .modal-content img{
   width:100%;
-  height:220px;
-  object-fit:cover;
   display:block;
+}
+
+/* Added block for close button positioning */
+.modal-image-wrap {
+  position: relative;
+  width: 100%;
+  display: block;
+  line-height: 0; /* removes any inline spacing issues */
+  z-index: 1; /* create proper stacking context */
+}
+
+.modal-image-wrap img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.modal-image-wrap .close-modal {
+  position: absolute !important;
+  top: 12px;
+  right: 12px;
+  z-index: 2; /* just above image */
+  transform: none; /* remove offset hack */
+}
+/* Ensure modal content positioning context */
+.modal-content {
+  position: relative;
 }
 
 /* ===== PRODUCT DETAILS ===== */
@@ -330,11 +359,7 @@
 
 /* ===== CLOSE BUTTON ===== */
 .close-modal{
-  position:absolute;
-  top:8px;
-  right:8px;
-  z-index:50;
-
+  /* positioning handled inside image wrapper */
   display:flex;
   align-items:center;
   justify-content:center;
@@ -736,4 +761,8 @@ textarea:focus {
 /* Smooth button hover polish */
 button:hover {
   filter: brightness(1.05);
+}
+/* Important override for modal content padding */
+.modal-content {
+  padding: 0 !important;
 }

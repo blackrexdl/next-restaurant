@@ -254,31 +254,42 @@ export default function FoodCard({
             className="modal-content"
             onClick={(e) => e.stopPropagation()}
             style={{ 
-              padding: "20px", 
+              padding: "0", 
               borderRadius: "16px",
               position: "relative",
               maxWidth: "400px",
-              width: "90%"
+              width: "90%",
+              overflow: "hidden"
             }}
           >
-            <div style={{ position: "relative" }}>
-              <img src={imgSrc} alt={`${finalTitle} food image`} />
+            <div className="modal-image-wrap" style={{ position: "relative" }}>
+              <img
+                src={imgSrc}
+                alt={`${finalTitle} food image`}
+                className="modal-img"
+              />
 
               <button
                 className="close-modal"
                 style={{
                   position: "absolute",
-                  top: "8px",
-                  right: "8px",
-                  zIndex: 20,
-                  background: "rgba(0,0,0,0.7)",
+                  top: "12px",
+                  right: "12px",
+                  zIndex: 200,
+                  background: "rgba(0,0,0,0.65)",
                   color: "#fff",
-                  border: "none",
-                  borderRadius: "50%",
-                  width: "32px",
-                  height: "32px",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  borderRadius: "999px",
+                  width: "34px",
+                  height: "34px",
                   cursor: "pointer",
-                  backdropFilter: "blur(6px)"
+                  backdropFilter: "blur(10px)",
+                  WebkitBackdropFilter: "blur(10px)",
+                  boxShadow: "0 8px 20px rgba(0,0,0,0.35)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  lineHeight: 1
                 }}
                 aria-label="Close modal"
                 onClick={() => setOpenModal(false)}
@@ -286,7 +297,7 @@ export default function FoodCard({
                 ✕
               </button>
             </div>
-
+            <div style={{ padding: "16px" }}>
             <h2>{finalTitle}</h2>
               <div className="rating">
   {[1,2,3,4,5].map((i) => (
@@ -414,6 +425,7 @@ export default function FoodCard({
                 Add to Cart
               </button>
             )}
+            </div>
           </div>
         </div>
       )}
