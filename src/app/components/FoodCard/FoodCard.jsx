@@ -79,56 +79,10 @@ export default function FoodCard({
 
   const hasOrdered = cartItem && (cartItem.qty || 0) > 0;
 
-  const [userRatings, setUserRatings] = useState([]);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`ratings-${finalTitle}`);
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setUserRatings(saved ? JSON.parse(saved) : []);
-    }
-  }, [finalTitle]);
-
-  const averageRating = userRatings.length > 0 ? userRatings.reduce((a,b) => a + b, 0) / userRatings.length : rating;
-
-  const submitRating = (value) => {
-    if (!hasOrdered) return;
-
-    const updated = [...userRatings, value];
-    setUserRatings(updated);
-    localStorage.setItem(`ratings-${finalTitle}`, JSON.stringify(updated));
-  };
-
-  const [reviewText, setReviewText] = useState("");
-
-  const [reviewsList, setReviewsList] = useState([]);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const saved = localStorage.getItem(`reviews-${finalTitle}`);
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setReviewsList(saved ? JSON.parse(saved) : []);
-    }
-  }, [finalTitle]);
-
-  const submitReview = () => {
-    if (!hasOrdered || !reviewText.trim()) return;
-
-    const key = `reviews-${finalTitle}`;
-    const existing = JSON.parse(localStorage.getItem(key)) || [];
-    const updated = [...existing, reviewText];
-
-    localStorage.setItem(key, JSON.stringify(updated));
-    setReviewsList(updated);
-    setReviewText("");
-  };
-
   let dynamicBadge = badge;
 
   if (!dynamicBadge) {
-    if (averageRating >= 4.5) dynamicBadge = "Best Seller 🔥";
-    else if (averageRating >= 4.0) dynamicBadge = "Popular ⭐";
-    else if (averageRating >= 3.0) dynamicBadge = "Trending";
+    dynamicBadge = "Popular";
   }
 
   // const fallbackImage = these lines are for backuo the images and use your own images in the public folder and use the path here instead of these unsplash links
@@ -290,12 +244,6 @@ export default function FoodCard({
             <p>{finalDesc}</p>
             <p>Price: ₹{finalPrice}</p>
             <p>Category: {category}</p>
-
-            {!hasOrdered && (
-              <p style={{ fontSize: "12px", color: "#888" }}>
-                Order this item to rate ⭐
-              </p>
-            )}
 
             {cartItem ? (
               <div className="qty-controls">
