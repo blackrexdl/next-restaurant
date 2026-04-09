@@ -190,18 +190,6 @@ export default function FoodCard({
         {/* Content */}
         <div className="card-body">
           <h3 className="card-title">{finalTitle}</h3>
-          <div className="rating">
-  {[1,2,3,4,5].map((i) => (
-    <span key={i} className={i <= Math.round(averageRating) ? "star filled" : "star"}>★</span>
-  ))}
-  <span className="rating-value">{averageRating.toFixed(1)}</span>
-  <span className="rating-count">({userRatings.length || reviews})</span>
-</div>
-          {/* Rating Start */}
-          {/* <div className="rating">
-            <span className="star">★★★★★</span>
-            <span className="rating-count">(4.5)</span>
-          </div> */}
           <p className="card-desc">{finalDesc}</p>
 
           <div className="card-footer">
@@ -299,17 +287,6 @@ export default function FoodCard({
             </div>
             <div style={{ padding: "16px" }}>
             <h2>{finalTitle}</h2>
-              <div className="rating">
-  {[1,2,3,4,5].map((i) => (
-    <span key={i} className={i <= Math.round(averageRating) ? "star filled" : "star"}>★</span>
-  ))}
-  <span className="rating-value">{averageRating.toFixed(1)}</span>
-  <span className="rating-count">({userRatings.length || reviews})</span>
-</div>
-            {/* <div className="rating">
-              <span className="star">★★★★★</span>
-              <span className="rating-count">(4.5)</span>
-            </div> */}
             <p>{finalDesc}</p>
             <p>Price: ₹{finalPrice}</p>
             <p>Category: {category}</p>
@@ -319,78 +296,6 @@ export default function FoodCard({
                 Order this item to rate ⭐
               </p>
             )}
-
-            <div>
-              {[1,2,3,4,5].map((star) => (
-                <button
-                  key={star}
-                  onClick={() => submitRating(star)}
-                  disabled={!hasOrdered}
-                  style={{
-                    margin: "3px",
-                    padding: "5px 8px",
-                    borderRadius: "6px",
-                    border: "none",
-                    background: hasOrdered ? "#f59e0b" : "#555",
-                    color: "#fff",
-                    cursor: hasOrdered ? "pointer" : "not-allowed"
-                  }}
-                >
-                  {star}⭐
-                </button>
-              ))}
-            </div>
-
-            <textarea
-              placeholder="Write a review..."
-              value={reviewText}
-              onChange={(e) => setReviewText(e.target.value)}
-              disabled={!hasOrdered}
-              style={{
-                width: "100%",
-                marginTop: "10px",
-                padding: "8px",
-                borderRadius: "8px",
-                border: "1px solid rgba(255,255,255,0.1)",
-                background: "rgba(255,255,255,0.05)",
-                color: "#fff"
-              }}
-            />
-
-            <button
-              onClick={submitReview}
-              disabled={!hasOrdered}
-              style={{
-                marginTop: "8px",
-                padding: "8px 12px",
-                borderRadius: "8px",
-                border: "none",
-                background: hasOrdered ? "#16a34a" : "#555",
-                color: "#fff",
-                cursor: hasOrdered ? "pointer" : "not-allowed"
-              }}
-            >
-              Submit Review
-            </button>
-
-            <div style={{ marginTop: "10px" }}>
-              <h4>Reviews</h4>
-              {reviewsList.length === 0 ? (
-                <p style={{ fontSize: "12px", color: "#888" }}>No reviews yet</p>
-              ) : (
-                reviewsList.slice(-3).reverse().map((rev, i) => (
-                  <div key={i} style={{
-                    background: "rgba(255,255,255,0.05)",
-                    padding: "6px 10px",
-                    borderRadius: "8px",
-                    marginBottom: "6px",
-                    fontSize: "13px"
-                  }}>
-                    {rev}
-                  </div>
-                ))
-              )}
-            </div>
 
             {cartItem ? (
               <div className="qty-controls">
