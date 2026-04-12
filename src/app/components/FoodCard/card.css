@@ -9,7 +9,7 @@
   flex-direction: column;
   position: relative;
 
-  background: linear-gradient(145deg, #ffffff, #f5f5f5);
+  background: var(--card);
   border: 1px solid rgba(0, 0, 0, 0.06);
 
   box-shadow:
@@ -64,7 +64,7 @@
   position: absolute;
   top: 10px;
   left: 10px;
-  background: rgba(255,255,255,0.9);
+  background: rgba(0,0,0,0.6);
   color: #ff4d6d;
   font-size: 0.7rem;
   font-weight: 700;
@@ -122,7 +122,7 @@
 
 .card-desc {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--muted, #777);
   line-height: 1.4;
 }
 
@@ -130,6 +130,7 @@
   font-size: 1.25rem;
   font-weight: 600;
   letter-spacing: 0.3px;
+  color: var(--text);
 }
 
 .price {
@@ -275,7 +276,7 @@
   position: relative;
   width: 100%;
   max-width: 420px;
-  background: #ffffff;
+  background: var(--card);
   border-radius: 20px;
   overflow: hidden;
   box-shadow:
@@ -346,7 +347,7 @@
 
 .modal-content p{
   font-size:0.9rem;
-  color:#666;
+  color: var(--muted, #777);
   line-height:1.4;
   margin:0 16px 10px;
 }
@@ -460,7 +461,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  background: #f5f5f5;
+  background: var(--card);
   padding: 4px;
   border-radius: 10px;
 }
@@ -472,7 +473,7 @@
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  background: white;
+  background: var(--card);
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 
   transition: transform .18s ease, box-shadow .18s ease;
@@ -676,9 +677,9 @@
 
 /* Glass effect enhancement */
 .glass-card {
-  background: rgba(255,255,255,0.6);
+  background: var(--card);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(0,0,0,0.06);
 }
 
 .glass-card:hover {

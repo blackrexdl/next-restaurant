@@ -5,6 +5,7 @@ import { useCart } from "../../../context/CartContext";
 import CartSidebar from "../CartSidebar/CartSidebar";
 
 import "./navbar.css";
+import Link from "next/link";
 
 export default function Navbar() {
 
@@ -14,6 +15,7 @@ export default function Navbar() {
   }, 0);
 
   const [openCart, setOpenCart] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   const cartBtnRef = useRef(null);
   const badgeRef = useRef(null);
@@ -24,6 +26,19 @@ export default function Navbar() {
 
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark");
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setDarkMode(true);
+    } else {
+      document.body.classList.remove("dark");
+      setDarkMode(false);
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,11 +70,31 @@ export default function Navbar() {
     prevCountRef.current = cartCount;
   }, [cartCount]);
 
+  const toggleTheme = () => {
+    const newTheme = !darkMode;
+
+    if (newTheme) {
+      document.body.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+
+    setDarkMode(newTheme);
+  };
+
   return (
     <>
       <nav className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
 
-        <h1 className="logo">Next Restaurant</h1>
+        <Link href="/" prefetch={false}>
+  <h1 className="logo">Next Restaurant</h1>
+</Link>
+
+        <button className="theme-toggle" onClick={toggleTheme}>
+          {darkMode ? "🌙" : "☀️"}
+        </button>
 
         <button
           ref={cartBtnRef}

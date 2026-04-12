@@ -16,7 +16,7 @@
 
   /* Premium dark gradient background */
 /* Premium light neutral gradient */
-background: linear-gradient(120deg, #f8fafc, #eef2f7, #e2e8f0, #f1f5f9);
+background: linear-gradient(120deg, var(--bg), var(--card), var(--bg));
 background-size: 300% 300%;
 animation: heroGradientMove 18s ease infinite;
 }
@@ -74,6 +74,7 @@ animation: heroGradientMove 18s ease infinite;
 
   /* Glass blur panel */
   background: rgba(255,255,255,0.08);
+  color: var(--text);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 
@@ -104,6 +105,7 @@ animation: heroGradientMove 18s ease infinite;
 .hero p {
   margin-top: 10px;
   font-size: 18px;
+  color: var(--text);
 }
 
 /* ================= HERO BUTTONS ================= */
@@ -131,7 +133,7 @@ animation: heroGradientMove 18s ease infinite;
 
   border: 1px solid rgba(255,255,255,0.15);
 
-  color: #1f2937;
+  color: var(--text);
   font-weight: 600;
 
   cursor: pointer;
@@ -169,7 +171,7 @@ animation: heroGradientMove 18s ease infinite;
 
   border: 1px solid rgba(255,255,255,0.15);
 
-  color: #1f2937; /* dark text for contrast on light hero */
+  color: var(--text); /* dark text for contrast on light hero */
   font-weight: 600;
 
   cursor: pointer;
@@ -190,6 +192,10 @@ animation: heroGradientMove 18s ease infinite;
 .menu-btn:active {
   transform: translateY(2px);
   box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+.dark .menu-btn {
+  background: rgba(255,255,255,0.1);
 }
 
 /* ======================================================
@@ -219,7 +225,7 @@ animation: heroGradientMove 18s ease infinite;
 }
 
 .hero-track span {
-  color: #1f2937; /* darker premium slate for visibility */
+  color: var(--text); /* darker premium slate for visibility */
   opacity: 0.9;
   padding-right: 60px;
 }

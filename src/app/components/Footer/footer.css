@@ -8,7 +8,7 @@
   padding: 20px;
   margin-top: 40px;
 
-  background: #111;
+  background: var(--card);
   color: #ffffff;
 
   font-size: 14px;
