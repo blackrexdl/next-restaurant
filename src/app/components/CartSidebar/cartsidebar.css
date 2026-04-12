@@ -185,3 +185,19 @@
     width: 100%;
   }
 }
+.item-name {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  color: var(--text);
+}
+
+.item-price {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.item-total {
+  font-weight: 600;
+  font-size: 15px;
+}

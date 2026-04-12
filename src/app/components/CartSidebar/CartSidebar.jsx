@@ -57,8 +57,10 @@ export default function CartSidebar({ isOpen, setIsOpen }) {
                 <li key={item.id ?? index}>
 
                   <div className="item-info">
-                    <p>{item.name}</p>
-                    <span>₹{item.price} × {item.qty ?? 1}</span>
+                    <h4 className="item-name">{item.name}</h4>
+                    <span className="item-price">
+                      ₹{item.price} × {item.qty ?? 1}
+                    </span>
                   </div>
 
                   <div className="qty-controls">
@@ -68,7 +70,7 @@ export default function CartSidebar({ isOpen, setIsOpen }) {
                   </div>
 
                   <div className="item-total">
-                    ₹{Number(item.price) * (item.qty ?? 1)}
+                    ₹{(Number(item.price) * (item.qty ?? 1)).toFixed(2)}
                   </div>
 
                   <button
