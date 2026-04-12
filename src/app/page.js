@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Hero from "./components/Hero/Hero";
 import FoodCard from "./components/FoodCard/FoodCard";
-
+import CategoryFilter from "./components/CategoryFilter/CategoryFilter";
 // Menu Data (easy to extend later)
 const menuItems = [
   {
@@ -277,42 +277,10 @@ export default function Home() {
           {category === "All" ? "Top Rated Foods" : category}
         </h2>
 
-       <div className="category-filter">
-  <button
-    className={category === "All" ? "active-filter" : ""}
-    onClick={() => setCategory("All")}
-  >
-    All
-  </button>
-
-  <button
-    className={category === "Street Food" ? "active-filter" : ""}
-    onClick={() => setCategory("Street Food")}
-  >
-    Street Food
-  </button>
-
-  <button
-    className={category === "South Indian" ? "active-filter" : ""}
-    onClick={() => setCategory("South Indian")}
-  >
-    South Indian
-  </button>
-
-  <button
-    className={category === "Beverages" ? "active-filter" : ""}
-    onClick={() => setCategory("Beverages")}
-  >
-    Beverages
-  </button>
-
-  <button
-    className={category === "Main Course" ? "active-filter" : ""}
-    onClick={() => setCategory("Main Course")}
-  >
-    Main Course
-  </button>
-</div>
+      <CategoryFilter
+        category={category}
+        setCategory={setCategory}
+      />
 
        <div id="food-section" className="food-grid">
           {filteredItems.map((item, index) => (

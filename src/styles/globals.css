@@ -49,49 +49,6 @@ body {
 }
 
 /* ======================================================
-   CATEGORY FILTER BAR
-====================================================== */
-
-.category-filter {
-  position: sticky;
-  top: 80px;
-  z-index: 20;
-
-  display: flex;
-  gap: 10px;
-
-  padding: 10px 0;
-  margin: 20px 0;
-
-  background: var(--card);
-  color: var(--text);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-}
-
-.category-filter button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 20px;
-
-  background: #f5f5f5;
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-.category-filter button:hover {
-  background: #ff4d4d;
-  color: white;
-}
-
-.active-filter {
-  background: #ff4d4d;
-  color: white;
-  font-weight: 600;
-}
-
-/* ======================================================
    CHECKOUT PAGE CARD
 ====================================================== */
 
