@@ -1,48 +1,76 @@
 /* ===== FULL SCREEN OVERLAY ===== */
 .app-loader {
   position: fixed;
-  inset: 0;
-  z-index: 99999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 999999;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(14px);
 }
 
 /* ===== GLASS CARD ===== */
 .loader-glass {
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(24px);
 
-  padding: 40px 30px;
-  border-radius: 20px;
+  padding: 70px 60px;
+  border-radius: 24px;
 
   text-align: center;
 
-  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
 }
 
-/* ===== DONUT LOADER ===== */
-.donut-loader {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto 15px;
+/* ===== SPINNER ===== */
+.spinner {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 25px;
+}
 
+.spinner span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
-  border: 6px solid #eee;
-  border-top: 6px solid #f59e0b;
+  border: 4px solid transparent;
+  border-top: 4px solid #ff6b3d;
+  animation: spin 1s linear infinite;
+}
 
-  animation: spin 0.9s linear infinite;
+.spinner span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.spinner span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.spinner span:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+/* ===== BRAND NAME ===== */
+.brand-name {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #ffffff;
+  letter-spacing: 0.6px;
 }
 
 /* ===== TEXT ===== */
 .loader-text {
   font-size: 14px;
-  color: #333;
-  opacity: 0.8;
+  color: #ddd;
 }
 
 /* ===== ANIMATION ===== */

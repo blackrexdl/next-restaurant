@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Loader from "./components/Loader/Loader";
 import Hero from "./components/Hero/Hero";
 import FoodCard from "./components/FoodCard/FoodCard";
 import CategoryFilter from "./components/CategoryFilter/CategoryFilter";
@@ -238,12 +239,28 @@ const menuItems = [
   }
 ];
 
-
 export default function Home() {
   const [category, setCategory] = useState("All");
 
-  const topRated = [...menuItems].sort((a,b)=>b.rating-a.rating).slice(0,5);
-  const trending = menuItems.filter(item => item.badge && item.badge.includes("Trending"));
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) return <Loader />;
+
+  const topRated = [...menuItems]
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, 5);
+
+  const trending = menuItems.filter(
+    (item) => item.badge && item.badge.includes("Trending")
+  );
 
   const filteredItems = (
     category === "All"
@@ -254,6 +271,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
+
       <section className="section container">
         <h2 className="section-title">🔥 Top Rated</h2>
         <div className="food-grid">
@@ -277,12 +295,12 @@ export default function Home() {
           {category === "All" ? "Top Rated Foods" : category}
         </h2>
 
-      <CategoryFilter
-        category={category}
-        setCategory={setCategory}
-      />
+        <CategoryFilter
+          category={category}
+          setCategory={setCategory}
+        />
 
-       <div id="food-section" className="food-grid">
+        <div id="food-section" className="food-grid">
           {filteredItems.map((item, index) => (
             <FoodCard key={item.id} index={index} {...item} />
           ))}
