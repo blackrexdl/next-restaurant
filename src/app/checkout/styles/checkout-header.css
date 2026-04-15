@@ -3,6 +3,9 @@
   margin-bottom:26px;
   padding-bottom:10px;
   border-bottom:1px solid var(--border);
+  background: #0b0b0b;
+  background: var(--card, #0b0b0b);
+  transition: none;
 }
 
 .checkout-title{
@@ -12,7 +15,7 @@
   gap:10px;
   font-weight:600;
   font-size:22px;
-  color:#1c1c1c;
+  color: var(--text, #ffffff);
 }
 
 .checkout-icon{
@@ -32,7 +35,7 @@
   justify-content:center;
   gap:6px;
   font-size:13px;
-  color:var(--muted);
+  color: var(--muted, #bbbbbb);
   margin-top:8px;
   opacity:0.85;
 }
@@ -100,4 +103,12 @@
     font-size:13px;
     padding:10px;
   }
+}
+
+html.dark .checkout-header {
+  background: #0b0b0b !important;
+}
+
+html.dark .checkout-title {
+  color: #ffffff !important;
 }

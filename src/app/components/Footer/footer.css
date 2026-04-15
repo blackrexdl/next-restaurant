@@ -8,14 +8,18 @@
   padding: 20px;
   margin-top: 40px;
 
-  background: var(--card);
-  color: #ffffff;
-
+  background: #0b0b0b !important; /* force dark immediately */
+  background: var(--card, #0b0b0b); /* fallback inside var */
+  
+  border-top: 1px solid var(--border);
+  color: #ffffff !important; /* force readable text */
+  color: var(--text, #ffffff);
+  transition: none;
   font-size: 14px;
   letter-spacing: 0.3px;
 
   position: relative;
-  z-index: 10;
+  z-index: 999;
 }
 
 .footer .container {
@@ -36,4 +40,9 @@
     font-size: 13px;
     padding: 16px 10px;
   }
+}
+
+html.dark .footer {
+  background: #0b0b0b !important;
+  color: #ffffff !important;
 }

@@ -1,7 +1,8 @@
 :root {
-  --bg: #ffffff;
-  --text: #111111;
-  --card: #f5f5f5;
+  --bg: #0b0b0b;
+  --text: #ffffff;
+  --card: #111111;
+  --border: rgba(255,255,255,0.08);
 }
 
 .dark {
@@ -9,7 +10,12 @@
   --text: #ffffff;
   --card: #111111;
 }
-
+.light {
+  --bg: #ffffff;
+  --text: #111111;
+  --card: #f5f5f5;
+  --border: rgba(0,0,0,0.06);
+}
 /* ======================================================
    GLOBAL RESET
    Removes default browser spacing and normalizes layout
@@ -27,10 +33,12 @@
 ====================================================== */
 
 body {
+   background: var(--bg);
+  color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;      /* readable text spacing */
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;      /* readable text spacing */
 }
 
 /* ======================================================
