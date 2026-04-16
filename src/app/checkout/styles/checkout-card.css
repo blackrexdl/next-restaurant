@@ -10,8 +10,8 @@
   height: 100%;
   border-radius: 16px;
   padding: 18px;
-  color: #fff;
-  background: linear-gradient(135deg, #1f2230, #12131a);
+  color: var(--text, #fff);
+  background: linear-gradient(135deg, var(--card, #1f2230), #12131a);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -47,10 +47,10 @@
 .card,
 .checkout-card {
   width: 100%;
-  background: #000000;
+  background: var(--card, #111);
   border-radius: 14px;
   padding: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   position: static;
 }
 
@@ -114,4 +114,19 @@
     padding:16px;
   }
 
+}
+
+html.light .credit-card-preview{
+  background: linear-gradient(135deg, #f5f5f5, #e5e5e5);
+  color: #111;
+}
+
+html.light .card,
+html.light .checkout-card{
+  background: #ffffff;
+}
+
+html.dark .card,
+html.dark .checkout-card{
+  background: #111;
 }

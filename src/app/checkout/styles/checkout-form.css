@@ -1,12 +1,13 @@
 /* shared glass card */
 .checkout-section{
-  background: rgba(255,255,255,0.9);
+  background: var(--card, rgba(255,255,255,0.9));
+  background: color-mix(in srgb, var(--card, #111) 85%, transparent);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-radius: 20px;
   padding: 28px;
   border: 1px solid var(--border);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.2);
   margin-bottom: 20px;
 }
 
@@ -72,4 +73,12 @@
   flex-direction:column;
   gap:6px;
   box-sizing: border-box;
+}
+
+html.light .checkout-section{
+  background: rgba(255,255,255,0.9);
+}
+
+html.dark .checkout-section{
+  background: rgba(20,20,20,0.85);
 }

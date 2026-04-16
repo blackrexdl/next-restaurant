@@ -1,4 +1,3 @@
-
 .payment-options{
   display:flex;
   flex-direction:column;
@@ -13,7 +12,7 @@
   align-items:center;
   gap:12px;
   cursor:pointer;
-  background:#fafafa;
+  background:var(--card, #fafafa);
   position:relative;
   transition:all .25s ease;
 }
@@ -62,36 +61,12 @@
 
 .checkout-card{
   background:var(--summary);
-  color:#000000;
+  color:var(--text);
   line-height:1.5;
   border-radius:24px;
   padding:30px;
   position:sticky;
   top:100px;
-}
-
-/* FORCE VISIBILITY FOR ALL TEXT INSIDE ORDER SUMMARY (RIGHT SIDE) */
-
-.checkout-card h1,
-.checkout-card h2,
-.checkout-card h3,
-.checkout-card h4,
-.checkout-card p,
-.checkout-card span,
-.checkout-card li{
-  color:#000000;
-}
-
-.checkout-card .price-row{
-  color:#e4e4e4;
-}
-
-.checkout-card .price-total{
-  color:#ffffff;
-}
-
-.checkout-card small{
-  color:#cfcfcf;
 }
 
 /* CART ITEMS */
@@ -183,14 +158,32 @@
   padding:6px 14px;
   border-radius:20px;
   border:1px solid var(--border);
-  background:#f7f7f7;
+  color:var(--text);
+  background:var(--card, #f7f7f7);
   font-size:13px;
   cursor:pointer;
+  transition:all .2s ease;
+}
+
+
+.note-chip:active,
+.note-chip.active{
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 6px 16px rgba(255,107,61,0.35);
+  transform: scale(1.05);
+}
+
+.note-chip.removing{
+  transform:scale(0.95);
+  opacity:0.6;
 }
 
 .note-chip:hover{
-  background:var(--primary);
-  color:#fff;
+  background:rgba(255,107,61,0.1);
+  color:var(--primary);
+  border-color:var(--primary);
 }
 
 
@@ -222,7 +215,7 @@
   width:38px;
   height:38px;
   border-radius:50%;
-  background:#fff;
+  background:var(--card, #fff);
   border:2px solid var(--border);
   display:flex;
   align-items:center;
@@ -617,7 +610,7 @@
   border-radius:16px;
   border:1px dashed var(--border);
   text-align:center;
-  background:#fafafa;
+  background:var(--card, #fafafa);
 }
 
 .fake-qr{
@@ -646,4 +639,21 @@
   .input-row{
     flex-direction:column;
   }
+}
+
+html.dark .payment-option{
+  background: rgba(20,20,20,0.6);
+}
+
+html.dark .note-chip{
+  background: rgba(255,255,255,0.05);
+}
+
+html.dark .qr-placeholder{
+  background: rgba(255,255,255,0.05);
+}
+
+html.dark .progress-step{
+  background: #1a1a1a;
+  border-color: rgba(255,255,255,0.1);
 }

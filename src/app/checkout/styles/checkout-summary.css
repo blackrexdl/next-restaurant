@@ -45,7 +45,7 @@
   margin:0 auto 24px;
   font-size:30px;
   color:#fff;
-  box-shadow:0 10px 24px rgba(255,107,61,0.3);
+  box-shadow:0 10px 24px rgba(0,0,0,0.25);
   animation:successPop .6s ease;
 }
 
@@ -213,7 +213,7 @@
 }
 
 .discount-row {
-  color: #22c55e;
+  color: var(--success, #22c55e);
   font-weight: 500;
 }
 
@@ -262,4 +262,21 @@
 
 .total-glow:hover .total-value {
   transform: scale(1.05);
+}
+
+/* theme smoothness */
+.order-success,
+.success-title,
+.success-text,
+.total-glow,
+.discount-row{
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+html.dark .discount-row{
+  color:#4ade80;
+}
+
+html.dark .success-icon{
+  box-shadow:0 10px 24px rgba(0,0,0,0.5);
 }

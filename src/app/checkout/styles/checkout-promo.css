@@ -1,13 +1,13 @@
 /* PROMO SECTION */
 
 .promo-section{
-  background: rgba(255,255,255,0.9);
+  background: color-mix(in srgb, var(--card, #fff) 85%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 18px;
   padding: 22px;
   border: 1px solid var(--border);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
   margin-bottom: 16px;
   transition: all .25s ease;
 }
@@ -28,15 +28,17 @@
   padding:14px;
   border-radius:12px;
   border:1px solid var(--border);
+  color: var(--text, #000);
   font-size:14px;
   outline:none;
-  background:#fafafa;
+  background: var(--card, #fafafa);
   transition:all .25s ease;
 }
 
 .promo-input:focus{
   border-color:var(--primary);
-  background:#fff;
+  background: var(--card, #fff);
+  color: var(--text, #ffffff);
   box-shadow:0 0 0 3px rgba(255,107,61,0.15);
 }
 
@@ -68,7 +70,7 @@
 /* CART TEXT VISIBILITY FIX */
 
 .checkout-items .item-name{
-  color:#ffffff;
+  color:var(--text);
   font-weight:500;
   display:inline-block;
   margin-right:auto;
@@ -76,13 +78,13 @@
 }
 
 .checkout-items .item-qty{
-  color:#555;
+  color:var(--muted, #777);
   font-weight:500;
   margin-left:6px;
 }
 
 .checkout-items .item-price{
-  color:#ffffff;
+  color:var(--text);
   font-weight:600;
 }
 
@@ -175,4 +177,21 @@
   0%, 100% { transform: translateX(0); }
   25% { transform: translateX(-4px); }
   75% { transform: translateX(4px); }
+}
+
+html.dark .promo-section{
+  background: rgba(20,20,20,0.7);
+}
+
+html.dark .promo-input{
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+}
+
+html.dark .promo-input::placeholder{
+  color: #aaa;
+}
+
+html.dark .promo-error{
+  color: #f87171;
 }

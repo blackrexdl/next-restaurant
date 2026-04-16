@@ -2,8 +2,7 @@
   text-align:center;
   margin-bottom:26px;
   padding-bottom:10px;
-  border-bottom:1px solid var(--border);
-  background: #0b0b0b;
+  border-bottom:1px solid var(--border, rgba(255,255,255,0.1));
   background: var(--card, #0b0b0b);
   transition: none;
 }
@@ -35,7 +34,7 @@
   justify-content:center;
   gap:6px;
   font-size:13px;
-  color: var(--muted, #bbbbbb);
+  color: var(--muted, #999);
   margin-top:8px;
   opacity:0.85;
 }
@@ -49,7 +48,7 @@
   display:inline-block;
   font-size:14px;
   font-weight:500;
-  box-shadow:0 8px 20px rgba(0,0,0,0.15);
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
   transition:all .25s ease;
 }
 
@@ -103,12 +102,4 @@
     font-size:13px;
     padding:10px;
   }
-}
-
-html.dark .checkout-header {
-  background: #0b0b0b !important;
-}
-
-html.dark .checkout-title {
-  color: #ffffff !important;
 }

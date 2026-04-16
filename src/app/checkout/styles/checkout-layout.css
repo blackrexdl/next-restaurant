@@ -15,6 +15,7 @@
 
 body{
   background:var(--bg);
+  transition: background 0.2s ease, color 0.2s ease;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
   color:var(--text);
 }
@@ -22,7 +23,7 @@ body{
 /* WRAPPER */
 
 .checkout-container{
-  background: linear-gradient(135deg,#1c1d26,#0f1117);
+  background: var(--card, #1c1d26);
   border-radius: 22px;
   padding: 50px 0 40px;
   margin: 24px auto;
@@ -133,10 +134,10 @@ body{
 /* GLASS PANEL EFFECT (PREMIUM UI UPGRADE) */
 
 .glass-panel{
-  background: rgba(255,255,255,0.65);
+  background: color-mix(in srgb, var(--card, #fff) 70%, transparent);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.5);
+  border: 1px solid var(--border, rgba(255,255,255,0.2));
   border-radius: 18px;
   box-shadow:
     0 10px 30px rgba(0,0,0,0.08),
@@ -231,4 +232,17 @@ body{
     padding:10px;
     font-size:13px;
   }
+}
+
+html.dark .checkout-container{
+  background:#0f1117;
+}
+
+html.dark .glass-panel{
+  background: rgba(20,20,20,0.6);
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+html.light .glass-panel{
+  background: rgba(255,255,255,0.7);
 }

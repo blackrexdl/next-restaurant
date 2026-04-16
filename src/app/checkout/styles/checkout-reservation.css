@@ -2,15 +2,15 @@
 
 .reservation-box {
   padding: 28px;
-  background: #fff;
+  background: var(--card, #fff);
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 .reservation-box h2 {
   font-size: 18px;
   margin-bottom: 16px;
-  color: #1c1c1c;
+  color: var(--text, #ffffff);
 }
 
 /* ================= GRID ================= */
@@ -34,9 +34,9 @@
   padding: 18px 14px 10px;
   border-radius: 12px;
   border: 1px solid var(--border);
-  background: #fafafa;
+  background: var(--card, #fafafa);
   font-size: 14px;
-  color: #1c1c1c;
+  color: var(--text, #fffcfc);
   box-sizing: border-box;
   transition: all 0.25s ease;
 }
@@ -44,7 +44,7 @@
 .input-field:focus {
   outline: none;
   border-color: var(--primary);
-  background: #fff;
+  background: var(--card, #fff);
   box-shadow: 0 0 0 3px rgba(255,107,61,0.15), 0 8px 20px rgba(0,0,0,0.05);
   transform: scale(1.01);
 }
@@ -65,8 +65,8 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 13px;
-  color: #6b6b6b;
-  background: #fff;
+  color: var(--muted, #ffffff);
+  background: var(--card, #fff);
   padding: 0 4px;
   pointer-events: none;
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -173,7 +173,8 @@ select.input-field {
   padding: 6px 12px;
   border-radius: 20px;
   border: 1px solid var(--border);
-  background: #fff;
+  background: var(--card, #fff);
+  color: var(--text, #111);
   cursor: pointer;
   font-size: 13px;
   transition: all .2s ease;
@@ -189,4 +190,27 @@ select.input-field {
   color: #ef4444;
   font-size: 12px;
   margin-top: -6px;
+}
+
+html.dark .input-field{
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+}
+
+html.dark .input-field:focus{
+  background: rgba(255,255,255,0.08);
+}
+
+html.dark .input-group label{
+  background: #111;
+  color: #ffffff;
+}
+
+html.dark .chip{
+  background: rgba(255,255,255,0.05);
+  color: #eee;
+}
+
+html.dark .reservation-box{
+  background: #111;
 }
