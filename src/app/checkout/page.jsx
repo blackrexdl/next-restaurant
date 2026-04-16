@@ -44,6 +44,8 @@ export default function CheckoutPage() {
   const [promoCode, setPromoCode] = useState("");
   const [discount, setDiscount] = useState(0);
   const [paymentMethod, setPaymentMethod] = useState("cod");
+  const [promoStatus, setPromoStatus] = useState(null); // 'success' | 'error'
+  const [showPromoPopup, setShowPromoPopup] = useState(false);
 
   const subtotal = cart.reduce((sum, item) => {
     const qty = item.qty ?? 1;
@@ -55,15 +57,27 @@ export default function CheckoutPage() {
   const tax = Math.round(subtotal * 0.05);
   const total = subtotal + deliveryFee + tax - discount;
 
-  const applyPromo = () => {
-    if (promoCode.trim().toUpperCase() === "SAVE50") {
-      setDiscount(50);
-    } else if (promoCode.trim().toUpperCase() === "FOOD20") {
-      setDiscount(20);
-    } else {
-      setDiscount(0);
-      alert("Invalid promo code");
-    }
+  const applyPromo = async () => {
+    return new Promise((resolve) => {
+      const code = promoCode.trim().toUpperCase();
+
+      if (code === "SAVE50") {
+        setDiscount(50);
+        setPromoStatus("success");
+        setShowPromoPopup(true);
+        resolve(true);
+      } else if (code === "FOOD20") {
+        setDiscount(20);
+        setPromoStatus("success");
+        setShowPromoPopup(true);
+        resolve(true);
+      } else {
+        setDiscount(0);
+        setPromoStatus("error");
+        setShowPromoPopup(true);
+        resolve(false);
+      }
+    });
   };
 
   return (
@@ -164,6 +178,45 @@ export default function CheckoutPage() {
 
     </div>
   </div>
+      )}
+      {showPromoPopup && (
+        <div className="success-overlay" onClick={() => setShowPromoPopup(false)}>
+          <div className="success-modal" onClick={(e) => e.stopPropagation()}>
+
+            <button
+              className="success-close"
+              onClick={() => setShowPromoPopup(false)}
+            >
+              ✕
+            </button>
+
+            <div className="success-icon-wrap">
+              <div className="success-icon">
+                {promoStatus === "success" ? "✅" : "❌"}
+              </div>
+            </div>
+
+            <h1 className="success-title">
+              {promoStatus === "success"
+                ? "Promo Applied Successfully!"
+                : "Invalid Promo Code"}
+            </h1>
+
+            <p className="success-text">
+              {promoStatus === "success"
+                ? "Discount has been applied to your order."
+                : "Please try a valid promo code."}
+            </p>
+
+            <button
+              className="success-btn"
+              onClick={() => setShowPromoPopup(false)}
+            >
+              OK
+            </button>
+
+          </div>
+        </div>
       )}
       {showSuccess && (
         <div className="success-overlay" onClick={() => setShowSuccess(false)}>
