@@ -48,12 +48,12 @@ export default function CheckoutPage() {
   const [showPromoPopup, setShowPromoPopup] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/immutability
+   
     if (showPromoPopup) {
       document.body.style.overflow = "hidden";
 
       const timer = setTimeout(() => {
-        // eslint-disable-next-line react-hooks/immutability
+       
         setShowPromoPopup(false);
       }, 2000);
 
