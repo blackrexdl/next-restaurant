@@ -82,3 +82,58 @@ html.light .checkout-section{
 html.dark .checkout-section{
   background: rgba(20,20,20,0.85);
 }
+/* underline animation */
+.input-field{
+  border-bottom:2px solid transparent;
+}
+
+.input-field:focus{
+  border-bottom:2px solid var(--primary);
+}
+
+/* ERROR state styles */
+.input-group.error .input-field{
+  border-color:#ff4d4f;
+}
+
+.input-group.error .floating-label{
+  color:#ff4d4f;
+}
+
+.input-group.error{
+  box-shadow:0 0 0 1px rgba(255,77,79,0.4);
+}
+
+/* SUCCESS state styles */
+.input-group.success .input-field{
+  border-color:#22c55e;
+}
+
+.input-group.success .floating-label{
+  color:#22c55e;
+}
+
+.input-group.success{
+  box-shadow:0 0 0 1px rgba(34,197,94,0.4);
+}
+
+/* optional check icon support (for future use) */
+.input-group.success::after{
+  content:"✔";
+  position:absolute;
+  right:12px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:12px;
+  color:#22c55e;
+}
+
+.input-group.error::after{
+  content:"✕";
+  position:absolute;
+  right:12px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:12px;
+  color:#ff4d4f;
+}

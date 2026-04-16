@@ -31,12 +31,12 @@
 .input-field {
   width: 100%;
   min-height: 48px;
-  padding: 18px 14px 10px;
+  padding: 20px 14px 12px;
   border-radius: 12px;
   border: 1px solid var(--border);
   background: var(--card, #fafafa);
   font-size: 14px;
-  color: var(--text, #fffcfc);
+  color: var(--text, #111);
   box-sizing: border-box;
   transition: all 0.25s ease;
 }
@@ -65,21 +65,21 @@
   top: 50%;
   transform: translateY(-50%);
   font-size: 13px;
-  color: var(--muted, #ffffff);
+  color: var(--muted, #888);
   background: var(--card, #fff);
-  padding: 0 4px;
+  padding: 0 6px;
   pointer-events: none;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 6px;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  line-height: 1;
 }
 
 .input-group .input-field:focus + label,
 .input-group .input-field:not(:placeholder-shown) + label {
-  top: 6px;
-  transform: translateY(0) scale(0.9);
+  top: -16;
+  transform: translateY(0);
   font-size: 11px;
   color: var(--primary);
-  letter-spacing: 0.3px;
 }
 
 /* ================= SELECT ================= */
@@ -94,10 +94,10 @@ select.input-field {
 /* ================= TEXTAREA ================= */
 
 .textarea {
-  min-height: 100px;
+  min-height: 110px;
   resize: vertical;
   width: 100%;
-  padding-top: 20px;
+  padding-top: 22px;
 }
 
 /* ================= BUTTON ================= */
@@ -203,7 +203,7 @@ html.dark .input-field:focus{
 
 html.dark .input-group label{
   background: #111;
-  color: #ffffff;
+  color: #aaa;
 }
 
 html.dark .chip{

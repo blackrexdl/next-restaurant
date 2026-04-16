@@ -22,9 +22,9 @@ export default function ReservationForm() {
       <div className="form-grid">
 
         <div className="input-group">
-          <input type="text" required className="input-field" value={reserveName}
+          <input type="text" required className="input-field" placeholder=" " value={reserveName}
           onChange={(e)=>setReserveName(e.target.value.toUpperCase())} />
-          <label>Full Name</label>
+          <label className="floating-label">Full Name</label>
         </div>
 
         <div className="input-group">
@@ -32,31 +32,32 @@ export default function ReservationForm() {
             type="tel"
             required
             className="input-field"
+            placeholder=" "
             value={reservePhone}
             onChange={(e) => {
               const val = e.target.value.replace(/[^0-9]/g, "");
               setReservePhone(val);
             }}
           />
-          <label>Phone</label>
+          <label className="floating-label">Phone</label>
         </div>
 
         <div className="input-group">
-          <input type="date" min={new Date().toISOString().split("T")[0]} className="input-field"
+          <input type="date" min={new Date().toISOString().split("T")[0]} className="input-field" placeholder=" "
           value={reserveDate}
           onChange={(e)=>setReserveDate(e.target.value)} />
-          <label>Date</label>
+          <label className="floating-label">Date</label>
         </div>
 
         <div className="input-group">
-          <input type="time" className="input-field"
+          <input type="time" className="input-field" placeholder=" "
           value={reserveTime}
           onChange={(e)=>setReserveTime(e.target.value)} />
-          <label>Time</label>
+          <label className="floating-label">Time</label>
         </div>
 
         <div className="input-group">
-          <select className="input-field"
+          <select className="input-field" placeholder=" "
           value={reserveGuests}
           onChange={(e)=>setReserveGuests(e.target.value)}>
             <option value="">Select Guests</option>
@@ -65,11 +66,11 @@ export default function ReservationForm() {
             <option value="3">3 Guests</option>
             <option value="4">4 Guests</option>
           </select>
-          <label>Guests</label>
+          <label className="floating-label">Guests</label>
         </div>
 
         <div className="input-group">
-          <select className="input-field"
+          <select className="input-field" placeholder=" "
           value={reserveOccasion}
           onChange={(e)=>setReserveOccasion(e.target.value)}>
             <option value="">Occasion</option>
@@ -77,7 +78,7 @@ export default function ReservationForm() {
             <option>Anniversary</option>
             <option>Date</option>
           </select>
-          <label>Occasion</label>
+          <label className="floating-label">Occasion</label>
         </div>
 
         <div className="note-chips">
@@ -108,9 +109,11 @@ export default function ReservationForm() {
         <div className="input-group">
           <textarea
           className="input-field textarea"
+          placeholder=" "
+          rows={3}
           value={reserveNote}
           onChange={(e)=>setReserveNote(e.target.value)} />
-          <label>Special Request</label>
+          <label className="floating-label">Special Request</label>
         </div>
 
       </div>
