@@ -84,6 +84,20 @@ export default function Navbar() {
     setDarkMode(newTheme);
   };
 
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left - rect.width / 2) / 6;
+    const y = (e.clientY - rect.top - rect.height / 2) / 6;
+
+    e.currentTarget.style.setProperty("--x", `${x}px`);
+    e.currentTarget.style.setProperty("--y", `${y}px`);
+  };
+
+  const reset = (e) => {
+    e.currentTarget.style.setProperty("--x", `0px`);
+    e.currentTarget.style.setProperty("--y", `0px`);
+  };
+
   return (
     <>
       <nav className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
@@ -92,9 +106,34 @@ export default function Navbar() {
   <h1 className="logo">Next Restaurant</h1>
 </Link>
 
-        <button className="theme-toggle" onClick={toggleTheme}>
-          {darkMode ? "🌙" : "☀️"}
-        </button>
+        <div className="theme-switch">
+          <label
+            className="theme-btn magnetic"
+            onClick={toggleTheme}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={reset}
+          >
+
+            {/* Moon Icon */}
+            <svg className="moon" viewBox="0 0 24 24">
+              <path fill="white" d="M12 2a9.99 9.99 0 0 0 0 20 10 10 0 0 1 0-20z" />
+            </svg>
+
+            {/* Sun Icon */}
+            <svg className="sun" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="5" fill="orange" />
+            </svg>
+
+            {/* Particles */}
+            <div className="particle"></div>
+            <div className="particle"></div>
+            <div className="particle"></div>
+
+            {/* Ripple */}
+            <span className="ripple"></span>
+
+          </label>
+        </div>
 
         <button
           ref={cartBtnRef}
