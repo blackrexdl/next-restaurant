@@ -28,7 +28,7 @@
   text-transform: uppercase;
   line-height: 1;
   
-  color: var(--text);
+  color: #ffffff !important;
   text-decoration: none;
 }
 
@@ -38,7 +38,7 @@
 .logo:hover,
 .logo:active {
   text-decoration: none;
-  color: var(--text);
+  color: #ffffff !important;
 }
 
 .logo span {
