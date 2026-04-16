@@ -47,6 +47,23 @@ export default function CheckoutPage() {
   const [promoStatus, setPromoStatus] = useState(null); // 'success' | 'error'
   const [showPromoPopup, setShowPromoPopup] = useState(false);
 
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/immutability
+    if (showPromoPopup) {
+      document.body.style.overflow = "hidden";
+
+      const timer = setTimeout(() => {
+        // eslint-disable-next-line react-hooks/immutability
+        setShowPromoPopup(false);
+      }, 2000);
+
+      return () => {
+        clearTimeout(timer);
+        document.body.style.overflow = "auto";
+      };
+    }
+  }, [showPromoPopup]);
+
   const subtotal = cart.reduce((sum, item) => {
     const qty = item.qty ?? 1;
     const price = Number(item.price) || 0;
