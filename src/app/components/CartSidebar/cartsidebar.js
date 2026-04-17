@@ -6,6 +6,8 @@ import "./cartsidebar.css";
 
 export default function CartSidebar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
   const { cart, removeFromCart, increaseQty, decreaseQty } = useCart();
 
   const totalPrice = cart.reduce((total, item) => {
@@ -19,12 +21,16 @@ export default function CartSidebar() {
   }, []);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
     const handleOpen = () => setIsOpen(true);
     window.addEventListener("openCart", handleOpen);
     return () => window.removeEventListener("openCart", handleOpen);
   }, []);
 
-  if (cart.length === 0) return null;
+  if (!mounted || cart.length === 0) return null;
 
   return (
     <div

@@ -3,29 +3,37 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useCart } from "../../../context/CartContext";
-
 import "./sidebar.css";
 
 export default function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [clientCartCount, setClientCartCount] = useState(0);
   const { cart } = useCart();
-  const cartCount =
-    typeof window !== "undefined"
-      ? cart.reduce((total, item) => total + (item.qty ?? 1), 0)
-      : 0;
 
   useEffect(() => {
-    const saved = localStorage.getItem("theme") === "dark";
-    setDarkMode(saved);
-    document.documentElement.classList.toggle("dark", saved);
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("theme") === "dark";
+      setDarkMode(saved);
+      document.documentElement.classList.toggle("dark", saved);
+    }
   }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setClientCartCount(
+        cart.reduce((total, item) => total + (item.qty ?? 1), 0),
+      );
+    }
+  }, [cart]);
 
   const toggleDark = () => {
     const newDark = !darkMode;
     setDarkMode(newDark);
-    document.documentElement.classList.toggle("dark", newDark);
-    localStorage.setItem("theme", newDark ? "dark" : "light");
+    if (typeof window !== "undefined") {
+      document.documentElement.classList.toggle("dark", newDark);
+      localStorage.setItem("theme", newDark ? "dark" : "light");
+    }
   };
 
   const toggleCollapsed = () => setCollapsed(!collapsed);
@@ -53,7 +61,7 @@ export default function Sidebar() {
         ))}
       </nav>
       <div className="sidebar-footer">
-        <label className="switch">
+        <label className="switch" suppressHydrationWarning>
           <input type="checkbox" checked={darkMode} onChange={toggleDark} />
           <div className="slider">
             <div className="sun-moon"></div>
@@ -66,12 +74,16 @@ export default function Sidebar() {
         </label>
         <button
           className="cart-btn"
-          onClick={() => window.dispatchEvent(new CustomEvent("openCart"))}
+          onClick={() => {
+            if (typeof window !== "undefined") {
+              window.dispatchEvent(new CustomEvent("openCart"));
+            }
+          }}
         >
           🛒
-          {cartCount > 0 && (
+          {clientCartCount > 0 && (
             <span className="cart-badge" suppressHydrationWarning>
-              {cartCount}
+              {clientCartCount}
             </span>
           )}
         </button>
