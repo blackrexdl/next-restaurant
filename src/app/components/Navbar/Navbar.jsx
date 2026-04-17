@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useCart } from "../../../context/CartContext";
 import CartSidebar from "../CartSidebar/CartSidebar";
+import MobileMenu from "./MobileMenu";
+import "./navbar-mobile.css";
 
 import "./navbar.css";
 import Link from "next/link";
@@ -17,6 +19,7 @@ export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const cartBtnRef = useRef(null);
   const badgeRef = useRef(null);
@@ -92,42 +95,73 @@ export default function Navbar() {
           <h1 className="logo">Next Restaurant</h1>
         </Link>
 
-        {mounted && (
-          <div className="theme-switch">
-            <label className="switch">
-              <input
-                type="checkbox"
-                checked={darkMode}
-                onChange={toggleTheme}
-              />
-
-              <div className="slider">
-                <div className="sun-moon"></div>
-
-                <div className="stars">
-                  <div className="star"></div>
-                  <div className="star"></div>
-                  <div className="star"></div>
+        <div className="nav-center">
+          <nav className="nav-links">
+            <Link href="/" className="nav-link">
+              Home
+            </Link>
+            <Link href="/checkout" className="nav-link">
+              Menu
+            </Link>
+            <Link href="/reservation" className="nav-link">
+              Reservation
+            </Link>
+          </nav>
+          {mounted && (
+            <div className="theme-switch">
+              <label className="switch">
+                <input
+                  type="checkbox"
+                  checked={darkMode}
+                  onChange={toggleTheme}
+                />
+                <div className="slider">
+                  <div className="sun-moon"></div>
+                  <div className="stars">
+                    <div className="star"></div>
+                    <div className="star"></div>
+                    <div className="star"></div>
+                  </div>
                 </div>
-              </div>
-            </label>
-          </div>
-        )}
-
-        <button
-          ref={cartBtnRef}
-          className="cart-btn"
-          onClick={() => setOpenCart(true)}
-        >
-          🛒
-          {mounted && cartCount > 0 && (
-            <span ref={badgeRef} className="cart-badge">
-              {cartCount}
-            </span>
+              </label>
+            </div>
           )}
-        </button>
+        </div>
+
+        <div className="nav-right">
+          <button
+            className="hamburger"
+            aria-label="Toggle menu"
+            onClick={() => setMobileMenuOpen(true)}
+          >
+            ☰
+          </button>
+          <button
+            ref={cartBtnRef}
+            className="cart-btn"
+            onClick={() => setOpenCart(true)}
+          >
+            🛒
+            {mounted && cartCount > 0 && (
+              <span ref={badgeRef} className="cart-badge">
+                {cartCount}
+              </span>
+            )}
+          </button>
+        </div>
       </nav>
 
+      <MobileMenu
+        isOpen={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+      />
+
+      <CartSidebar isOpen={openCart} setIsOpen={setOpenCart} />
+
+      <MobileMenu
+        isOpen={mobileMenuOpen}
+        onClose={() => setMobileMenuOpen(false)}
+      />
       <CartSidebar isOpen={openCart} setIsOpen={setOpenCart} />
     </>
   );

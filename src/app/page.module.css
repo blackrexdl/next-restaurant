@@ -14,15 +14,10 @@
 /* ================= MAIN CONTENT WRAPPER ================= */
 
 .main {
-  width: 100%;
-  max-width: 1200px;
-
-  margin: 0 auto;           /* center page content */
-  padding: 40px 20px;       /* page spacing */
-
-  display: flex;
-  flex-direction: column;
-  gap: 40px;                /* spacing between sections */
+  @extend .container;
+  padding-top: 0;
+  padding-bottom: 0;
+  gap: clamp(32px, 6vh, 48px);
 }
 
 /* ================= RESPONSIVE ================= */

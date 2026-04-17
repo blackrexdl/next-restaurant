@@ -16,7 +16,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 
-  border-bottom: 1px solid var(--border, rgba(0,0,0,0.06));
+  border-bottom: 1px solid var(--border, rgba(0, 0, 0, 0.06));
   background: var(--bg);
 }
 
@@ -28,7 +28,7 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   line-height: 1;
-  
+
   color: var(--text);
   text-decoration: none;
 }
@@ -54,21 +54,73 @@
 
 /* ================= LINKS ================= */
 
+/* Desktop nav */
 .nav-links {
   display: flex;
   align-items: center;
   gap: clamp(12px, 2vw, 20px);
 }
 
-.nav-links a {
+.nav-link {
   text-decoration: none;
   color: var(--text);
   font-weight: 500;
-  transition: opacity 0.2s ease;
+  transition: all 0.2s ease;
+  padding: 8px 12px;
+  border-radius: 8px;
 }
 
-.nav-links a:hover {
-  opacity: 0.7;
+.nav-link:hover {
+  opacity: 0.8;
+  background: var(--card);
+}
+
+/* Layout groups */
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.hamburger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: var(--card);
+  border-radius: 12px;
+  font-size: 1.25rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hamburger:hover {
+  background: var(--border);
+  transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-center {
+    gap: 1rem;
+  }
+
+  .hamburger {
+    display: grid;
+    place-items: center;
+  }
 }
 
 /* ================= MOBILE ================= */
@@ -78,7 +130,6 @@
     padding: 12px 16px;
   }
 }
-
 
 /* ================= NEW BAR TOGGLE ================= */
 .theme-switch {
@@ -149,13 +200,27 @@ html.dark .stars {
   animation: twinkle 2s infinite;
 }
 
-.star:nth-child(1) { top: 5px; left: 8px; }
-.star:nth-child(2) { top: 15px; left: 20px; }
-.star:nth-child(3) { top: 8px; left: 30px; }
+.star:nth-child(1) {
+  top: 5px;
+  left: 8px;
+}
+.star:nth-child(2) {
+  top: 15px;
+  left: 20px;
+}
+.star:nth-child(3) {
+  top: 8px;
+  left: 30px;
+}
 
 @keyframes twinkle {
-  0%,100% { opacity: 1; }
-  50% { opacity: 0.3; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
 }
 
 body {
