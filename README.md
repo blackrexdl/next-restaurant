@@ -68,22 +68,44 @@ Next Restaurant demonstrates how modern food ordering interfaces work with featu
 The project structure is beginner‑friendly and ideal for learning **Next.js fundamentals and UI architecture**.
 
 ---
-# File Tree: next-restaurant
+# File Tree: Dine@flow
 
-**Generated:** 3/25/2026, 10:22:39 PM
-**Root Path:** `/Users/shubhamsharma/VS CODE/next-restaurant`
+**Generated:** 4/17/2026, 4:25:06 PM
+**Root Path:** `/Users/shubhamsharma/VS CODE/Dine@flow`
 
 ```
 ├── 📁 .github
 │   └── 📁 workflows
 │       └── ⚙️ gridgreen.yml
 ├── 📁 public
-│   ├── 📁 images
-│   ├── 🖼️ file.svg
-│   ├── 🖼️ globe.svg
-│   ├── 🖼️ next.svg
-│   ├── 🖼️ vercel.svg
-│   └── 🖼️ window.svg
+│   └── 📁 images
+│       ├── 🖼️ Marghereta pizza.jpg
+│       ├── 🖼️ Tandoori-momos.jpg
+│       ├── 🖼️ aloo-tikki.jpg
+│       ├── 🖼️ banana-shake.jpg
+│       ├── 🖼️ biryani.jpg
+│       ├── 🖼️ butter-chicken.jpg
+│       ├── 🖼️ cappuccino.jpg
+│       ├── 📄 chicken burger.avif
+│       ├── 🖼️ chocolate-shake.jpg
+│       ├── 🖼️ chole-bhature.jpg
+│       ├── 🖼️ cold-coffee.jpg
+│       ├── 🖼️ espresso.jpg
+│       ├── 🖼️ fried-momos.jpg
+│       ├── 🖼️ idli.jpg
+│       ├── 🖼️ latte.jpg
+│       ├── 🖼️ mango-shake.jpg
+│       ├── 🖼️ masala-dosa.jpg
+│       ├── 🖼️ mocha.jpg
+│       ├── 🖼️ momos.jpg
+│       ├── 🖼️ oreo-shake.jpg
+│       ├── 🖼️ paneer-butter-masala.jpg
+│       ├── 🖼️ paneer-tikka.jpg
+│       ├── 🖼️ pav-bhaji.jpg
+│       ├── 🖼️ samosa-chaat.jpg
+│       ├── 🖼️ strawberry-shake.jpg
+│       ├── 🖼️ vada-pav.jpg
+│       └── 🖼️ vanilla-shake.jpg
 ├── 📁 src
 │   ├── 📁 app
 │   │   ├── 📁 checkout
@@ -94,7 +116,8 @@ The project structure is beginner‑friendly and ideal for learning **Next.js fu
 │   │   │   │   ├── 📄 PaymentMethod.jsx
 │   │   │   │   ├── 📄 PriceBreakdown.jsx
 │   │   │   │   ├── 📄 PromoSection.jsx
-│   │   │   │   └── 📄 ReservationForm.jsx
+│   │   │   │   └── 📄 
+ReservationForm.jsx
 │   │   │   ├── 📁 styles
 │   │   │   │   ├── 🎨 checkout-animations.css
 │   │   │   │   ├── 🎨 checkout-card.css
@@ -112,6 +135,9 @@ The project structure is beginner‑friendly and ideal for learning **Next.js fu
 │   │   │   ├── 📁 CartSidebar
 │   │   │   │   ├── 📄 CartSidebar.jsx
 │   │   │   │   └── 🎨 cartsidebar.css
+│   │   │   ├── 📁 CategoryFilter
+│   │   │   │   ├── 📄 CategoryFilter.jsx
+│   │   │   │   └── 🎨 category.css
 │   │   │   ├── 📁 FoodCard
 │   │   │   │   ├── 📄 FoodCard.jsx
 │   │   │   │   └── 🎨 card.css
@@ -122,17 +148,19 @@ The project structure is beginner‑friendly and ideal for learning **Next.js fu
 │   │   │   │   ├── 📄 Hero.jsx
 │   │   │   │   └── 🎨 hero.css
 │   │   │   ├── 📁 Loader
-│   │   │   │   ├── 📄 Loader.jsx
-│   │   │   │   └── 🎨 loader.css
+│   │   │   │   └── 📄 Loader.jsx
 │   │   │   └── 📁 Navbar
 │   │   │       ├── 📄 Navbar.jsx
 │   │   │       └── 🎨 navbar.css
 │   │   ├── 📁 reservation
 │   │   │   ├── 📄 page.jsx
 │   │   │   └── 🎨 reservation.css
+│   │   ├── 📁 test-loader
+│   │   │   └── 📄 page.js
 │   │   ├── 📄 favicon.ico
 │   │   ├── 🎨 global.css
 │   │   ├── 📄 layout.js
+│   │   ├── 📄 loading.js
 │   │   ├── 📄 page.js
 │   │   └── 🎨 page.module.css
 │   ├── 📁 context
@@ -148,6 +176,8 @@ The project structure is beginner‑friendly and ideal for learning **Next.js fu
 ├── 📝 README.md
 ├── 📄 eslint.config.mjs
 ├── ⚙️ jsconfig.json
+├── 📄 next
+├── 📄 next-restaurant@0.1.0
 ├── 📄 next.config.mjs
 ├── ⚙️ package-lock.json
 ├── ⚙️ package.json
