@@ -10,7 +10,9 @@ import "./checkout/styles/checkout-card.css";
 import "./checkout/styles/checkout-animations.css";
 import "../styles/globals.css";
 import { CartProvider } from "../context/CartContext";
-import Navbar from "./components/Navbar/Navbar";
+import Sidebar from "./components/Sidebar/Sidebar";
+import CartSidebar from "./components/CartSidebar/cartsidebar";
+
 import Footer from "./components/Footer/Footer";
 
 export default function RootLayout({ children }) {
@@ -27,9 +29,13 @@ export default function RootLayout({ children }) {
               overflowX: "hidden",
             }}
           >
-            <Navbar />
+            <Sidebar />
+            <CartSidebar />
 
-            <main style={{ flex: 1, maxWidth: "100%", overflowX: "hidden" }}>
+            <main
+              className="main-content"
+              style={{ flex: 1, maxWidth: "100%", overflowX: "hidden" }}
+            >
               {children}
             </main>
 

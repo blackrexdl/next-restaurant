@@ -163,6 +163,27 @@ export default function Navbar() {
         onClose={() => setMobileMenuOpen(false)}
       />
       <CartSidebar isOpen={openCart} setIsOpen={setOpenCart} />
+      <style jsx global>{`
+        .navbar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          width: 100%;
+          transition: all 0.3s ease;
+        }
+        .navbar-scrolled {
+          backdrop-filter: blur(22px) saturate(200%);
+          -webkit-backdrop-filter: blur(22px) saturate(200%);
+          background: rgba(255, 255, 255, 0.5);
+        }
+        html.dark .navbar-scrolled {
+          background: rgba(15, 23, 42, 0.75);
+        }
+        body {
+          padding-top: 70px; /* adjust if navbar height changes */
+        }
+      `}</style>
     </>
   );
 }
