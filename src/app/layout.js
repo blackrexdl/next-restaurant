@@ -16,18 +16,22 @@ import Footer from "./components/Footer/Footer";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body style={{ background: "#000" }} className="dark">
-      <CartProvider>
-        <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-          <Navbar />
+      <body>
+        <CartProvider>
+          <div
+            style={{
+              minHeight: "100vh",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <Navbar />
 
-          <main style={{ flex: 1 }}>
-            {children}
-          </main>
+            <main style={{ flex: 1 }}>{children}</main>
 
-          <Footer />
-        </div>
-      </CartProvider>
+            <Footer />
+          </div>
+        </CartProvider>
       </body>
     </html>
   );

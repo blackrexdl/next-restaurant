@@ -8,7 +8,6 @@ import "./navbar.css";
 import Link from "next/link";
 
 export default function Navbar() {
-
   const { cart } = useCart();
   const cartCount = cart.reduce((total, item) => {
     return total + (item.qty ?? 1);
@@ -16,28 +15,29 @@ export default function Navbar() {
 
   const [openCart, setOpenCart] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const cartBtnRef = useRef(null);
   const badgeRef = useRef(null);
   const prevCountRef = useRef(cartCount);
 
-  const [mounted, setMounted] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
 
+  // Initialize theme on mount
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
+    if (typeof window === "undefined") return;
 
-    if (savedTheme === "dark") {
-      document.body.classList.add("dark");
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setDarkMode(true);
-    } else {
-      document.body.classList.remove("dark");
-      setDarkMode(false);
-    }
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
+    const initialDark = savedTheme ? savedTheme === "dark" : prefersDark;
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setDarkMode(initialDark);
+    document.documentElement.classList.toggle("dark", initialDark);
   }, []);
 
   useEffect(() => {
@@ -70,70 +70,49 @@ export default function Navbar() {
     prevCountRef.current = cartCount;
   }, [cartCount]);
 
-  const toggleTheme = () => {
-    const newTheme = !darkMode;
-
-    if (newTheme) {
-      document.body.classList.add("dark");
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
     } else {
-      document.body.classList.remove("dark");
+      document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "light");
     }
+  }, [darkMode]);
 
-    setDarkMode(newTheme);
-  };
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left - rect.width / 2) / 6;
-    const y = (e.clientY - rect.top - rect.height / 2) / 6;
-
-    e.currentTarget.style.setProperty("--x", `${x}px`);
-    e.currentTarget.style.setProperty("--y", `${y}px`);
-  };
-
-  const reset = (e) => {
-    e.currentTarget.style.setProperty("--x", `0px`);
-    e.currentTarget.style.setProperty("--y", `0px`);
+  const toggleTheme = (e) => {
+    const newDarkMode = e.target.checked;
+    setDarkMode(newDarkMode);
   };
 
   return (
     <>
       <nav className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
-
         <Link href="/" prefetch={false}>
-  <h1 className="logo">Next Restaurant</h1>
-</Link>
+          <h1 className="logo">Next Restaurant</h1>
+        </Link>
 
-        <div className="theme-switch">
-          <label
-            className="theme-btn magnetic"
-            onClick={toggleTheme}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={reset}
-          >
+        {mounted && (
+          <div className="theme-switch">
+            <label className="switch">
+              <input
+                type="checkbox"
+                checked={darkMode}
+                onChange={toggleTheme}
+              />
 
-            {/* Moon Icon */}
-            <svg className="moon" viewBox="0 0 24 24">
-              <path fill="white" d="M12 2a9.99 9.99 0 0 0 0 20 10 10 0 0 1 0-20z" />
-            </svg>
+              <div className="slider">
+                <div className="sun-moon"></div>
 
-            {/* Sun Icon */}
-            <svg className="sun" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="5" fill="orange" />
-            </svg>
-
-            {/* Particles */}
-            <div className="particle"></div>
-            <div className="particle"></div>
-            <div className="particle"></div>
-
-            {/* Ripple */}
-            <span className="ripple"></span>
-
-          </label>
-        </div>
+                <div className="stars">
+                  <div className="star"></div>
+                  <div className="star"></div>
+                  <div className="star"></div>
+                </div>
+              </div>
+            </label>
+          </div>
+        )}
 
         <button
           ref={cartBtnRef}
@@ -147,7 +126,6 @@ export default function Navbar() {
             </span>
           )}
         </button>
-
       </nav>
 
       <CartSidebar isOpen={openCart} setIsOpen={setOpenCart} />
