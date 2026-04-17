@@ -14,7 +14,6 @@
 /* ================= MAIN CONTENT WRAPPER ================= */
 
 .main {
-  @extend .container;
   padding-top: 0;
   padding-bottom: 0;
   gap: clamp(32px, 6vh, 48px);

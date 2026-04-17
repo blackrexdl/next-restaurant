@@ -92,7 +92,7 @@ export default function Navbar() {
     <>
       <nav className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
         <Link href="/" prefetch={false}>
-          <h1 className="logo">Next Restaurant</h1>
+          <h1 className="logo">Dine Flow</h1>
         </Link>
 
         <div className="nav-center">
