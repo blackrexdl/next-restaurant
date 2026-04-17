@@ -23,11 +23,15 @@ export default function RootLayout({ children }) {
               minHeight: "100vh",
               display: "flex",
               flexDirection: "column",
+              maxWidth: "100vw",
+              overflowX: "hidden",
             }}
           >
             <Navbar />
 
-            <main style={{ flex: 1 }}>{children}</main>
+            <main style={{ flex: 1, maxWidth: "100%", overflowX: "hidden" }}>
+              {children}
+            </main>
 
             <Footer />
           </div>
