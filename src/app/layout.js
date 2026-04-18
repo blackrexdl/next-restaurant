@@ -10,7 +10,7 @@ import "./checkout/styles/checkout-card.css";
 import "./checkout/styles/checkout-animations.css";
 import "../styles/globals.css";
 import { CartProvider } from "../context/CartContext";
-import Sidebar from "./components/Sidebar/Sidebar";
+import Navbar from "./components/Navbar/Navbar";
 import CartSidebar from "./components/CartSidebar/cartsidebar";
 
 import Footer from "./components/Footer/Footer";
@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
               overflowX: "hidden",
             }}
           >
-            <Sidebar />
+            <Navbar />
             <CartSidebar />
 
             <main

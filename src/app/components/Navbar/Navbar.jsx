@@ -11,9 +11,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   const { cart } = useCart();
-  const cartCount = cart.reduce((total, item) => {
-    return total + (item.qty ?? 1);
-  }, 0);
+  const [cartCount, setCartCount] = useState(0);
 
   const [openCart, setOpenCart] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
@@ -53,15 +51,6 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    const handleOpenCart = () => {
-      setOpenCart(true);
-    };
-
-    window.addEventListener("openCart", handleOpenCart);
-    return () => window.removeEventListener("openCart", handleOpenCart);
-  }, []);
-
-  useEffect(() => {
     if (cartCount > prevCountRef.current) {
       cartBtnRef.current?.classList.add("bump");
       setTimeout(() => cartBtnRef.current?.classList.remove("bump"), 350);
@@ -90,26 +79,25 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
-        <Link href="/" prefetch={false}>
-          <h1 className="logo">Dine Flow</h1>
-        </Link>
-
-        <div className="nav-center">
-          <nav className="nav-links">
-            <Link href="/" className="nav-link">
+      <nav className="navbar relative w-full">
+        <div className="nav-body">
+          <Link href="/" className="navbar-logo">
+            Dine Flow
+          </Link>
+          <div className="nav-items">
+            <Link href="/" className="nav-item">
               Home
             </Link>
-            <Link href="/checkout" className="nav-link">
+            <Link href="/checkout" className="nav-item">
               Menu
             </Link>
-            <Link href="/reservation" className="nav-link">
+            <Link href="/reservation" className="nav-item">
               Reservation
             </Link>
-          </nav>
-          {mounted && (
+          </div>
+          <div className="nav-actions">
             <div className="theme-switch">
-              <label className="switch">
+              <label className="switch" suppressHydrationWarning>
                 <input
                   type="checkbox"
                   checked={darkMode}
@@ -125,30 +113,21 @@ export default function Navbar() {
                 </div>
               </label>
             </div>
-          )}
+            <button
+              ref={cartBtnRef}
+              className="navbar-button cart-btn"
+              onClick={() => setOpenCart(true)}
+            >
+              🛒 Cart ({cartCount})
+            </button>
+          </div>
         </div>
-
-        <div className="nav-right">
-          <button
-            className="hamburger"
-            aria-label="Toggle menu"
-            onClick={() => setMobileMenuOpen(true)}
-          >
-            ☰
-          </button>
-          <button
-            ref={cartBtnRef}
-            className="cart-btn"
-            onClick={() => setOpenCart(true)}
-          >
-            🛒
-            {mounted && cartCount > 0 && (
-              <span ref={badgeRef} className="cart-badge">
-                {cartCount}
-              </span>
-            )}
-          </button>
-        </div>
+        <button
+          className="mobile-nav-toggle"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          ☰
+        </button>
       </nav>
 
       <MobileMenu
@@ -157,33 +136,6 @@ export default function Navbar() {
       />
 
       <CartSidebar isOpen={openCart} setIsOpen={setOpenCart} />
-
-      <MobileMenu
-        isOpen={mobileMenuOpen}
-        onClose={() => setMobileMenuOpen(false)}
-      />
-      <CartSidebar isOpen={openCart} setIsOpen={setOpenCart} />
-      <style jsx global>{`
-        .navbar {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          width: 100%;
-          transition: all 0.3s ease;
-        }
-        .navbar-scrolled {
-          backdrop-filter: blur(22px) saturate(200%);
-          -webkit-backdrop-filter: blur(22px) saturate(200%);
-          background: rgba(255, 255, 255, 0.5);
-        }
-        html.dark .navbar-scrolled {
-          background: rgba(15, 23, 42, 0.75);
-        }
-        body {
-          padding-top: 70px; /* adjust if navbar height changes */
-        }
-      `}</style>
     </>
   );
 }
