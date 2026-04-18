@@ -1,4 +1,3 @@
-// Optimized component-based version
 "use client";
 // CSS handled globally via layout.js to avoid hydration/layout issues
 import { useCart } from "../../context/CartContext";
@@ -13,9 +12,9 @@ import PriceBreakdown from "./components/PriceBreakdown";
 import DeliveryForm from "./components/DeliveryForm";
 import PaymentMethod from "./components/PaymentMethod";
 import OrderNotes from "./components/OrderNotes";
+import Navbar from "../Navbar";
 
 export default function CheckoutPage() {
-
   const { cart } = useCart();
   const [showSuccess, setShowSuccess] = useState(false);
 
@@ -41,10 +40,15 @@ export default function CheckoutPage() {
   }, []);
 
   const [note, setNote] = useState("");
+
   const [promoCode, setPromoCode] = useState("");
+
   const [discount, setDiscount] = useState(0);
+
   const [paymentMethod, setPaymentMethod] = useState("cod");
+
   const [promoStatus, setPromoStatus] = useState(null); // 'success' | 'error'
+
   const [showPromoPopup, setShowPromoPopup] = useState(false);
 
   useEffect(() => {
@@ -98,178 +102,161 @@ export default function CheckoutPage() {
   };
 
   return (
-    <main className="checkout-page">
+    <>
+      <Navbar />
+      <main className="checkout-page">
+        <div className="checkout-header">
+          <div className="checkout-wrapper">
+            <div className="checkout-title">
+              <span className="checkout-icon">🧾</span>
+              <h1>Checkout</h1>
+            </div>
 
-      <div className="checkout-header">
-        <div className="checkout-wrapper">
+            <div className="breadcrumb">
+              <Link href="/">Home</Link>
+              <span>/</span>
+              <span>Checkout</span>
+            </div>
 
-          <div className="checkout-title">
-            <span className="checkout-icon">🧾</span>
-            <h1>Checkout</h1>
+            <Link href="/">
+              <button className="home-btn">← Back to Home</button>
+            </Link>
           </div>
-
-          <div className="breadcrumb">
-            <Link href="/">Home</Link>
-            <span>/</span>
-            <span>Checkout</span>
-          </div>
-
-          <Link href="/">
-            <button className="home-btn">← Back to Home</button>
-          </Link>
-
-        </div>
-      </div>
-
-      {!mounted ? null : cart.length === 0 ? (
-        <div className="checkout-container"><div className="checkout-wrapper"><div className="empty-cart checkout-empty">
-          <p>Your cart is empty</p>
-        </div></div></div>
-      ) : (
-
-  <div className="checkout-container">
-
-    <div className="checkout-progress">
-      <div className="progress-step active">1</div>
-      <div className="progress-step active">2</div>
-      <div className="progress-step">3</div>
-    </div>
-
-    <div className="checkout-wrapper">
-
-      {/* Main Layout */}
-      <div className="checkout-layout fade-in checkout-main">
-
-        {/* LEFT SIDE */}
-        <div className="checkout-left">
-          <CheckoutItems cart={cart} />
-
-          <PromoSection
-            promoCode={promoCode}
-            setPromoCode={setPromoCode}
-            discount={discount}
-            applyPromo={applyPromo}
-          />
-
-          <ReservationForm />
         </div>
 
-        {/* RIGHT SIDE */}
-        <div className="checkout-right">
+        {!mounted ? null : cart.length === 0 ? (
+          <div className="checkout-container"><div className="checkout-wrapper"><div className="empty-cart checkout-empty">
+            <p>Your cart is empty</p>
+          </div></div></div>
+        ) : (
+          <div className="checkout-container">
+            <div className="checkout-progress">
+              <div className="progress-step active">1</div>
+              <div className="progress-step active">2</div>
+              <div className="progress-step">3</div>
+            </div>
 
-          <div className="checkout-card">
-            <PriceBreakdown
-              subtotal={subtotal}
-              deliveryFee={deliveryFee}
-              tax={tax}
-              discount={discount}
-              total={total}
-            />
-          </div>
+            <div className="checkout-wrapper">
+              <div className="checkout-layout fade-in checkout-main">
+                <div className="checkout-left">
+                  <CheckoutItems cart={cart} />
+                  <PromoSection
+                    promoCode={promoCode}
+                    setPromoCode={setPromoCode}
+                    discount={discount}
+                    applyPromo={applyPromo}
+                  />
+                  <ReservationForm />
+                </div>
 
-          <DeliveryForm />
+                <div className="checkout-right">
+                  <div className="checkout-card">
+                    <PriceBreakdown
+                      subtotal={subtotal}
+                      deliveryFee={deliveryFee}
+                      tax={tax}
+                      discount={discount}
+                      total={total}
+                    />
+                  </div>
 
-          <PaymentMethod
-            paymentMethod={paymentMethod}
-            setPaymentMethod={setPaymentMethod}
-          />
+                  <DeliveryForm />
 
-          <OrderNotes
-            note={note}
-            setNote={setNote}
-          />
+                  <PaymentMethod
+                    paymentMethod={paymentMethod}
+                    setPaymentMethod={setPaymentMethod}
+                  />
 
-          <div className="checkout-action">
-            <button
-              type="button"
-              className="checkout-submit-btn primary-btn"
-              onClick={() => setShowSuccess(true)}
-            >
-              Secure Checkout →
-            </button>
-          </div>
+                  <OrderNotes
+                    note={note}
+                    setNote={setNote}
+                  />
 
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-      )}
-      {showPromoPopup && (
-        <div className="success-overlay" onClick={() => setShowPromoPopup(false)}>
-          <div className="success-modal" onClick={(e) => e.stopPropagation()}>
-
-            <button
-              className="success-close"
-              onClick={() => setShowPromoPopup(false)}
-            >
-              ✕
-            </button>
-
-            <div className="success-icon-wrap">
-              <div className="success-icon">
-                {promoStatus === "success" ? "✅" : "❌"}
+                  <div className="checkout-action">
+                    <button
+                      type="button"
+                      className="checkout-submit-btn primary-btn"
+                      onClick={() => setShowSuccess(true)}
+                    >
+                      Secure Checkout →
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <h1 className="success-title">
-              {promoStatus === "success"
-                ? "Promo Applied Successfully!"
-                : "Invalid Promo Code"}
-            </h1>
-
-            <p className="success-text">
-              {promoStatus === "success"
-                ? "Discount has been applied to your order."
-                : "Please try a valid promo code."}
-            </p>
-
-            <button
-              className="success-btn"
-              onClick={() => setShowPromoPopup(false)}
-            >
-              OK
-            </button>
-
           </div>
-        </div>
-      )}
-      {showSuccess && (
-        <div className="success-overlay" onClick={() => setShowSuccess(false)}>
-          <div className="success-modal" onClick={(e) => e.stopPropagation()}>
+        )}
+        {showPromoPopup && (
+          <div className="success-overlay" onClick={() => setShowPromoPopup(false)}>
+            <div className="success-modal" onClick={(e) => e.stopPropagation()}>
+              <button
+                className="success-close"
+                onClick={() => setShowPromoPopup(false)}
+              >
+                ✕
+              </button>
 
-            <button
-              className="success-close"
-              onClick={() => setShowSuccess(false)}
-            >
-              ✕
-            </button>
+              <div className="success-icon-wrap">
+                <div className="success-icon">
+                  {promoStatus === "success" ? "✅" : "❌"}
+                </div>
+              </div>
 
-            <div className="success-icon-wrap">
-              <div className="success-icon">🎉</div>
+              <h1 className="success-title">
+                {promoStatus === "success"
+                  ? "Promo Applied Successfully!"
+                  : "Invalid Promo Code"}
+              </h1>
+
+              <p className="success-text">
+                {promoStatus === "success"
+                  ? "Discount has been applied to your order."
+                  : "Please try a valid promo code."}
+              </p>
+
+              <button
+                className="success-btn"
+                onClick={() => setShowPromoPopup(false)}
+              >
+                OK
+              </button>
             </div>
-
-            <h1 className="success-title">Order Placed Successfully!</h1>
-
-            <p className="success-text">
-              Your food is being prepared with care.
-            </p>
-
-            <p className="success-time">
-              Estimated delivery: 25–30 minutes
-            </p>
-
-            <button
-              className="success-btn"
-              onClick={() => setShowSuccess(false)}
-            >
-              Done
-            </button>
-
           </div>
-        </div>
-      )}
-    </main>
+        )}
+        {showSuccess && (
+          <div className="success-overlay" onClick={() => setShowSuccess(false)}>
+            <div className="success-modal" onClick={(e) => e.stopPropagation()}>
+              <button
+                className="success-close"
+                onClick={() => setShowSuccess(false)}
+              >
+                ✕
+              </button>
+
+              <div className="success-icon-wrap">
+                <div className="success-icon">🎉</div>
+              </div>
+
+              <h1 className="success-title">Order Placed Successfully!</h1>
+
+              <p className="success-text">
+                Your food is being prepared with care.
+              </p>
+
+              <p className="success-time">
+                Estimated delivery: 25–30 minutes
+              </p>
+
+              <button
+                className="success-btn"
+                onClick={() => setShowSuccess(false)}
+              >
+                Done
+              </button>
+            </div>
+          </div>
+        )}
+      </main>
+    </>
   );
 }

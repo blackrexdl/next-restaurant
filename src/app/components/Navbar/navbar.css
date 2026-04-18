@@ -1,11 +1,11 @@
 /* Pro Navbar - Fixed CSS Errors */
 .navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
   z-index: 50;
-  height: 65px;
+  height: 70px;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);

@@ -1,4 +1,5 @@
 "use client";
+
 import "./checkout/styles/checkout-layout.css";
 import "./checkout/styles/checkout-header.css";
 import "./checkout/styles/checkout-form.css";
@@ -10,9 +11,7 @@ import "./checkout/styles/checkout-card.css";
 import "./checkout/styles/checkout-animations.css";
 import "../styles/globals.css";
 import { CartProvider } from "../context/CartContext";
-import Navbar from "./components/Navbar/Navbar";
-import CartSidebar from "./components/CartSidebar/cartsidebar";
-
+import CartSidebar from "./components/CartSidebar/CartSidebar";
 import Footer from "./components/Footer/Footer";
 
 export default function RootLayout({ children }) {
@@ -20,22 +19,10 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <CartProvider>
-          <div
-            style={{
-              minHeight: "100vh",
-              display: "flex",
-              flexDirection: "column",
-              maxWidth: "100vw",
-              overflowX: "hidden",
-            }}
-          >
-            <Navbar />
+          <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column", maxWidth: "100vw", overflowX: "hidden" }}>
             <CartSidebar />
 
-            <main
-              className="main-content"
-              style={{ flex: 1, maxWidth: "100%", overflowX: "hidden" }}
-            >
+            <main className="main-content" style={{ flex: 1, maxWidth: "100%", overflowX: "hidden" }}>
               {children}
             </main>
 

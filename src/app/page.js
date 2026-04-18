@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Navbar from "./components/Navbar/Navbar";
 import Loader from "./components/Loader/Loader";
 import Hero from "./components/Hero/Hero";
 import FoodCard from "./components/FoodCard/FoodCard";
 import CategoryFilter from "./components/CategoryFilter/CategoryFilter";
-// Menu Data (easy to extend later)
+
+// Menu Data
 const menuItems = [
   {
     id: 1,
@@ -15,7 +17,7 @@ const menuItems = [
     image: "/images/pav-bhaji.jpg",
     rating: 4.6,
     reviews: 210,
-    badge: "Best Seller"
+    badge: "Best Seller",
   },
   {
     id: 2,
@@ -24,7 +26,7 @@ const menuItems = [
     category: "Street Food",
     image: "/images/vada-pav.jpg",
     rating: 4.3,
-    reviews: 150
+    reviews: 150,
   },
   {
     id: 13,
@@ -34,7 +36,7 @@ const menuItems = [
     image: "/images/samosa-chaat.jpg",
     rating: 4.5,
     reviews: 180,
-    badge: "Popular"
+    badge: "Popular",
   },
   {
     id: 14,
@@ -43,7 +45,7 @@ const menuItems = [
     category: "Street Food",
     image: "/images/aloo-tikki.jpg",
     rating: 4.2,
-    reviews: 130
+    reviews: 130,
   },
   {
     id: 3,
@@ -52,7 +54,7 @@ const menuItems = [
     category: "Street Food",
     image: "/images/momos.jpg",
     rating: 4.4,
-    reviews: 170
+    reviews: 170,
   },
   {
     id: 11,
@@ -61,7 +63,7 @@ const menuItems = [
     category: "Street Food",
     image: "/images/fried-momos.jpg",
     rating: 4.1,
-    reviews: 120
+    reviews: 120,
   },
   {
     id: 12,
@@ -71,7 +73,7 @@ const menuItems = [
     image: "/images/Tandoori-momos.jpg",
     rating: 4.7,
     reviews: 220,
-    badge: "Trending"
+    badge: "Trending",
   },
   {
     id: 4,
@@ -80,7 +82,7 @@ const menuItems = [
     category: "Main Course",
     image: "/images/paneer-butter-masala.jpg",
     rating: 4.5,
-    reviews: 200
+    reviews: 200,
   },
   {
     id: 5,
@@ -89,7 +91,7 @@ const menuItems = [
     category: "Beverages",
     image: "/images/cold-coffee.jpg",
     rating: 4.3,
-    reviews: 140
+    reviews: 140,
   },
   {
     id: 17,
@@ -98,7 +100,7 @@ const menuItems = [
     category: "Beverages",
     image: "/images/cappuccino.jpg",
     rating: 4.4,
-    reviews: 160
+    reviews: 160,
   },
   {
     id: 18,
@@ -107,7 +109,7 @@ const menuItems = [
     category: "Beverages",
     image: "/images/latte.jpg",
     rating: 4.2,
-    reviews: 110
+    reviews: 110,
   },
   {
     id: 19,
@@ -116,7 +118,7 @@ const menuItems = [
     category: "Beverages",
     image: "/images/espresso.jpg",
     rating: 4.0,
-    reviews: 90
+    reviews: 90,
   },
   {
     id: 20,
@@ -125,7 +127,7 @@ const menuItems = [
     category: "Beverages",
     image: "/images/mocha.jpg",
     rating: 4.5,
-    reviews: 170
+    reviews: 170,
   },
   {
     id: 6,
@@ -134,7 +136,7 @@ const menuItems = [
     category: "Main Course",
     image: "/images/paneer-tikka.jpg",
     rating: 4.6,
-    reviews: 190
+    reviews: 190,
   },
   {
     id: 7,
@@ -144,7 +146,7 @@ const menuItems = [
     image: "/images/butter-chicken.jpg",
     rating: 4.8,
     reviews: 250,
-    badge: "Best Seller"
+    badge: "Best Seller",
   },
   {
     id: 8,
@@ -153,7 +155,7 @@ const menuItems = [
     category: "Main Course",
     image: "/images/biryani.jpg",
     rating: 4.7,
-    reviews: 230
+    reviews: 230,
   },
   {
     id: 9,
@@ -162,7 +164,7 @@ const menuItems = [
     category: "South Indian",
     image: "/images/masala-dosa.jpg",
     rating: 4.4,
-    reviews: 180
+    reviews: 180,
   },
   {
     id: 15,
@@ -171,7 +173,7 @@ const menuItems = [
     category: "South Indian",
     image: "/images/idli.jpg",
     rating: 4.2,
-    reviews: 140
+    reviews: 140,
   },
   {
     id: 16,
@@ -180,7 +182,7 @@ const menuItems = [
     category: "Main Course",
     image: "/images/chole-bhature.jpg",
     rating: 4.5,
-    reviews: 200
+    reviews: 200,
   },
   {
     id: 10,
@@ -189,7 +191,7 @@ const menuItems = [
     category: "Beverages",
     image: "/images/chocolate-shake.jpg",
     rating: 4.3,
-    reviews: 150
+    reviews: 150,
   },
   {
     id: 21,
@@ -198,7 +200,7 @@ const menuItems = [
     category: "Beverages",
     image: "/images/strawberry-shake.jpg",
     rating: 4.2,
-    reviews: 120
+    reviews: 120,
   },
   {
     id: 22,
@@ -207,7 +209,7 @@ const menuItems = [
     category: "Beverages",
     image: "/images/vanilla-shake.jpg",
     rating: 4.1,
-    reviews: 100
+    reviews: 100,
   },
   {
     id: 23,
@@ -217,7 +219,7 @@ const menuItems = [
     image: "/images/oreo-shake.jpg",
     rating: 4.6,
     reviews: 190,
-    badge: "Trending"
+    badge: "Trending",
   },
   {
     id: 24,
@@ -226,7 +228,7 @@ const menuItems = [
     category: "Beverages",
     image: "/images/banana-shake.jpg",
     rating: 4.0,
-    reviews: 90
+    reviews: 90,
   },
   {
     id: 25,
@@ -235,20 +237,18 @@ const menuItems = [
     category: "Beverages",
     image: "/images/mango-shake.jpg",
     rating: 4.5,
-    reviews: 170
-  }
+    reviews: 170,
+  },
 ];
 
 export default function Home() {
   const [category, setCategory] = useState("All");
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1500);
-
     return () => clearTimeout(timer);
   }, []);
 
@@ -257,55 +257,49 @@ export default function Home() {
   const topRated = [...menuItems]
     .sort((a, b) => b.rating - a.rating)
     .slice(0, 5);
-
   const trending = menuItems.filter(
-    (item) => item.badge && item.badge.includes("Trending")
+    (item) => item.badge && item.badge.includes("Trending"),
   );
-
-  const filteredItems = (
+  const filteredItems =
     category === "All"
       ? menuItems
-      : menuItems.filter((item) => item.category === category)
-  ).sort((a, b) => b.rating - a.rating);
+      : menuItems.filter((item) => item.category === category);
+
+  filteredItems.sort((a, b) => b.rating - a.rating);
 
   return (
-    <main>
-      <Hero />
-
-      <section className="section container">
-        <h2 className="section-title">🔥 Top Rated</h2>
-        <div className="food-grid">
-          {topRated.map((item, index) => (
-            <FoodCard key={item.id} index={index} {...item} />
-          ))}
-        </div>
-      </section>
-
-      <section className="section container">
-        <h2 className="section-title">🚀 Trending</h2>
-        <div className="food-grid">
-          {trending.map((item, index) => (
-            <FoodCard key={item.id} index={index} {...item} />
-          ))}
-        </div>
-      </section>
-
-      <section className="section container">
-        <h2 className="section-title">
-          {category === "All" ? "Top Rated Foods" : category}
-        </h2>
-
-        <CategoryFilter
-          category={category}
-          setCategory={setCategory}
-        />
-
-        <div id="food-section" className="food-grid">
-          {filteredItems.map((item, index) => (
-            <FoodCard key={item.id} index={index} {...item} />
-          ))}
-        </div>
-      </section>
-    </main>
+    <>
+      <Navbar />
+      <main>
+        <Hero />
+        <section className="section container">
+          <h2 className="section-title">🔥 Top Rated</h2>
+          <div className="food-grid">
+            {topRated.map((item, index) => (
+              <FoodCard key={item.id} index={index} {...item} />
+            ))}
+          </div>
+        </section>
+        <section className="section container">
+          <h2 className="section-title">🚀 Trending</h2>
+          <div className="food-grid">
+            {trending.map((item, index) => (
+              <FoodCard key={item.id} index={index} {...item} />
+            ))}
+          </div>
+        </section>
+        <section className="section container">
+          <h2 className="section-title">
+            {category === "All" ? "Top Rated Foods" : category}
+          </h2>
+          <CategoryFilter category={category} setCategory={setCategory} />
+          <div id="food-section" className="food-grid">
+            {filteredItems.map((item, index) => (
+              <FoodCard key={item.id} index={index} {...item} />
+            ))}
+          </div>
+        </section>
+      </main>
+    </>
   );
 }

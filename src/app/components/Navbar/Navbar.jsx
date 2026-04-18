@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useCart } from "../../../context/CartContext";
-import CartSidebar from "../CartSidebar/CartSidebar";
+import CartSidebar from "../CartSidebar/cartsidebar";
 import MobileMenu from "./MobileMenu";
 import "./navbar-mobile.css";
 
@@ -11,9 +11,12 @@ import Link from "next/link";
 
 export default function Navbar() {
   const { cart } = useCart();
-  const [cartCount, setCartCount] = useState(0);
-
   const [openCart, setOpenCart] = useState(false);
+   const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    setCartCount(cart.reduce((total, item) => total + (item.qty ?? 1), 0));
+  }, [cart]);
   const [darkMode, setDarkMode] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -21,7 +24,7 @@ export default function Navbar() {
 
   const cartBtnRef = useRef(null);
   const badgeRef = useRef(null);
-  const prevCountRef = useRef(cartCount);
+  const prevCountRef = useRef(0);
 
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
