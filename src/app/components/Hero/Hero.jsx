@@ -48,7 +48,7 @@ export default function Hero() {
 
     <button
       className="menu-btn"
-      onClick={openCart}
+      onClick={scrollToFood}
       aria-label="Open cart menu"
     >
       View Menu

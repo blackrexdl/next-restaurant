@@ -12,7 +12,7 @@ import PriceBreakdown from "./components/PriceBreakdown";
 import DeliveryForm from "./components/DeliveryForm";
 import PaymentMethod from "./components/PaymentMethod";
 import OrderNotes from "./components/OrderNotes";
-import Navbar from "../Navbar";
+import Navbar from "../components/Navbar/Navbar";
 
 export default function CheckoutPage() {
   const { cart } = useCart();

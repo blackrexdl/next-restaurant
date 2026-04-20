@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useCart } from "../../../context/CartContext";
-import CartSidebar from "../CartSidebar/cartsidebar";
+import CartSidebar from "../CartSidebar/CartSidebar";
 import MobileMenu from "./MobileMenu";
 import "./navbar-mobile.css";
 
@@ -15,9 +15,10 @@ export default function Navbar() {
    const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCartCount(cart.reduce((total, item) => total + (item.qty ?? 1), 0));
   }, [cart]);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -34,14 +35,10 @@ export default function Navbar() {
     if (typeof window === "undefined") return;
 
     const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
-    const initialDark = savedTheme ? savedTheme === "dark" : prefersDark;
+    const initialDark = savedTheme ? savedTheme === "dark" : true; // default dark
 
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setDarkMode(initialDark);
-    document.documentElement.classList.toggle("dark", initialDark);
   }, []);
 
   useEffect(() => {
@@ -82,7 +79,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="navbar relative w-full">
+      <nav className={`navbar fixed top-0 left-0 w-full z-50 ${scrolled ? "navbar-scrolled" : ""}`}>
         <div className="nav-body">
           <Link href="/" className="navbar-logo">
             Dine Flow
@@ -103,7 +100,7 @@ export default function Navbar() {
               <label className="switch" suppressHydrationWarning>
                 <input
                   type="checkbox"
-                  checked={darkMode}
+                  checked={mounted ? darkMode : true}
                   onChange={toggleTheme}
                 />
                 <div className="slider">
@@ -132,6 +129,7 @@ export default function Navbar() {
           ☰
         </button>
       </nav>
+      <div style={{ height: "72px" }} />
 
       <MobileMenu
         isOpen={mobileMenuOpen}
