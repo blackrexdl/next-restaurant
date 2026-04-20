@@ -76,7 +76,7 @@
   position: relative;
   font-size: 60px;
   font-weight: 700;
-
+  margin-top: auto;
   padding: 12px 28px;
   border-radius: 12px;
 
@@ -159,12 +159,7 @@
 .order-btn:hover {
   transform: translateY(-5px) scale(1.05);
 
-  background: rgba(
-    255,
-    255,
-    255,
-    0.6
-  ); /* stronger glass background  linked with card.css 159*/
+ background: linear-gradient(135deg, #ff6b3d, #ff8e53);; /* stronger glass background  linked with card.css 159*/
   box-shadow:
     0 14px 35px rgba(0, 0, 0, 0.45),
     0 0 14px rgba(212, 175, 55, 0.35);
