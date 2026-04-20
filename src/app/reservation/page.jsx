@@ -1,100 +1,159 @@
 "use client"
-import { useState } from "react"
-import "./reservation.css"
+import { useState } from 'react';
+import Link from 'next/link';
+import Navbar from '../components/Navbar/Navbar';
+import './reservation.css';
 
-import Navbar from "../components/Navbar/Navbar"
+export default function Reservation() {
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    date: '',
+    time: '',
+    guests: '2',
+    occasion: '',
+    request: ''
+  });
 
-export default function ReservationPage() {
-  const [date,setDate] = useState("")
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
 
-  const [time,setTime] = useState("")
-
-  const [guests,setGuests] = useState("2")
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.name && formData.phone && formData.date && formData.time) {
+      alert('Reservation request sent! Will confirm soon.');
+    } else {
+      alert('Please fill all required fields.');
+    }
+  };
 
   return (
     <>
       <Navbar />
-      <div className="reservation-container">
-        <div className="reservation-card">
-          <h1 className="reservation-title">Reserve a Table</h1>
-          <p className="reservation-subtitle">
-            Book your table in advance and enjoy a seamless dining experience.
-          </p>
-
-          <form className="reservation-form">
-            <div className="form-row">
-              <div className="input-group">
-                <label>Full Name *</label>
-                <input type="text" placeholder="Enter your name" required/>
+      <div className="reservation-hero">
+        <div className="container">
+          <Link href="/" className="back-button">
+            ← Back to Home
+          </Link>
+          <div className="reservation-content">
+            <div className="illustration">
+              <div className="table-scene">
+                <div className="tablecloth"></div>
+                <div className="plate"></div>
+                <div className="chair"></div>
+                <div className="candles"></div>
               </div>
-
-              <div className="input-group">
-                <label>Phone *</label>
-                <input type="tel" placeholder="Enter phone number" required/>
+              <div className="calendar-badge">
+                Book Your Table
               </div>
             </div>
-
-            <div className="form-row">
-              <div className="input-group">
-                <label>Date *</label>
-                <input
-                  type="date"
-                  value={date}
-                  onChange={(e)=>setDate(e.target.value)}
-                  required
-                />
-              </div>
-
-              <div className="input-group">
-                <label>Time *</label>
-                <input
-                  type="time"
-                  value={time}
-                  onChange={(e)=>setTime(e.target.value)}
-                  required
-                />
-              </div>
+            <div className="form-section">
+              <h1 className="form-title">Reserve Your Table</h1>
+              <p className="form-subtitle">Perfect dining experience awaits</p>
+              <form onSubmit={handleSubmit} className="glass-form">
+                <div className="input-row">
+                  <div className="glass-input">
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="input-field"
+                    />
+                    <label>Full Name</label>
+                  </div>
+                  <div className="glass-input">
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      className="input-field"
+                    />
+                    <label>Phone Number</label>
+                  </div>
+                </div>
+                <div className="input-row">
+                  <div className="glass-input">
+                    <input
+                      type="date"
+                      name="date"
+                      value={formData.date}
+                      onChange={handleChange}
+                      required
+                      className="input-field"
+                    />
+                    <label>Date</label>
+                  </div>
+                  <div className="glass-input">
+                    <input
+                      type="time"
+                      name="time"
+                      value={formData.time}
+                      onChange={handleChange}
+                      required
+                      className="input-field"
+                    />
+                    <label>Time</label>
+                  </div>
+                </div>
+                <div className="input-row">
+                  <div className="glass-input">
+                    <select
+                      name="guests"
+                      value={formData.guests}
+                      onChange={handleChange}
+                      className="input-field"
+                    >
+                      <option value="1">1 Guest</option>
+                      <option value="2">2 Guests</option>
+                      <option value="3">3 Guests</option>
+                      <option value="4">4 Guests</option>
+                      <option value="5+">5+ Guests</option>
+                    </select>
+                    <label>Number of Guests</label>
+                  </div>
+                  <div className="glass-input">
+                    <select
+                      name="occasion"
+                      value={formData.occasion}
+                      onChange={handleChange}
+                      className="input-field"
+                    >
+                      <option value="">Select Occasion</option>
+                      <option value="birthday">Birthday</option>
+                      <option value="anniversary">Anniversary</option>
+                      <option value="date-night">Date Night</option>
+                      <option value="business">Business</option>
+                    </select>
+                    <label>Occasion (Optional)</label>
+                  </div>
+                </div>
+                <div className="glass-input full">
+                  <textarea
+                    name="request"
+                    value={formData.request}
+                    onChange={handleChange}
+                    className="input-field"
+                    placeholder="Special requests..."
+                    rows="4"
+                  ></textarea>
+                  <label>Special Requests</label>
+                </div>
+                <button type="submit" className="submit-btn">
+                  Reserve Table Now
+                </button>
+              </form>
             </div>
-
-            <div className="form-row">
-              <div className="input-group">
-                <label>Guests *</label>
-                <select
-                  value={guests}
-                  onChange={(e)=>setGuests(e.target.value)}
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                </select>
-              </div>
-
-              <div className="input-group">
-                <label>Occasion</label>
-                <select>
-                  <option>None</option>
-                  <option>Birthday</option>
-                  <option>Anniversary</option>
-                  <option>Date Night</option>
-                  <option>Business Meeting</option>
-                </select>
-              </div>
-            </div>
-
-            <div className="input-group">
-              <label>Special Request</label>
-              <textarea placeholder="Add any request (optional)"></textarea>
-            </div>
-
-            <button className="reserve-btn">
-              Reserve Table
-            </button>
-          </form>
+          </div>
         </div>
       </div>
     </>
-  )
+  );
 }
