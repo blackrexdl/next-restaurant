@@ -264,6 +264,23 @@
   position: relative;
 }
 
+select.input-field {
+  
+  background-position: right 24px center;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  padding-right: 70px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.input-field option {
+  background: #1a1b2e !important;
+  color: white !important;
+  padding: 12px;
+}
+
 .input-field:focus {
   border-color: #ff6b3d;
   background: rgba(255, 255, 255, 0.12);
