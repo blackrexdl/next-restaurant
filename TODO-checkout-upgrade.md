@@ -10,4 +10,8 @@ Updated `src/app/checkout/checkout.css`:
 - Progress, buttons enhanced.
 - Text visibility fixed (white on dark).
 
-Test `/checkout` - full glassmorphism theme.
+All checkout styles/\*.css updated to glass like reservation/not-found:
+
+✅ checkout-form.css, checkout-card.css, checkout-layout.css (glass bg, blur, white text, dark gradient).
+
+Test `/checkout`.
