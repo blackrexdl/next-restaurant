@@ -11,7 +11,7 @@ import "./checkout/styles/checkout-card.css";
 import "./checkout/styles/checkout-animations.css";
 import "../styles/globals.css";
 import { CartProvider } from "../context/CartContext";
-import CartSidebar from "./components/CartSidebar/CartSidebar";
+import CartSidebar from "./components/CartSidebar/cartsidebar";
 import Footer from "./components/Footer/Footer";
 
 export default function RootLayout({ children }) {

@@ -1,39 +1,38 @@
-"use client"
-import { useState } from 'react';
-import Link from 'next/link';
-import Navbar from '../components/Navbar/Navbar';
-import './reservation.css';
+"use client";
+import { useState } from "react";
+import Link from "next/link";
+// Navbar now global in layout.js
+import "./reservation.css";
 
 export default function Reservation() {
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    date: '',
-    time: '',
-    guests: '2',
-    occasion: '',
-    request: ''
+    name: "",
+    phone: "",
+    date: "",
+    time: "",
+    guests: "2",
+    occasion: "",
+    request: "",
   });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.name && formData.phone && formData.date && formData.time) {
-      alert('Reservation request sent! Will confirm soon.');
+      alert("Reservation request sent! Will confirm soon.");
     } else {
-      alert('Please fill all required fields.');
+      alert("Please fill all required fields.");
     }
   };
 
   return (
     <>
-      <Navbar />
       <div className="reservation-hero">
         <div className="container">
           <Link href="/" className="back-button">
@@ -47,9 +46,7 @@ export default function Reservation() {
                 <div className="chair"></div>
                 <div className="candles"></div>
               </div>
-              <div className="calendar-badge">
-                Book Your Table
-              </div>
+              <div className="calendar-badge">Book Your Table</div>
             </div>
             <div className="form-section">
               <h1 className="form-title">Reserve Your Table</h1>
